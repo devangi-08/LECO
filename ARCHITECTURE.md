@@ -8,34 +8,36 @@ End-to-end pipeline specification for the LECO diagnostic engine, covering data 
 
 ```mermaid
 flowchart LR
+    classDef cobalt fill:#6B8EAD,stroke:#415C77,color:#000000
+
     subgraph PA["Phase A — Data Acquisition & Labeling"]
         direction TB
-        A1["🌐 Web Scraper\n(Playwright on ExamSIDE)"]
-        A2["🧹 Text Cleaner\n(LaTeX standardization)"]
-        A3["🤖 LLM Pass 1\n(Per-topic discovery)"]
-        A4["🔀 LLM Pass 2\n(Cross-topic synthesis)"]
+        A1["🌐 Web Scraper\n(Playwright on ExamSIDE)"]:::cobalt
+        A2["🧹 Text Cleaner\n(LaTeX standardization)"]:::cobalt
+        A3["🤖 LLM Pass 1\n(Per-topic discovery)"]:::cobalt
+        A4["🔀 LLM Pass 2\n(Cross-topic synthesis)"]:::cobalt
         A1 --> A2 --> A3 --> A4
     end
 
     subgraph PB["Phase B — Diagnostic Engine (Deterministic Python)"]
         direction TB
-        B0["Stage 0: Pre-filter"]
-        B12["Stages 1–2: Weakness + Confidence"]
-        B34["Stages 3–4: Root Cause + Strategy"]
-        B56["Stages 5–6: Study Plan + Next Action"]
+        B0["Stage 0: Pre-filter"]:::cobalt
+        B12["Stages 1–2: Weakness + Confidence"]:::cobalt
+        B34["Stages 3–4: Root Cause + Strategy"]:::cobalt
+        B56["Stages 5–6: Study Plan + Next Action"]:::cobalt
         B0 --> B12 --> B34 --> B56
     end
 
     subgraph PC["Phase C — Output"]
         direction TB
-        C1["📝 Report Generator\n(Reframe labels → student language)"]
-        C2["💻 React Frontend\n(Planned)"]
+        C1["📝 Report Generator\n(Reframe labels → student language)"]:::cobalt
+        C2["💻 React Frontend\n(Planned)"]:::cobalt
         C1 --> C2
     end
 
     A4 -->|"4 CSV tables"| PB
-    KG["📊 Knowledge Graph\nlayer_1_PN +\nprerequisite_final.json"] --> PB
-    ST["👤 Student Data\nresponses +\ntest_composition"] --> PB
+    KG["📊 Knowledge Graph\nlayer_1_PN +\nprerequisite_final.json"]:::cobalt --> PB
+    ST["👤 Student Data\nresponses +\ntest_composition"]:::cobalt --> PB
     PB -->|"DiagnosticReport"| PC
 ```
 
@@ -47,11 +49,13 @@ flowchart LR
 
 ```mermaid
 flowchart LR
-    URL["ExamSIDE\nTopic URL"] --> SCROLL["Lazy-scroll\n(50 cycles × 800px)"]
-    SCROLL --> EXTRACT["Extract anchors\nwith overflow-y-hidden"]
-    EXTRACT --> FILTER["Flag img/table/svg\n→ drop non-text"]
-    FILTER --> QTYPE["Detect MCQ vs\nNumerical from H2"]
-    QTYPE --> CSV["Raw CSV\n(per topic)"]
+    classDef cobalt fill:#6B8EAD,stroke:#415C77,color:#000000
+    
+    URL["ExamSIDE\nTopic URL"]:::cobalt --> SCROLL["Lazy-scroll\n(50 cycles × 800px)"]:::cobalt
+    SCROLL --> EXTRACT["Extract anchors\nwith overflow-y-hidden"]:::cobalt
+    EXTRACT --> FILTER["Flag img/table/svg\n→ drop non-text"]:::cobalt
+    FILTER --> QTYPE["Detect MCQ vs\nNumerical from H2"]:::cobalt
+    QTYPE --> CSV["Raw CSV\n(per topic)"]:::cobalt
 ```
 
 Key technical decisions:
@@ -64,24 +68,24 @@ Key technical decisions:
 
 ```mermaid
 flowchart TD
-    QS["~100 questions\nper topic"] --> P1["Pass 1: Topic-Level Extraction"]
-    P1 --> |"Per-topic JSON"| NODES["Reasoning Archetypes\n(nodes)"]
-    P1 --> ERRORS["Error Patterns"]
-    P1 --> CONCEPTS["Concept Co-occurrences"]
-    P1 --> DEMAND["Cognitive Demand\nClassification"]
+    classDef cobalt fill:#6B8EAD,stroke:#415C77,color:#000000
+    classDef lightblue fill:#e0e7ff,stroke:#4338ca,color:#000000
 
-    NODES --> P2["Pass 2: Cross-Topic Synthesis"]
+    QS["~100 questions\nper topic"]:::cobalt --> P1["Pass 1: Topic-Level Extraction"]:::lightblue
+    P1 --> |"Per-topic JSON"| NODES["Reasoning Archetypes\n(nodes)"]:::cobalt
+    P1 --> ERRORS["Error Patterns"]:::cobalt
+    P1 --> CONCEPTS["Concept Co-occurrences"]:::cobalt
+    P1 --> DEMAND["Cognitive Demand\nClassification"]:::cobalt
+
+    NODES --> P2["Pass 2: Cross-Topic Synthesis"]:::lightblue
     ERRORS --> P2
     CONCEPTS --> P2
     DEMAND --> P2
 
-    P2 --> DQN["df_question_nodes\n(5,150 rows)"]
-    P2 --> DQE["df_question_errors\n(5,522 rows)"]
-    P2 --> DQC["df_question_concepts\n(11,784 rows)"]
-    P2 --> DM["df_master\n(4,481 rows)"]
-
-    style P1 fill:#e0e7ff,stroke:#4338ca
-    style P2 fill:#e0e7ff,stroke:#4338ca
+    P2 --> DQN["df_question_nodes\n(5,150 rows)"]:::cobalt
+    P2 --> DQE["df_question_errors\n(5,522 rows)"]:::cobalt
+    P2 --> DQC["df_question_concepts\n(11,784 rows)"]:::cobalt
+    P2 --> DM["df_master\n(4,481 rows)"]:::cobalt
 ```
 
 **Pass 1 — Topic-level extraction:** The LLM evaluates ~100 questions from a single topic to identify recurring reasoning archetypes, concept co-occurrences, classification dimensions (cognitive demand levels), and common error types. No hard numerical constraints (e.g., "find 3–6 archetypes") — the prompt emphasizes distinctness and lets the data dictate category counts.
@@ -98,7 +102,14 @@ flowchart TD
 
 ```mermaid
 flowchart TD
-    S0["Stage 0\nPre-filter eligible sets\n(items with ≥ 10 questions)"]
+    %% Define color classes
+    classDef cobalt fill:#6B8EAD,stroke:#415C77,color:#000000
+    classDef mustard fill:#DEB841,stroke:#A38322,color:#000000
+    classDef brown fill:#B08D79,stroke:#826250,color:#000000
+    classDef olive fill:#A3B18A,stroke:#727E5D,color:#000000
+    classDef gray fill:#D3D3D3,stroke:#A9A9A9,color:#000000
+
+    S0["Stage 0\nPre-filter eligible sets\n(items with ≥ 10 questions)"]:::gray
 
     S0 --> F1["F1 · Node Weakness"]
     S0 --> F3["F3 · Error Patterns"]
@@ -122,26 +133,14 @@ flowchart TD
     F17 --> F15["F15 · Time ROI"]
     F17 --> F18["F18 · Next Action"]
 
-    style S0 fill:#f3f4f6,stroke:#6b7280
-    style F1 fill:#dbeafe,stroke:#2563eb
-    style F2 fill:#dbeafe,stroke:#2563eb
-    style F3 fill:#dbeafe,stroke:#2563eb
-    style F4 fill:#fed7aa,stroke:#ea580c
-    style F5 fill:#fed7aa,stroke:#ea580c
-    style F6 fill:#fed7aa,stroke:#ea580c
-    style F7 fill:#fed7aa,stroke:#ea580c
-    style F8 fill:#fed7aa,stroke:#ea580c
-    style F9 fill:#fecaca,stroke:#dc2626
-    style F10 fill:#fecaca,stroke:#dc2626
-    style F11 fill:#fecaca,stroke:#dc2626
-    style F14 fill:#bbf7d0,stroke:#16a34a
-    style F15 fill:#bbf7d0,stroke:#16a34a
-    style F16 fill:#bbf7d0,stroke:#16a34a
-    style F17 fill:#bbf7d0,stroke:#16a34a
-    style F18 fill:#bbf7d0,stroke:#16a34a
+    %% Apply color classes to nodes
+    class F1,F2,F3 cobalt
+    class F4,F5,F6,F7,F8 mustard
+    class F9,F10,F11 brown
+    class F14,F15,F16,F17,F18 olive
 ```
 
-> 🔵 Weakness Detection · 🟠 Failure Classification · 🔴 Root Cause · 🟢 Strategy & Action
+> 🔵 Weakness Detection · 🟡 Failure Classification · 🟤 Root Cause · 🟢 Strategy & Action
 
 ---
 
@@ -171,10 +170,10 @@ Each wrong answer is classified into one of four failure modes using time-taken 
 
 $$
 \text{mode}(q) = \begin{cases}
-\textbf{Rushed} & \text{if } t_q < 0.40 \cdot t_{\text{baseline}} \\[6pt]
-\textbf{Concept Gap} & \text{if } e_q = \text{Conceptual} \\[4pt]
-\textbf{Setup Gap} & \text{if } e_q = \text{Setup} \\[4pt]
-\textbf{Execution Slip} & \text{if } e_q = \text{Procedural} \;\wedge\; c_q \geq 2 \\[4pt]
+\textbf{Rushed} & \text{if } t_q < 0.40 \cdot t_{\text{baseline}} \\
+\textbf{Concept Gap} & \text{if } e_q = \text{Conceptual} \\
+\textbf{Setup Gap} & \text{if } e_q = \text{Setup} \\
+\textbf{Execution Slip} & \text{if } e_q = \text{Procedural} \;\wedge\; c_q \geq 2 \\
 \textbf{Concept Gap} & \text{otherwise (low confidence procedural)}
 \end{cases}
 $$
@@ -189,10 +188,10 @@ For each wrong answer on the **latest test**, the engine checks the student's **
 
 $$
 \text{class}(q) = \begin{cases}
-\textbf{No Baseline} & \text{if } n_{\text{hist}} < 5 \\[6pt]
-\textbf{Focus Area} & \text{if } \text{acc}_{\text{hist}}(n_q) \leq 0.35 \\[6pt]
-\textbf{Stretch} & \text{if } \text{acc}_{\text{hist}}(n_q) \geq 0.65 \;\wedge\; d_q \geq 0.75 \\[6pt]
-\textbf{Unexpected Slip} & \text{if } \text{acc}_{\text{hist}}(n_q) \geq 0.65 \;\wedge\; d_q < 0.75 \\[6pt]
+\textbf{No Baseline} & \text{if } n_{\text{hist}} < 5 \\
+\textbf{Focus Area} & \text{if } \text{acc}_{\text{hist}}(n_q) \leq 0.35 \\
+\textbf{Stretch} & \text{if } \text{acc}_{\text{hist}}(n_q) \geq 0.65 \;\wedge\; d_q \geq 0.75 \\
+\textbf{Unexpected Slip} & \text{if } \text{acc}_{\text{hist}}(n_q) \geq 0.65 \;\wedge\; d_q < 0.75 \\
 \textbf{Developing} & \text{otherwise}
 \end{cases}
 $$
@@ -235,7 +234,7 @@ $$
 
 $$
 \text{confidence} = \begin{cases}
-\textbf{Confirmed} & \text{if } \dfrac{\lvert H_q \rvert}{\lvert W_q \rvert} \geq 0.60 \\[8pt]
+\textbf{Confirmed} & \text{if } \frac{\lvert H_q \rvert}{\lvert W_q \rvert} \geq 0.60 \\
 \textbf{Suspect} & \text{otherwise}
 \end{cases}
 $$
