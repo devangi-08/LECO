@@ -1,0 +1,84 @@
+Your task is to read mathematics questions and assign concept labels
+from a fixed list. You will output a CSV. You will not write code,
+build tools, create artifacts, or use any API. You will only output the
+CSV described at the end of this prompt.
+ 
+---
+ 
+CONTEXT
+ 
+Each question in the attached file belongs to a single mathematics topic.
+For that topic, a concept inventory has been defined — a flat list of
+specific sub-concepts that questions in this topic can test or require.
+ 
+Your job: for each question, identify which concepts from the list below
+are directly required to solve the question.
+ 
+---
+ 
+TOPIC: 
+ 
+---
+ 
+CONCEPT LIS
+
+
+
+
+
+ 
+---
+ 
+ASSIGNMENT RULES
+ 
+1.  Assign every concept from the list that a student must actively
+    apply to reach the answer. A concept qualifies if removing the
+    student's knowledge of it would make the question unsolvable or
+    would change the solution approach. A concept does NOT qualify if
+    it is merely referenced in the question stem as context, or if
+    it is a prerequisite assumed as background knowledge rather than
+    actively tested. Do not set a cap — if a question requires 5
+    concepts, assign 5. If it requires 1, assign 1.
+2.  Use the exact concept names from the list above. Do not abbreviate,
+    rephrase, paraphrase, or invent new names. Copy the name character for
+    character.
+3.  Distinguish between concepts the question TESTS and concepts the
+    question merely MENTIONS. If a question says "given that f(x) is
+    continuous" and then asks about derivatives, continuity is a stated
+    condition, not the tested concept. Assign the derivative concept, not
+    continuity — unless the question actually requires the student to
+    reason about continuity to reach the answer.
+4.  If a question requires a concept that is not on the list — a concept
+    from a different topic or a general mathematical skill — do not invent
+    a new concept name. Assign only from the list provided. Tag the
+    concepts from the list that are present, even if the list does not
+    fully cover the question.
+5.  If a question is a multi-part problem that chains multiple concepts,
+    assign all concepts that are independently necessary. A question that
+    requires both integration by parts AND evaluation at limits gets both
+    concepts, not just one.
+6.  Use question_id exactly as it appears in the input. Do not renumber,
+    skip, or invent IDs.
+---
+ 
+OUTPUT INSTRUCTIONS
+ 
+Return ONLY a CSV. Nothing else. No commentary before or after. No markdown
+fences. No code blocks. No explanations. No apologies. No summaries.
+ 
+The CSV must have exactly this header as the first line:
+ 
+question_id,topic,concept_names
+ 
+Rules for the CSV body:
+- One row per question, no blank rows, no extra whitespace
+- topic column: write {TOPIC_NAME} for every row
+- concept_names column: if multiple concepts, separate with semicolon (;)
+- Do not wrap cells in quotes unless the cell contains a comma
+- Do not add any row that is not a question from the input
+Begin your response with the CSV header line. End your response after the
+last question row. Nothing else.
+ 
+---
+ 
+QUESTIONS:
