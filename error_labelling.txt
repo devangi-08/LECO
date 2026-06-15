@@ -1,0 +1,120 @@
+Your task is to read mathematics questions along with their solution
+steps and assign the most likely student error from a fixed list.
+You will output a CSV. You will not write code, build tools, create
+artifacts, or use any API. You will only output the CSV described
+at the end of this prompt.
+ 
+---
+ 
+CONTEXT
+ 
+Each question in the attached JSON file belongs to a single
+mathematics topic. For each question you are given:
+- question_id
+- question_text 
+- solution_steps (the steps a correct solver would take, each step
+  with an action description and the concept_used)
+For this topic, an error taxonomy has been defined — a list of
+specific mistakes students commonly make when solving questions of
+this type.
+ 
+Your job: for each question, use the solution_steps as your guide
+to identify which error(s) from the list below are most likely to
+occur when a student attempts this question. The solution steps
+tell you the cognitive path a student must take — your task is to
+identify where on that path failure is most probable.
+ 
+---
+ 
+TOPIC: Binomial Theorem
+ 
+---
+ 
+ERROR LIST
+ 
+-Misapplying derivative/integral identity: Student differentiates or integrates (1+x)^n to evaluate ∑r·ⁿCᵣ or ∑ⁿCᵣ/(r+1) but substitutes the wrong value of x, forgets the integration constant, or fails to adjust the limits, yielding a wrong closed-form.
+
+-Confusing 'sum of coefficients' with 'sum of terms': Student conflates the sum of binomial coefficients (obtained by setting x=1) with the sum of the terms of the expansion for general x, leading to incorrect values when the question asks for the sum of coefficients of a specific subset of terms.
+
+-Sign error in alternating-sign expansions: When expanding (a - b)^n, student forgets that (-1)^r attaches to each term, especially in products like (1+x)^p(1-x)^q where signs from both factors must be tracked simultaneously.
+
+-Multinomial partition omission: When finding the coefficient of x^k in (1+x+x²)^n or similar trinomials, student misses valid partitions of k into sums of 0s, 1s, and 2s across n factors, undercounting the contributing terms.
+
+-Fractional exponent sign/direction error: When the general term has the form x^{f(r)} with f(r) = an - br for fractional a,b, the student incorrectly sets up the exponent equation (e.g., swapping the sign or mixing up which base contributes which exponent), yielding a wrong term index.
+
+-Counting integral terms with wrong LCM: When counting rational/integral terms in (a^{1/p} + b^{1/q})^n, student computes the periodicity as p·q instead of lcm(p,q), or miscounts the endpoints, getting the wrong number of valid term indices.
+
+-Misidentifying the modular base: In remainder problems, student writes a^n mod m but decomposes a as (m+k) when k is not the correct residue (e.g., writing 7^{103} mod 23 as (23-16)^{103} instead of recognizing 7³ = 343 = 14·23 + 21 and working with the cyclic order of 7 mod 23).
+
+-Incomplete simplification before expansion: Student attempts to expand a compound expression like ((x+1)/(x^{2/3}-x^{1/3}+1) - (x-1)/(x-x^{1/2}))^{10} without first simplifying each fraction via algebraic identities (a³+1 = (a+1)(a²-a+1), etc.), leading to an intractable expansion.
+
+-Off-by-one in general term indexing: Student writes the (r+1)th term as ⁿCᵣ a^r b^{n-r} instead of ⁿCᵣ a^{n-r} b^r, or confuses whether T_r means the rth or (r+1)th term, leading to an incorrect exponent equation.
+
+-Dropping the 'term from the end' reversal: Student treats the kth term from the end as T_k from the beginning instead of T_{n-k+2}, leading to a wrong ratio in beginning-to-end term ratio problems.
+
+
+ 
+---
+ 
+ASSIGNMENT RULES
+ 
+1.  For each question, go through the error list one error at a time.
+    For each error, scan the solution_steps and ask this exact
+    question: "Does this question's solution path pass through the
+    specific cognitive operation that this error describes?"
+    If yes → the error is structurally present in this question.
+              Assign it.
+    If no  → the error is not relevant to this question, even if it
+              exists in the taxonomy. Do not assign it.
+    This is a structural match, not a likelihood estimate. Do not
+    assign an error because the question is "in the right area" or
+    "somewhat related." Assign it only if the solution_steps
+    explicitly require the cognitive operation the error captures.
+2.  Assign 1–3 errors per question based purely on structural match.
+    Most questions will get 1–2. If the solution path passes through
+    3 genuinely distinct structural traps from the list, assign all 3.
+    Never assign more than 3 — if you find more than 3 structural
+    matches, you are being too liberal. Re-read the error descriptions
+    and keep only the ones where the match is unambiguous.
+    Every question must get at least 1 error.
+3.  Use the exact error names from the list above. Do not abbreviate,
+    rephrase, paraphrase, or invent new names. Copy the name character
+    for character.
+4.  Two errors assigned to the same question must correspond to
+    different steps in the solution. If two errors both describe
+    failures at the same step, assign only the one that more precisely
+    captures the failure mode for this specific question.
+5.  If none of the listed errors structurally match any step in the
+    solution_steps (e.g., the question's path involves concepts outside
+    the taxonomy's scope), assign the closest match. Every question
+    must receive at least one error. Do not leave any row blank.
+6.  Use question_id exactly as it appears in the input. Do not
+    renumber, skip, or invent IDs.
+---
+ 
+OUTPUT INSTRUCTIONS
+ 
+Return ONLY a CSV. Nothing else. No commentary before or after.
+No markdown fences. No code blocks. No explanations.
+ 
+The CSV must have exactly this header as the first line:
+ 
+question_id,topic,error_names
+ 
+Rules for the CSV body:
+- One row per question, no blank rows, no extra whitespace
+- topic column: write {TOPIC_NAME} for every row
+- error_names column: if multiple errors, separate with semicolon (;)
+  Use exact names from the list, character for character.
+- error_types column: the error type(s) corresponding to the assigned
+  error(s), in the same order as error_names, separated by semicolon
+  if multiple. Values must be Setup error, Procedural error, or
+  Conceptual error.
+- Do not wrap cells in quotes unless the cell contains a comma
+- Do not add any row that is not a question from the input
+Begin your response with the CSV header line. End your response after
+the last question row. Nothing else.
+ 
+---
+ 
+QUESTIONS (JSON with question_id, question_text, solution_steps):
