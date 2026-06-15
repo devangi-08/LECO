@@ -1,0 +1,119 @@
+Your task is to read mathematics questions and assign reasoning archetype
+labels from a fixed list. You will output a CSV. You will not write code,
+build tools, create artifacts, or use any API. You will only output the
+CSV described at the end of this prompt.
+ 
+---
+ 
+CONTEXT
+ 
+Each question in the attached file belongs to a single mathematics topic.
+For that topic, a set of reasoning archetypes has been defined. Each
+archetype describes a specific cognitive operation — what a student's
+mind must do to solve that type of question.
+ 
+Your job: for each question, identify which 1–3 archetypes from the list
+below best describe the core reasoning the question demands.
+ 
+---
+ 
+TOPIC: Matrices And Determinants
+ 
+---
+ 
+ARCHETYPE LIST
+ 
+-Adjoint-Determinant Chain Unwinding: The student must recursively apply the identity |adj(A)| = |A|^(n-1) through nested compositions of adj, scalar multiples, and powers, tracking exponent arithmetic across multiple layers without losing track of the base.
+
+-System-of-Equations Parameter Classification: The student must determine the value(s) of parameters (λ, μ, α, β) that cause a system of linear equations to have infinitely many solutions, no solution, or a unique solution, typically by computing the determinant of the coefficient matrix and then checking consistency of the augmented matrix.
+
+-Matrix Power Pattern Recognition: The student must compute a high power of a matrix (often Aⁿ for large n) by discovering a recurrence, periodicity, or a closed-form structure such as A² = I, A² = kA, or a nilpotent decomposition.
+
+-Determinant-as-Function Evaluation: The student must treat a determinant with variable entries (often trigonometric or polynomial) as a function, expand it using row/column operations to simplify into a recognizable expression, then optimize or evaluate at specific points.
+
+-Counting Matrices Under Constraints: The student must enumerate matrices from a finite element set satisfying a constraint (e.g., sum of diagonal elements of AᵀA equals a constant, A = A⁻¹, det(A) = 0), converting the matrix constraint into a combinatorial counting problem.
+
+-Cayley-Hamilton Inversion and Polynomial Identity: The student must use the Cayley-Hamilton theorem (or derive it from the characteristic equation) to express A⁻¹ or high powers of A as a linear combination of lower powers, then substitute into a given relation to extract unknowns.
+
+-Similarity Transform and Conjugation Tracking: The student must track a matrix through a sequence of similarity transformations (P⁻¹AP, PAPᵀ) recognizing that determinant and trace are invariant, or must reconstruct A from its action on given vectors.
+
+-Eigenvalue Extraction from Matrix Equations: The student must extract eigenvalue information from a given matrix equation (characteristic equation, matrix polynomial identity, or eigenvector conditions) without being told to think in terms of eigenvalues.
+
+-Skew-Symmetric / Symmetric Structure Exploitation: The student must recognize that a matrix is skew-symmetric (Aᵀ = -A) or symmetric (Aᵀ = A) and apply consequences (odd-order skew-symmetric has det 0, orthogonal matrix properties, decomposition into symmetric + skew-symmetric parts) to shortcut the computation.
+
+-Determinant Row/Column Operation Simplification: The student must apply strategic row or column operations to a determinant with polynomial, factorial, or structured entries to collapse it into a computable form, often requiring recognition of a hidden pattern such as common factors or telescoping differences.
+
+-Matrix Reconstruction from Action on Vectors: The student must reconstruct a matrix (or compute its determinant/trace) from its action on specific input vectors, effectively solving a system of equations for matrix entries or recognizing column relationships.
+
+-Homogeneous System Nontriviality Detection: The student must determine when a homogeneous system has non-trivial solutions by setting the coefficient determinant to zero, often with trigonometric or parametric entries, requiring the student to evaluate the determinant symbolically first.
+
+
+ 
+---
+ 
+ASSIGNMENT RULES
+ 
+1.  Assign 1–3 archetype names per question. Most questions need exactly 1.
+    Assign 2 when the question genuinely requires two distinct cognitive
+    operations to solve — not merely two steps, but two structurally
+    different types of reasoning. Assign 3 only in rare cases where three
+    operations are independently necessary.
+2.  Use the exact archetype names from the list above. Do not abbreviate,
+    rephrase, paraphrase, or invent new names. Copy the name character for
+    character.
+3.  Choose based on what the student must DO to solve the question, not what
+    topic the question is about. Two questions can test the same concept but
+    require different cognitive operations. Focus on the operation.
+4.  If a question asks the student to evaluate whether multiple statements
+    are true or false, that alone does not make it an evaluation archetype.
+    If the primary demand is performing a computation, applying a method, or
+    constructing a mathematical object, assign the archetype that matches
+    that demand — even if the question is framed as "which of the following
+    statements is correct."
+5.  If a question involves a computation (calculating a value, finding a
+    ratio, determining a quantity, evaluating an expression), it is a
+    computation archetype even if the question is phrased as "which of
+    the following is true" with numerical options.
+6.  If a question bridges into another topic (e.g., an integration question
+    requiring coordinate geometry setup), assign archetypes only from the
+    list above. Do not skip the question or note that it does not fit.
+    Choose the archetype that best describes the primary cognitive demand
+    within this topic's framework.
+7.  When genuinely ambiguous between two archetypes — where both cognitive
+    operations are clearly required and neither is incidental — assign both
+    separated by a semicolon. Do not force a single assignment when two are
+    warranted, but do not assign two when one archetype fully covers the
+    question's demand.
+8.  Use question_id exactly as it appears in the input. Do not renumber,
+    skip, or invent IDs.
+9.  If a question chains multiple steps where the early steps belong to
+    a different topic or require substantial setup, and the final step
+    is a standard 3D geometry computation, prioritize the archetype that
+    describes the non-obvious or structurally demanding part — not the
+    routine terminal computation. The diagnostic value of the archetype
+    comes from identifying what makes the question hard, not what formula
+    gets applied at the end.
+---
+ 
+OUTPUT INSTRUCTIONS
+ 
+Return ONLY a CSV. Nothing else. No commentary before or after. No markdown
+fences. No code blocks. No explanations. No apologies. No summaries.
+ 
+The CSV must have exactly this header as the first line:
+ 
+question_id,topic,node_names
+ 
+Rules for the CSV body:
+- One row per question, no blank rows, no extra whitespace
+- topic column: write {TOPIC_NAME} for every row
+- node_names column: if multiple archetypes, separate with semicolon (;)
+- Do not wrap cells in quotes unless the cell contains a comma
+- Do not add any row that is not a question from the input
+Begin your response with the CSV header line. End your response after the
+last question row. Nothing else.
+ 
+---
+ 
+
+ 
