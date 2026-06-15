@@ -1,0 +1,202 @@
+You are analyzing a dataset of JEE Mains previous year questions
+from Magnetic Effect of Current.The dataset contains questions spanning
+2015–2026. Each question includes its question text, year,
+and exam shift.
+
+You do not have answer keys, answer options, or solution text.
+Your only input is the question text itself.
+
+Your task is structured knowledge extraction — not summarization.
+Do not describe what concepts appear. Identify what is
+structurally and cognitively non-obvious about how this topic
+is examined.
+
+Produce a report with exactly the following sections.
+Follow the section structure precisely.
+
+---
+
+SECTION 1 — REASONING ARCHETYPES
+
+A reasoning archetype is a cognitive operation — what the
+student's mind must actually do to solve the question. It is
+not a concept, formula, or topic label.
+
+Each archetype must be genuinely distinct — not variations
+of the same cognitive operation. Do not merge patterns that
+are structurally different. Do not split the same pattern
+into multiple archetypes. Prioritize completeness — a missing
+archetype is worse than a long list. Do not pad with
+superficial variants.
+
+For each archetype provide:
+- A name you assign (not a textbook term, not a concept name)
+- One sentence describing the cognitive operation precisely
+- 2 to 3 question excerpts that exemplify it (quote directly)
+- Whether it appears consistently across the full year range
+  or is concentrated in a specific period
+
+---
+
+SECTION 2 — CONCEPT INVENTORY
+
+Identify every distinct sub-concept that appears across the
+questions in this dataset. A sub-concept is a specific idea,
+principle, formula class, or physical/chemical/mathematical
+object that a question directly tests or requires.
+
+This is a flat list of concept names only — no descriptions,
+no examples, no categories. Each entry is a single sub-concept,
+named precisely enough that a human labeler could use it to
+tag a new question.
+
+Do not limit the list. Include every sub-concept the data
+warrants — a missing sub-concept is worse than a long list.
+Do not pad with trivial variants of the same idea.
+
+---
+
+SECTION 3 — CLASSIFICATION DIMENSIONS
+
+Based on your analysis, propose dimensions along which
+JEE questions in this topic could be meaningfully classified
+beyond topic and Bloom's level.
+
+Each dimension must be orthogonal to the others proposed —
+if two dimensions would assign the same low/high label to
+most questions in this dataset, keep only the one with
+stronger diagnostic value.
+
+These must go beyond topic label and beyond simple difficulty.
+Specific enough that a human labeler could apply them
+consistently.
+
+For each dimension provide:
+- A name
+- What the low end looks like (one sentence, with example)
+- What the high end looks like (one sentence, with example)
+- What diagnostic value this dimension has: if a student
+  consistently fails questions at one end, what does that
+  reveal about their gap?
+
+---
+
+SECTION 4 — ERROR TAXONOMY
+
+Identify error types that students commonly make when solving
+questions in this topic. These should be characteristic of
+this topic specifically — not generic mistakes applicable to
+any subject. Each must be genuinely distinct.
+
+For each error type provide:
+- A short name
+- One sentence describing what the student does wrong
+- Error type — choose one:
+    Setup error
+    Procedural error
+    Conceptual error
+
+---
+
+SECTION 5 — COGNITIVE DEMAND SPECTRUM
+
+For each archetype from Section 1, assign exactly one position
+from this list (no other wording):
+
+  Direct Application — recall formula, plug in numbers
+  Formula with Judgment — recall formula, but must determine what to plug in first
+  Build Then Solve — must construct problem representation before any computation
+  Build and Work Backwards — must construct setup AND work backwards or combine frameworks
+  Reverse Engineer — work entirely backwards, or synthesize frameworks never taught together
+
+If an archetype spans two positions depending on framing,
+give "position_a to position_b" using exact labels above
+and explain what shifts it.
+
+---
+
+SECTION 6 — ANOMALIES
+
+Flag questions that do not fit the patterns identified above.
+These are questions that are structurally unusual,
+conceptually out of place for this topic, or that appear
+to test something subtly different from what the topic
+label suggests.
+
+For each anomaly:
+- Quote the question excerpt
+- Explain specifically what makes it anomalous
+
+If no anomalies exist, state that explicitly.
+
+---
+
+FORMAT RULES
+
+- Every claim must be supported by a direct quote or specific
+  reference to a question in the dataset
+- Do not produce general observations — derive everything from
+  the specific questions provided, not from prior knowledge
+- If a section yields nothing meaningful, write one sentence
+  explaining why and return an empty list for that section
+- Output should be dense and specific — no hedging language
+
+---
+
+OUTPUT FORMAT
+
+Return your entire response as a single valid JSON object.
+No prose before or after. No markdown fences. Raw JSON only.
+
+Copy "meta.year_distribution" from the input file into the
+top-level "year_distribution" field exactly as-is.
+
+{
+  "topic": "",
+  "subject": "",
+  "year_distribution": {},
+  "archetypes": [
+    {
+      "archetype_name": "",
+      "cognitive_operation": "",
+      "exemplars": [
+        {"excerpt": "", "year": 0}
+      ],
+      "year_distribution": ""
+    }
+  ],
+  "concept_inventory": ["", ""],
+  "classification_dimensions": [
+    {
+      "dimension_name": "",
+      "low_end": "",
+      "high_end": "",
+      "diagnostic_value": ""
+    }
+  ],
+  "error_taxonomy": [
+    {
+      "error_name": "",
+      "description": "",
+      "error_type": ""
+    }
+  ],
+  "cognitive_demand": [
+    {
+      "archetype_name": "",
+      "position": "",
+      "reasoning": ""
+    }
+  ],
+  "anomalies": [
+    {
+      "excerpt": "",
+      "explanation": ""
+    }
+  ]
+}
+
+QUESTIONS — json file attached
+
+
+---------------------------------------------------------------
