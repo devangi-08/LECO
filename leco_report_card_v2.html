@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LECO — Diagnostic Report</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,300;8..60,400;8..60,500;8..60,600;8..60,700&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;450;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#111;
+    --paper:#FAF9F6;
+    --card:#fff;
+    --line:#d4d0c8;
+    --muted:#6b6b63;
+    --green:#2d6a4f;
+    --green-dark:#1b4332;
+    --green-soft:#d8f3dc;
+    --green-mid:#40916c;
+    --dark-bg:#1a1a1a;
+    --dark-card:#222;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Source Serif 4',serif;
+    line-height:1.55;
+    padding:48px 24px;
+    display:flex;
+    justify-content:center;
+    -webkit-font-smoothing:antialiased;
+  }
+  .sheet{
+    width:100%;
+    max-width:720px;
+  }
+
+  /* ---- masthead ---- */
+  .masthead{
+    padding-bottom:28px;
+    border-bottom:1.5px solid var(--ink);
+    margin-bottom:0;
+  }
+  .brand{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;
+    letter-spacing:.35em;
+    text-transform:uppercase;
+    color:var(--green);
+    font-weight:600;
+    margin-bottom:16px;
+  }
+  .masthead h1{
+    font-family:'Source Serif 4',serif;
+    font-weight:400;
+    font-size:46px;
+    line-height:1.08;
+    letter-spacing:-.02em;
+    max-width:580px;
+  }
+  .meta-row{
+    margin-top:18px;
+    display:flex;
+    gap:32px;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11.5px;
+    color:var(--muted);
+    letter-spacing:.02em;
+  }
+  .meta-row b{color:var(--ink);font-weight:600}
+
+  /* ---- standing ---- */
+  .standing{
+    padding:32px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .standing .lead{
+    font-size:20px;
+    line-height:1.5;
+    font-weight:300;
+    max-width:60ch;
+  }
+  .standing .lead b{font-weight:500}
+  .unlock{
+    margin-top:20px;
+    display:flex;
+    gap:18px;
+    align-items:baseline;
+    padding:18px 22px;
+    background:var(--green-soft);
+    border-left:3px solid var(--green);
+  }
+  .unlock .big{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:32px;
+    font-weight:600;
+    color:var(--green-dark);
+    line-height:1;
+  }
+  .unlock .cap{font-size:14px;color:var(--green-dark)}
+  .unlock .cap b{font-weight:600}
+
+  /* ---- sections ---- */
+  section{padding:30px 0;border-bottom:1px solid var(--line)}
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;
+    letter-spacing:.28em;
+    text-transform:uppercase;
+    color:var(--muted);
+    margin-bottom:20px;
+  }
+  .section-intro{font-size:16px;margin-bottom:20px;max-width:58ch}
+  .section-intro b{font-weight:600}
+
+  /* ---- blind spots / strengths ---- */
+  .label-row{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:10.5px;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    color:var(--green-dark);
+    margin-bottom:8px;
+    margin-top:24px;
+  }
+  .label-row.warn{color:#8b4513}
+  .row{
+    display:flex;
+    gap:16px;
+    align-items:flex-start;
+    padding:14px 0;
+    border-top:1px solid var(--line);
+  }
+  .row:first-of-type{border-top:none}
+  .tag{
+    flex:0 0 auto;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;
+    font-weight:600;
+    padding:4px 10px;
+    border:1.5px solid;
+    white-space:nowrap;
+    margin-top:2px;
+  }
+  .tag.warn{border-color:#8b4513;color:#8b4513}
+  .tag.good{border-color:var(--green);color:var(--green)}
+  .row .body strong{font-weight:600;font-size:15.5px;font-family:'Source Serif 4',serif}
+  .row .body .meta{font-size:13px;color:var(--muted);margin-top:3px;font-family:'Inter',sans-serif}
+  .row .gut{font-size:13px;color:#6b5132;margin-top:4px;font-style:italic;font-family:'Inter',sans-serif}
+
+  /* ---- insight (dark block) ---- */
+  .insight{
+    background:var(--dark-bg);
+    color:#e8e4db;
+    padding:36px 38px;
+    margin:0 -0px;
+  }
+  .insight .eyebrow{color:#8a8574}
+  .insight .three{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:13.5px;
+    color:#b0a992;
+    margin-bottom:18px;
+    line-height:1.6;
+  }
+  .insight .skill{
+    font-family:'Source Serif 4',serif;
+    font-size:28px;
+    line-height:1.25;
+    font-weight:400;
+    color:#fff;
+    margin-bottom:12px;
+  }
+  .insight .skill em{color:var(--green-mid);font-style:normal}
+  .insight .gloss{font-size:14.5px;color:#c8c1ae;max-width:58ch;line-height:1.55;font-family:'Inter',sans-serif}
+  .insight .punch{
+    margin-top:22px;
+    padding-top:18px;
+    border-top:1px solid #333;
+    font-family:'Source Serif 4',serif;
+    font-size:19px;
+    font-style:italic;
+    color:var(--green-soft);
+    font-weight:300;
+  }
+
+  /* ---- right now ---- */
+  .rightnow{padding:34px 0}
+  .rn-card{
+    border:1.5px solid var(--ink);
+    position:relative;
+  }
+  .rn-head{
+    background:var(--dark-bg);
+    color:var(--paper);
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11.5px;
+    letter-spacing:.3em;
+    text-transform:uppercase;
+    padding:11px 22px;
+    font-weight:600;
+  }
+  .rn-body{padding:24px 26px}
+  .rn-q{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:8px}
+  .rn-q .label{font-size:14px;color:var(--muted);font-family:'Inter',sans-serif}
+  .rn-q .qid{font-family:'IBM Plex Mono',monospace;font-size:24px;font-weight:600;color:var(--green-dark);line-height:1}
+  .rn-from{font-size:14.5px;color:var(--ink);margin-bottom:18px;font-family:'Inter',sans-serif}
+  .rn-from b{font-weight:600}
+  .rn-goal{
+    background:var(--green-soft);
+    border-left:3px solid var(--green);
+    padding:14px 18px;
+    font-size:14.5px;
+    color:var(--green-dark);
+    font-family:'Inter',sans-serif;
+  }
+  .rn-goal b{font-weight:600}
+  .rn-foot{
+    margin-top:18px;
+    font-size:14px;
+    color:var(--muted);
+    line-height:1.7;
+    font-family:'Inter',sans-serif;
+  }
+  .rn-foot strong{color:var(--ink);font-weight:600}
+
+  .footer{
+    padding:24px 0 0;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:10.5px;
+    letter-spacing:.1em;
+    color:var(--muted);
+    text-transform:uppercase;
+    display:flex;
+    justify-content:space-between;
+    border-top:1.5px solid var(--ink);
+    margin-top:8px;
+  }
+
+  @media (max-width:560px){
+    body{padding:20px 12px}
+    .masthead h1{font-size:32px}
+    .insight{padding:28px 20px}
+  }
+</style>
+</head>
+<body>
+<div class="sheet">
+
+  <div class="masthead">
+    <div class="brand">LECO · Diagnostic Engine</div>
+    <h1>Your Diagnostic Report</h1>
+    <div class="meta-row">
+      <span>Student <b>Priya</b></span>
+      <span>15 tests · 335 answers</span>
+      <span>Accuracy <b>53%</b></span>
+    </div>
+  </div>
+
+  <div class="standing">
+    <div class="lead">You're holding steady at <b>38 marks</b>. Not falling behind, but not accelerating either. The right adjustments could change this fast.</div>
+    <div class="unlock">
+      <div class="big">+9</div>
+      <div class="cap">You scored 23 on today's test — but <b>9 of those missing marks are recoverable from strategy alone.</b> No studying required.</div>
+    </div>
+  </div>
+
+  <section>
+    <div class="eyebrow">What's actually happening</div>
+    <div class="section-intro"><b>32% of your wrong answers are "foundation moments"</b> — you needed a stronger grip on the underlying idea. These need understanding, not more practice.</div>
+
+    <div class="label-row warn">3 blind spots — you feel solid, the data disagrees</div>
+
+    <div class="row">
+      <span class="tag warn">17%</span>
+      <div class="body">
+        <strong>Triangle Center Extraction</strong>
+        <div class="meta">Self-rated 2.0 / 3</div>
+        <div class="gut">You understand it — you just rush. Slow down on these.</div>
+      </div>
+    </div>
+    <div class="row">
+      <span class="tag warn">20%</span>
+      <div class="body">
+        <strong>Continuity Enforcement at a Junction</strong>
+        <div class="meta">Self-rated 2.0 / 3</div>
+        <div class="gut">You trust your gut here — but the gut is wrong. Restudy this.</div>
+      </div>
+    </div>
+    <div class="row">
+      <span class="tag warn">20%</span>
+      <div class="body">
+        <strong>Indeterminate Form Resolution via Expansion</strong>
+        <div class="meta">Self-rated 2.0 / 3</div>
+        <div class="gut">You understand it — you just rush. Slow down on these.</div>
+      </div>
+    </div>
+
+    <div class="label-row">2 hidden strengths — better than you think</div>
+    <div class="row">
+      <span class="tag good">100%</span>
+      <div class="body">
+        <strong>Deficit Computation for Property Closure</strong>
+        <div class="meta">Self-rated only 2.0 / 3 — attempt these with confidence.</div>
+      </div>
+    </div>
+    <div class="row">
+      <span class="tag good">83%</span>
+      <div class="body">
+        <strong>Foot-of-Perpendicular Extraction</strong>
+        <div class="meta">Self-rated only 1.8 / 3 — attempt these with confidence.</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="insight">
+    <div class="eyebrow">Where the leverage is</div>
+    <div class="three">One hidden skill is holding back THREE separate topics — Parabola · Permutations & Combinations · Straight Lines.</div>
+    <div class="skill">The skill: <em>Setting up ratio & proportion statements.</em></div>
+    <div class="gloss">Moving fluently between a ratio a∶b, "a is k times b", a fraction, and a proportionality relation — and building correct equations from any of them, including dividing a segment in a given ratio.</div>
+    <div class="punch">This might not be three separate problems. It might be one.</div>
+  </div>
+
+  <div class="rightnow">
+    <div class="eyebrow" style="margin-bottom:18px">What to do — right now</div>
+    <div class="rn-card">
+      <div class="rn-head">Right Now</div>
+      <div class="rn-body">
+        <div class="rn-q">
+          <span class="label">Open this one question:</span>
+          <span class="qid">Q_M_20_038</span>
+        </div>
+        <div class="rn-from">From: <b>Quadratic Equations & Inequalities</b> — your highest-leverage topic this week (currently 60%, a small push tips it into a quick win).</div>
+        <div class="rn-goal"><b>Your goal:</b> get 4 right instead of your usual 3, out of ~5.</div>
+        <div class="rn-foot">
+          Don't think about your overall score. Don't think about the other 25 topics. <strong>Just this one question.</strong><br>
+          If you solve it, you've done your job today. If you don't — that's also data. We'll adjust.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>362 archetype nodes · 286 error patterns · 998 concepts</span>
+    <span>4,481 questions · 2015–2026</span>
+  </div>
+
+</div>
+</body>
+</html>
