@@ -81,9 +81,9 @@ flowchart TD
     ERRORS --> E1["Setup error: Incorrect\nΣx² reconstruction\nfrom given variance"]
     ERRORS --> E2["Procedural error: Sign\nerror when solving\nthe quadratic for x, y"]
 
-    style NODES fill:#dbeafe,stroke:#2563eb
-    style CONCEPTS fill:#e0e7ff,stroke:#4338ca
-    style ERRORS fill:#fecaca,stroke:#dc2626
+    style NODES fill:#dbeafe,stroke:#2563eb,color:#000000
+    style CONCEPTS fill:#e0e7ff,stroke:#4338ca,color:#000000
+    style ERRORS fill:#fecaca,stroke:#dc2626,color:#000000
 ```
 
 **Archetype nodes** describe *what the student's mind must actually do* to solve the question — not what topic it belongs to, but what cognitive operation it demands. A Statistics question might require "Recover-the-Hidden-Values" (solve simultaneous equations from aggregate statistics to find unknown observations) or "Correct-the-Corrupted-Aggregate" (reverse-engineer a sum and sum-of-squares after an incorrect data point is discovered, then recompute). Two questions from the same topic can require completely different cognitive operations. Two questions from different topics can require the same one.
@@ -113,8 +113,8 @@ flowchart TD
 
     N1 --> REC["Targeted recommendation:\nPractice value-recovery problems\nnot all of Statistics"]
 
-    style TOPIC fill:#fecaca,stroke:#dc2626
-    style REC fill:#bbf7d0,stroke:#16a34a
+    style TOPIC fill:#fecaca,stroke:#dc2626,color:#000000
+    style REC fill:#bbf7d0,stroke:#16a34a,color:#000000
 ```
 
 The student doesn't need "more Statistics." They need to practice one specific cognitive pattern within Statistics — and the system can tell them exactly which one, why it's broken, and what single question to solve next.
@@ -239,10 +239,10 @@ flowchart LR
 
     LOCATE --> CLASSIFY --> ROOT --> ACT
 
-    style LOCATE fill:#dbeafe,stroke:#2563eb
-    style CLASSIFY fill:#fed7aa,stroke:#ea580c
-    style ROOT fill:#fecaca,stroke:#dc2626
-    style ACT fill:#bbf7d0,stroke:#16a34a
+    style LOCATE fill:#dbeafe,stroke:#2563eb,color:#000000
+    style CLASSIFY fill:#fed7aa,stroke:#ea580c,color:#000000
+    style ROOT fill:#fecaca,stroke:#dc2626,color:#000000
+    style ACT fill:#bbf7d0,stroke:#16a34a,color:#000000
 ```
 
 The key features and the questions they answer:
