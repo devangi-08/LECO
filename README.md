@@ -176,7 +176,7 @@ See [`DATA_SCHEMA.md`](DATA_SCHEMA.md) for full column descriptions, value domai
 
 ## Notebooks
 
-**`01_data_preparation.ipynb`** — Playwright-based scraper for ExamSIDE PYQ banks. Simulates scroll behavior for lazy-loaded questions, joins fragmented paragraph elements at the source, flags image-dependent questions via `<img>` tag inspection, and standardizes mathematical notation into LaTeX. Also consolidates the Claude API call into the same Colab notebook to avoid browser-session hangs from heavy CSV uploads.
+**`01_data_preparation.ipynb`** — Playwright-based scraper for online PYQ banks. Simulates scroll behavior for lazy-loaded questions, joins fragmented paragraph elements at the source, flags image-dependent questions via `<img>` tag inspection, and standardizes mathematical notation into LaTeX. Also consolidates the Claude API call into the same Colab notebook to avoid browser-session hangs from heavy CSV uploads.
 
 **`02_core_tables_extraction.ipynb`** — The two-pass LLM labeling pipeline. Pass 1 evaluates ~100 questions per topic to discover recurring reasoning archetypes, concept co-occurrences, and error patterns. Pass 2 synthesizes cross-topic outputs to deduplicate nodes, extract universal cognitive operations, and produce the final master vocabulary. Outputs all four core tables.
 
