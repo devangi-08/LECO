@@ -190,7 +190,7 @@ flowchart TD
     F3 -.-> T4["Limits &\nContinuity"]
     F3 -.-> T5["Area Under\nCurves"]
 
-    style FOUND fill:#fef9c3,stroke:#ca8a04
+    style FOUND fill:#fef9c3,stroke:#ca8a04,color:#000000
 ```
 
 The diagnostic power: a student who's weak at "translating verbal constraints into equations" will fail in Optimization, Differential Equations, and Linear Programming simultaneously. Traditional analytics would show three separate topic-level weaknesses. Layer 1 detects the shared root cause — one foundational skill, once fixed, repairs multiple downstream topics.
