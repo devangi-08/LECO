@@ -143,7 +143,7 @@ flowchart LR
     CLEAN --> LABEL["LLM labeling\nnodes + errors\n+ concepts"]
     LABEL -. "Too slow\nToo expensive\nNo solutions" .-> PAUSE["⏸ Paused"]
 
-    PYQ["4,481 PYQs\nfrom ExamSIDE"] --> SCRAPE["Playwright\nscraper"]
+    PYQ["4,481 PYQs\nfrom online PYQ banks"] --> SCRAPE["Playwright\nscraper"]
     SCRAPE --> RICH["Solutions +\nwrong options\nincluded"]
     RICH --> ENGINE["Final corpus\nfor engine"]
 ```
@@ -152,7 +152,7 @@ The 90K-question Kaggle dataset was successfully cleaned — the preprocessing n
 
 More critically: the 90K dataset lacked worked solutions and wrong-option explanations. Error taxonomy labeling requires knowing which specific wrong option a student picked and why that option is wrong. Without solutions, the error labels would have been shallow.
 
-The PYQ corpus from ExamSIDE had complete solution step breakdowns and wrong options for every question. This made it possible to generate high-fidelity node and error labels. Smaller and richer beat larger and thinner.
+The PYQ corpus from online websites had complete solution step breakdowns and wrong options for every question. This made it possible to generate high-fidelity node and error labels. Smaller and richer beat larger and thinner.
 
 The 90K cleaning notebook remains in the repository. The cleaning logic is reusable when the corpus is scaled in a future iteration.
 
