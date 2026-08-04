@@ -108,22 +108,31 @@ flowchart TD
     F17 --> F15["F15<br/>Time ROI"]
     F17 --> F18["F18<br/>Next Action"]
 
-    style F1 fill:#dbeafe,stroke:#2563eb
-    style F2 fill:#dbeafe,stroke:#2563eb
-    style F3 fill:#dbeafe,stroke:#2563eb
-    style F4 fill:#fed7aa,stroke:#ea580c
-    style F5 fill:#fed7aa,stroke:#ea580c
-    style F6 fill:#fed7aa,stroke:#ea580c
-    style F7 fill:#fed7aa,stroke:#ea580c
-    style F8 fill:#fed7aa,stroke:#ea580c
-    style F9 fill:#fecaca,stroke:#dc2626
-    style F10 fill:#fecaca,stroke:#dc2626
-    style F11 fill:#fecaca,stroke:#dc2626
-    style F14 fill:#bbf7d0,stroke:#16a34a
-    style F15 fill:#bbf7d0,stroke:#16a34a
-    style F16 fill:#bbf7d0,stroke:#16a34a
-    style F17 fill:#bbf7d0,stroke:#16a34a
-    style F18 fill:#bbf7d0,stroke:#16a34a
+ 
+
+%% Dark Muted Cobalt Blue
+    style F1 fill:#6B8EAD,stroke:#415C77,color:#000000
+    style F2 fill:#6B8EAD,stroke:#415C77,color:#000000
+    style F3 fill:#6B8EAD,stroke:#415C77,color:#000000
+
+    %% Mustard
+    style F4 fill:#DEB841,stroke:#A38322,color:#000000
+    style F5 fill:#DEB841,stroke:#A38322,color:#000000
+    style F6 fill:#DEB841,stroke:#A38322,color:#000000
+    style F7 fill:#DEB841,stroke:#A38322,color:#000000
+    style F8 fill:#DEB841,stroke:#A38322,color:#000000
+
+    %% Muted Brown
+    style F9 fill:#B08D79,stroke:#826250,color:#000000
+    style F10 fill:#B08D79,stroke:#826250,color:#000000
+    style F11 fill:#B08D79,stroke:#826250,color:#000000
+
+    %% Olive Green
+    style F14 fill:#A3B18A,stroke:#727E5D,color:#000000
+    style F15 fill:#A3B18A,stroke:#727E5D,color:#000000
+    style F16 fill:#A3B18A,stroke:#727E5D,color:#000000
+    style F17 fill:#A3B18A,stroke:#727E5D,color:#000000
+    style F18 fill:#A3B18A,stroke:#727E5D,color:#000000
 ```
 
 > 🔵 Blue = Weakness Detection (F1–F3) · 🟠 Orange = Failure Classification (F4–F8) · 🔴 Red = Root Cause (F9–F11) · 🟢 Green = Strategy & Action (F14–F18)
