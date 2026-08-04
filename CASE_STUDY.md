@@ -81,9 +81,9 @@ flowchart TD
     ERRORS --> E1["Setup error: Incorrect\nΣx² reconstruction\nfrom given variance"]
     ERRORS --> E2["Procedural error: Sign\nerror when solving\nthe quadratic for x, y"]
 
-    style NODES fill:#dbeafe,stroke:#2563eb,color:#000000
-    style CONCEPTS fill:#e0e7ff,stroke:#4338ca,color:#000000
-    style ERRORS fill:#fecaca,stroke:#dc2626,color:#000000
+    style NODES fill:#dbeafe,stroke:#2563eb
+    style CONCEPTS fill:#e0e7ff,stroke:#4338ca
+    style ERRORS fill:#fecaca,stroke:#dc2626
 ```
 
 **Archetype nodes** describe *what the student's mind must actually do* to solve the question — not what topic it belongs to, but what cognitive operation it demands. A Statistics question might require "Recover-the-Hidden-Values" (solve simultaneous equations from aggregate statistics to find unknown observations) or "Correct-the-Corrupted-Aggregate" (reverse-engineer a sum and sum-of-squares after an incorrect data point is discovered, then recompute). Two questions from the same topic can require completely different cognitive operations. Two questions from different topics can require the same one.
@@ -113,8 +113,8 @@ flowchart TD
 
     N1 --> REC["Targeted recommendation:\nPractice value-recovery problems\nnot all of Statistics"]
 
-    style TOPIC fill:#fecaca,stroke:#dc2626,color:#000000
-    style REC fill:#bbf7d0,stroke:#16a34a,color:#000000
+    style TOPIC fill:#fecaca,stroke:#dc2626
+    style REC fill:#bbf7d0,stroke:#16a34a
 ```
 
 The student doesn't need "more Statistics." They need to practice one specific cognitive pattern within Statistics — and the system can tell them exactly which one, why it's broken, and what single question to solve next.
@@ -190,7 +190,7 @@ flowchart TD
     F3 -.-> T4["Limits &\nContinuity"]
     F3 -.-> T5["Area Under\nCurves"]
 
-    style FOUND fill:#fef9c3,stroke:#ca8a04,color:#000000
+    style FOUND fill:#fef9c3,stroke:#ca8a04
 ```
 
 The diagnostic power: a student who's weak at "translating verbal constraints into equations" will fail in Optimization, Differential Equations, and Linear Programming simultaneously. Traditional analytics would show three separate topic-level weaknesses. Layer 1 detects the shared root cause — one foundational skill, once fixed, repairs multiple downstream topics.
@@ -239,10 +239,10 @@ flowchart LR
 
     LOCATE --> CLASSIFY --> ROOT --> ACT
 
-    style LOCATE fill:#dbeafe,stroke:#2563eb,color:#000000
-    style CLASSIFY fill:#fed7aa,stroke:#ea580c,color:#000000
-    style ROOT fill:#fecaca,stroke:#dc2626,color:#000000
-    style ACT fill:#bbf7d0,stroke:#16a34a,color:#000000
+    style LOCATE fill:#dbeafe,stroke:#2563eb
+    style CLASSIFY fill:#fed7aa,stroke:#ea580c
+    style ROOT fill:#fecaca,stroke:#dc2626
+    style ACT fill:#bbf7d0,stroke:#16a34a
 ```
 
 The key features and the questions they answer:
@@ -256,7 +256,7 @@ The key features and the questions they answer:
 | Overconfidence Detection | Where does the student feel confident but score poorly? These are dangerous blind spots they'll never self-correct |
 | Prerequisite Trace | Is Topic X failing because upstream Topic Y is broken? Should the student fix Y first? |
 | Foundational Skill Hypothesis | Are failures in unrelated topics caused by a shared below-syllabus cognitive gap? |
-| Single Next-Action | The one question to solve right now, at the right difficulty, with an explanation of why |
+| Single Next-Action | Picks the single best-fit question at ideal difficulty. Now an input to the report's Three Doors ending rather than its final word |
 
 The architectural decision to make the engine deterministic (no LLM at runtime) was driven by how the system was designed from the start: the entire approach is built around extracting as much structured information as possible from the questions themselves, then storing that as static labeled data. Once the question corpus is labeled, the per-student diagnostic computation runs with zero API calls. For a B2B2C product serving thousands of students through coaching institutes, this makes the marginal cost of each student's diagnosis effectively zero.
 
@@ -333,11 +333,11 @@ The deterministic engine architecture means the per-student cost at runtime is z
 
 ### What Doesn't Work Yet
 
-The output is not usable by a student in its current form. The archetype node names ("Recover-the-Hidden-Values," "Correct-the-Corrupted-Aggregate") are clinically precise but intimidating. The 16 features produce a wall of diagnostic data that needs a translation layer to become something a student would actually read, understand, and act on. The system computes the right things — but the last mile from engine output to student experience has not been built. It's a diagnostic MRI machine without the doctor who explains the scan.
+The raw engine output is not usable by a student. The archetype node names ("Recover-the-Hidden-Values," "Correct-the-Corrupted-Aggregate") are clinically precise but intimidating, and the 16 features produce a wall of diagnostic data. A narrative layer now exists to translate this — four mentor-voice sections ending in the Three Doors choice (see The Boundary, below) — but it has been read by exactly zero real students. The MRI machine now has a doctor's script; whether patients understand the doctor is untested.
 
 The LLM-generated taxonomy has not been validated. Whether the 362 discovered nodes are the right granularity, whether they're internally coherent, and whether the same pipeline would produce the same taxonomy on a second run — none of this has been tested.
 
-There is no student validation. The system was tested with synthetic data only. The faculty I interviewed were skeptical about the approach, and that skepticism has not been addressed with evidence.
+There is no real-student validation. The system has been scored end-to-end against designed ground truth — five synthetic students with deliberately planted patterns, audited plant-by-plant in `docs/VALIDATION.md` (19 of 48 testable expectations cleanly detected, every miss root-caused) — which is validation of the machinery, not of the product. The faculty I interviewed were skeptical about the approach, and that skepticism has not been addressed with evidence from real students.
 
 The market positioning is undefined. Whether coaching institutes would pay for this capability, how it would integrate with existing test platforms, and whether students would engage with the output — these are open questions that six months of engineering did not answer.
 
@@ -349,13 +349,53 @@ I also learned that I gravitate toward strategic problem decomposition and syste
 
 ---
 
+## The Boundary — What LECO Doesn't Know
+
+This project ends at a deliberate boundary, not at an unfinished edge. Everything that could be built without real students has been built: the labeled corpus, the knowledge structures, the engine, the narrative layer, and a validation of the whole chain against designed ground truth. What follows is a precise map of where the system's knowledge stops. Every number in this chapter comes from that validation audit (`docs/VALIDATION.md`), which scored the engine against the five synthetic students whose every pattern was planted on purpose.
+
+### The circularity, measured
+
+The obvious objection to synthetic validation is circular: the engine found patterns because we put them there. The audit's contribution is making that circularity measurable instead of rhetorical. Of 61 designed expectations, 48 were testable; the engine cleanly satisfied 19, partially satisfied 6, and missed 18. More telling: 5 planted patterns never survived data generation (noise and skip-censoring erased or inverted them), and 5 more existed only in the spec — the generator never implemented them. Even on data *designed to be found*, roughly a third of the design either didn't materialize or couldn't be expressed in the schema. Real students are the harder version of this problem: there is no manifest of what's true about them, and their patterns will be noisier than anything we planted.
+
+### One student, no cohort
+
+Every baseline in the engine is self-referential — a student compared to their own history. There are no cohort norms. The system cannot say what 60% on Parabola means relative to other aspirants, cannot place a student on a percentile, and cannot distinguish "weak for a top-100 candidate" from "strong for a first-attempt student." The five synthetic students even share the same fifteen test papers by design, a fairness convenience real cohorts won't offer.
+
+### Thresholds: reasoned, never calibrated
+
+Every constant in the engine — the 0.40 weak line, the 0.65 tipping point, F5's four gates (n ≥ 5, gap > 0.20, accuracy < 0.60, confidence ≥ 2.0), F16's stability requirement, F17's priority weights — was chosen by argument, not by data. The audit turned this from a disclaimer into a list of named suspects. F5's accuracy ceiling excluded a materialized overconfidence gap of +0.36 because attempts fragmented across ten nodes and the biggest nodes drifted above 0.60. F16's stability gate, on five-test windows, denied both designed maintenance topics for one student and granted one where zero were designed. F17's "unlocks weak topics" weight overrode design intent in four of five students, and the specified low-scorer proximity override was never implemented at all. Five students on one random seed can *nominate* these miscalibrations; only real outcomes can set the values.
+
+### The confidence assumption
+
+The entire overconfidence/underconfidence axis rests on students self-reporting confidence per question, honestly, indefinitely. A synthetic student's confidence is a parameter; a real student's is a mood, a habit, a thing that decays by question 25. Whether students will supply this signal at all — and whether it means the same thing across students — is untested. Our own generator delivered a cautionary tale here: its skip-by-accuracy rule quietly erased an overconfidence plant, because a student who *feels* strong on a topic attempts it, while our simulated student skipped what she was bad at. If believable confidence behavior is this hard to design when you control everything, treating real confidence data as clean input would be naive.
+
+### Errors belong to questions, not students
+
+`df_question_errors` tags the mistakes a question *invites*, not the mistake a student *made*. F4's failure modes are therefore inference by proxy — a wrong answer inherits the question's dominant error type, adjusted by time and confidence. The generator couldn't even encode per-student error tendencies (its docstring claims it; the code never references error tags), which is why the audit scored those expectations as untestable rather than missed. The schema hole survives into production: closing it requires capturing *which* wrong option a student picked, or their worked steps — a data-collection decision, not an algorithm.
+
+### The horizon gap — answered in the product, not the data
+
+The system cannot know how far the student's exam is, how many hours they have, or how burnt out they are. The original report ending prescribed anyway — "open this one question, right now" — which was the system pretending to context it was never given. The rebuilt ending (`three_doors_section.py`) is the boundary acknowledged inside the product: three priced paths, drawn from work the engine already does, with the choice returned to the only person who knows the horizon. Diagnosis is what the data supports; prescription was overreach.
+
+### Small samples make weather, not climate
+
+At fifteen to twenty attempts per topic, the generator's noise envelope (±10% per test, 5% answer flips) is the same magnitude as a designed +17–25pp trend — which is why two of the four planted momentum streaks died in generation, one of them inverting completely. Meanwhile the engine named 7–11 streak topics per student where 0–2 were planted; audit confirmed every one had real ≥10pp swings behind it. Both facts are true at once: the streaks are honestly detected, and most of them are weather. The report copy treats momentum language conservatively for exactly this reason, and any future version should too.
+
+### What the first real pilot must answer
+
+Fifteen to twenty real students, five or more tests each, wrong-option capture on, confidence-elicitation compliance measured. Secondary goals: recalibrate the named thresholds against pilot outcomes, and measure whether students actually pick different doors. But the pilot has one primary, falsifiable question, and it is the same question the product now asks of itself: **when F10 produces a foundational-skill hypothesis and the student takes Door 1's three-question verification, does the hypothesis survive at a rate meaningfully better than chance?** The audit showed F10 generating 24 hypotheses for the weakest student against zero planted — display gating contains that eagerness, but only real verification can retire it. If the hypotheses survive, LECO's deepest claim — that one hidden skill can hold back three topics — has evidence. If they don't, the honest architecture already knows how to update: retire the hypothesis, adjust the plan.
+
+The project doesn't trail off here. It arrives at the edge of what one person can verify alone — and says so.
+
+---
+
 ## What This Project Is
 
-LECO is a prototype that demonstrates a specific product thesis: that assessment analytics can go far deeper than topic-level accuracy to identify the exact cognitive pattern, the root cause, and the single most impactful next action for each individual student.
+LECO is a prototype that demonstrates a specific product thesis: that assessment analytics can go far deeper than topic-level accuracy — identifying the exact cognitive pattern and root cause behind a student's failures, and translating that into a small set of honest, priced choices rather than a wall of numbers or a single command the system isn't entitled to give.
 
 It was built solo over four months. It went through six major pivots. It produced a working diagnostic engine, a labeled dataset of 4,481 questions with ~28,000 analytical labels across three ontological layers, a two-layer prerequisite knowledge graph, and a pipeline architecture that scales to any standardized assessment — not just the exam it was prototyped on.
 
-It did not produce a finished product. It did not validate market demand. The distance between the engine's clinical output and something a real student would find useful remains the largest unsolved problem.
+It did not produce a finished product. It did not validate market demand. With the narrative layer and the validation audit in place, the largest unsolved problem is no longer translation — it is contact with reality: whether any of this survives its first fifteen real students.
 
 The strongest thing this project demonstrates is strategic thinking under ambiguity — taking a vague problem ("evaluations should be more personal"), decomposing it into a tractable analytical architecture, building and testing approaches, killing the ones that don't work, and shipping something that proves the core idea even if the edges are rough.
 
