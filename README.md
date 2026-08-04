@@ -1,6 +1,6 @@
 # LECO — Learning Engine for Cognitive Optimization
 
-A deterministic diagnostic engine that analyzes JEE exam performance at the micro-skill level, traces failure to its root cause through a prerequisite knowledge graph, and produces a single, targeted next-action recommendation instead of an overwhelming dashboard of weaknesses.
+A deterministic diagnostic engine that analyzes JEE exam performance at the micro-skill level, traces failure to its root cause through a prerequisite knowledge graph, and turns that into a small set of priced, honest next steps — instead of an overwhelming dashboard of weaknesses.
 
 Built on a labeled corpus of **4,481 JEE Mathematics PYQs** (2015–2026) enriched with reasoning archetypes, error taxonomies, and concept tags — all extracted through a two-pass unsupervised LLM discovery pipeline.
 
@@ -10,7 +10,7 @@ Built on a labeled corpus of **4,481 JEE Mathematics PYQs** (2015–2026) enrich
 
 Every test-prep platform tells students the same thing: *"You're weak at Calculus."* That's useless. A student staring at 15 weak topics doesn't know where to start. They re-read textbooks they already understand, practice random questions, and stay stuck — because the real problem is three layers deeper than "Calculus."
 
-LECO asks a different question: **Why is this student failing, and what single action will move their score the most right now?**
+LECO asks a different question: **Why is this student failing — and given that a diagnostic can't know their exam date or hours, what are the honest options in front of them?**
 
 ## What Makes This Different
 
@@ -20,7 +20,7 @@ LECO asks a different question: **Why is this student failing, and what single a
 
 **Behavioral diagnosis from metadata.** Without requiring students to log their work, the engine infers failure modes from time-taken, confidence ratings, and error patterns: distinguishing concept gaps from setup gaps from execution slips from rushed guesses.
 
-**One question with a reason.** The output isn't a dashboard. It's a single, specific question selected from the corpus at the student's ideal difficulty level, with an LLM-generated explanation of exactly why that question was chosen based on their diagnostic profile.
+**A priced choice, not a prescription.** The output isn't a dashboard — and it isn't a single command either. It ends in three doors drawn from the engine's own analysis: *rebuild the foundation* (the slow, high-payoff path), *take the quick win* (the topic nearest to tipping into a strength), or *change nothing but strategy* (marks recoverable without new study). Each door is priced in effort and payoff, and labeled for who it's for — because the one thing the engine cannot know is how far the student's exam is. The student picks. (An earlier version ended by prescribing one specific question; see [why that changed](CASE_STUDY.md#the-boundary--what-leco-doesnt-know).)
 
 ---
 
@@ -74,7 +74,7 @@ The engine computes 16 features in a strict dependency order across 6 stages:
 | F15 | Time ROI & Clock Management | How many marks were lost to time misallocation on the last test? |
 | F16 | Maintenance Mode | Which mastered topics can be safely deprioritized to reclaim study hours? |
 | F17 | Study Focus Plan | Ranked priority list with daily minute budgets and micro-goals per topic |
-| F18 | Single Next-Action | The exact question to solve right now, selected at the ideal difficulty, with an explanation |
+| F18 | Single Next-Action | Picks the single best-fit question at ideal difficulty. Now feeds the doors (e.g. Door 1's verification step) rather than serving as the report's final word |
 
 ### Feature Dependency Graph
 
@@ -108,32 +108,25 @@ flowchart TD
     F17 --> F15["F15<br/>Time ROI"]
     F17 --> F18["F18<br/>Next Action"]
 
-    %% Dark Muted Cobalt Blue
-    style F1 fill:#6B8EAD,stroke:#415C77,color:#000000
-    style F2 fill:#6B8EAD,stroke:#415C77,color:#000000
-    style F3 fill:#6B8EAD,stroke:#415C77,color:#000000
-
-    %% Mustard
-    style F4 fill:#DEB841,stroke:#A38322,color:#000000
-    style F5 fill:#DEB841,stroke:#A38322,color:#000000
-    style F6 fill:#DEB841,stroke:#A38322,color:#000000
-    style F7 fill:#DEB841,stroke:#A38322,color:#000000
-    style F8 fill:#DEB841,stroke:#A38322,color:#000000
-
-    %% Muted Brown
-    style F9 fill:#B08D79,stroke:#826250,color:#000000
-    style F10 fill:#B08D79,stroke:#826250,color:#000000
-    style F11 fill:#B08D79,stroke:#826250,color:#000000
-
-    %% Olive Green
-    style F14 fill:#A3B18A,stroke:#727E5D,color:#000000
-    style F15 fill:#A3B18A,stroke:#727E5D,color:#000000
-    style F16 fill:#A3B18A,stroke:#727E5D,color:#000000
-    style F17 fill:#A3B18A,stroke:#727E5D,color:#000000
-    style F18 fill:#A3B18A,stroke:#727E5D,color:#000000
+    style F1 fill:#dbeafe,stroke:#2563eb
+    style F2 fill:#dbeafe,stroke:#2563eb
+    style F3 fill:#dbeafe,stroke:#2563eb
+    style F4 fill:#fed7aa,stroke:#ea580c
+    style F5 fill:#fed7aa,stroke:#ea580c
+    style F6 fill:#fed7aa,stroke:#ea580c
+    style F7 fill:#fed7aa,stroke:#ea580c
+    style F8 fill:#fed7aa,stroke:#ea580c
+    style F9 fill:#fecaca,stroke:#dc2626
+    style F10 fill:#fecaca,stroke:#dc2626
+    style F11 fill:#fecaca,stroke:#dc2626
+    style F14 fill:#bbf7d0,stroke:#16a34a
+    style F15 fill:#bbf7d0,stroke:#16a34a
+    style F16 fill:#bbf7d0,stroke:#16a34a
+    style F17 fill:#bbf7d0,stroke:#16a34a
+    style F18 fill:#bbf7d0,stroke:#16a34a
 ```
 
->  Blue = Weakness Detection (F1–F3) ·  Orange = Failure Classification (F4–F8) ·  Red = Root Cause (F9–F11) ·  Green = Strategy & Action (F14–F18)
+> 🔵 Blue = Weakness Detection (F1–F3) · 🟠 Orange = Failure Classification (F4–F8) · 🔴 Red = Root Cause (F9–F11) · 🟢 Green = Strategy & Action (F14–F18)
 
 ---
 
@@ -163,20 +156,27 @@ See [`DATA_SCHEMA.md`](DATA_SCHEMA.md) for full column descriptions, value domai
 | `data/df_question_errors.csv` | 5,522 question→error mappings with error types |
 | `data/df_question_concepts.csv` | 11,784 question→concept mappings |
 | `data/layer_1_PN.txt` | 75 topic-level prerequisite edges |
-| `data/prerequisite_final.json` | 42 foundational skills with diagnostic questions |
+| `data/prerequisite_final.json` | 42 foundational skills |
+| `data/synthetic/student_responses.csv` | 1,637 responses — 5 designed students × 15 tests |
+| `data/synthetic/test_composition.csv` | The 15 shared test papers (30 questions each) |
+| `data/synthetic/student_response_generator.py` | Seeded generator (byte-reproduces the CSV) |
+| `data/synthetic/student_profile_specs.md` | The planted-pattern design spec — the ground truth |
 | `notebooks/01_data_preparation.ipynb` | PYQ scraping, cleaning, LaTeX standardization |
-| `notebooks/02_core_tables_extraction.ipynb` | Two-pass LLM pipeline: nodes, errors, concepts |
-| `notebooks/03_diagnostic_engine.ipynb` | Full 16-feature engine + synthetic student demo |
-| `notebooks/exploratory/90k_cleaning.ipynb` | 90K Kaggle question cleanup (not used in final) |
+| `notebooks/Core_tables_extraction.ipynb` | Two-pass LLM pipeline: nodes, errors, concepts |
+| `notebooks/LECO_engine.ipynb` | 16-feature engine + narrative layer + Three Doors ending |
+| `notebooks/LLM_labelling_output.ipynb` | Labeling run outputs |
+| `notebooks/90k_JEE_ques_cleaning.ipynb` | 90K Kaggle cleanup (explored, not used in final) |
 | `docs/ARCHITECTURE.md` | Pipeline spec, feature dependency graph, math formulations |
-| `docs/exploration_log.md` | Dropped approaches and lessons learned |
-| `sample_output/` | Example diagnostic report for one synthetic student |
+| `docs/VALIDATION.md` | Engine scored against designed ground truth — 61-row audit |
+| `docs/validation/` | Scoring script, results JSON, full serialized engine outputs |
+| `docs/Exploration_log.md` | Dropped approaches and lessons learned |
+| `sample_output/` | HTML report card + five full mentor-voice reports (`REPORT_*.md`) |
 
 ---
 
 ## Notebooks
 
-**`01_data_preparation.ipynb`** — Playwright-based scraper for online PYQ banks. Simulates scroll behavior for lazy-loaded questions, joins fragmented paragraph elements at the source, flags image-dependent questions via `<img>` tag inspection, and standardizes mathematical notation into LaTeX. Also consolidates the Claude API call into the same Colab notebook to avoid browser-session hangs from heavy CSV uploads.
+**`01_data_preparation.ipynb`** — Playwright-based scraper for ExamSIDE PYQ banks. Simulates scroll behavior for lazy-loaded questions, joins fragmented paragraph elements at the source, flags image-dependent questions via `<img>` tag inspection, and standardizes mathematical notation into LaTeX. Also consolidates the Claude API call into the same Colab notebook to avoid browser-session hangs from heavy CSV uploads.
 
 **`02_core_tables_extraction.ipynb`** — The two-pass LLM labeling pipeline. Pass 1 evaluates ~100 questions per topic to discover recurring reasoning archetypes, concept co-occurrences, and error patterns. Pass 2 synthesizes cross-topic outputs to deduplicate nodes, extract universal cognitive operations, and produce the final master vocabulary. Outputs all four core tables.
 
@@ -224,9 +224,9 @@ For synthetic student **PRIYA** (53% accuracy across 15 tests, 335 responses):
 | F5  Overconfident | 3 nodes where confidence is high but accuracy is low |
 | F10 Foundational | 2 below-syllabus skill hypotheses identified |
 | F11 Momentum | Flat trajectory. Hot streak in 7 topics, cold streak in 2 |
-| F14 Exam plan | Projected ~55 marks (Phase 1: 16, Phase 2: 27, Phase 3: 12) |
-| F17 Priority #1 | Limits, Continuity & Differentiability (38% accuracy, 45 min/day budget) |
-| F18 Next action | Q_M_0481 from Limits. Micro-goal: get 2 questions right instead of your usual 1 |
+| F14 Exam plan | Projected ~40 marks (Phase 1: 13, Phase 2: 24, Phase 3: 3) |
+| F17 Priority #1 | Quadratic Eq & Inequalities (60% — unlocks 3 weak topics, close to tipping) |
+| Final section | Three Doors — rebuild the foundation / take the quick win / change only strategy. Full report: `sample_output/REPORT_PRIYA.md` |
 
 ---
 
@@ -248,9 +248,15 @@ This project went through six major design phases over four months (Feb–May 20
 
 This is a **prototype** scoped to JEE Main Mathematics only. The architecture generalizes to Physics and Chemistry — the labeling pipeline, prerequisite graph, and diagnostic engine are subject-agnostic — but the current data corpus and node vocabulary cover Mathematics.
 
-The prototype uses **synthetic student data** to demonstrate the engine end-to-end. The diagnostic logic is deterministic and ready for real student data; the synthetic profiles were designed with distinct learning personalities (overconfident in mechanics, strong in algebra but weak in geometry, etc.) to validate edge cases.
+The prototype uses **synthetic student data** to demonstrate the engine end-to-end — but not casually. The five students were designed with deliberately planted patterns, and the engine was then scored against that designed ground truth, plant by plant: 61 expectations audited, 19 of 48 testable ones cleanly detected, every miss root-caused ([`docs/VALIDATION.md`](docs/VALIDATION.md)). The diagnostic logic is deterministic and ready for real student data; what synthetic data cannot do is stand in for it.
 
 The 90K-question Kaggle dataset was cleaned but not labeled for this prototype due to cost and time constraints. It remains a candidate for scaling the corpus in a future iteration.
+
+---
+
+## Where the Project Ends — and Why Here
+
+This project stops at a deliberate boundary: everything that can be built and verified without real students has been built and verified. The corpus is labeled, the engine runs, the narrative layer speaks, and the whole chain has been audited against designed ground truth — including an honest account of the eighteen expectations it missed and the mechanisms behind them. The product's final word was rewritten to respect that same boundary: instead of prescribing one action to a student whose exam date, hours, and energy it cannot know, the report now ends in three priced doors — rebuild the foundation, take the quick win, or change nothing but strategy — and hands the choice to the only person with the missing context. What remains is the one thing a solo builder cannot manufacture: contact with reality. The first pilot has a single falsifiable question waiting for it — when the engine hypothesizes a hidden foundational skill and a real student takes the three-question verification built into Door 1, does the hypothesis survive? The full map of what LECO doesn't know is in [`CASE_STUDY.md`](CASE_STUDY.md#the-boundary--what-leco-doesnt-know). The project doesn't trail off; it arrives at the edge of what one person can verify alone, and says so.
 
 ---
 
