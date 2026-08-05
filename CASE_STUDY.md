@@ -1,6 +1,6 @@
 # LECO — Product Case Study
 
-## Building a Diagnostic Engine That Tells Students Why They Fail, Not Just What They Scored
+Building a Diagnostic Engine That Tells Students Why They Fail, Not Just What They Scored
 
 
 ## The Problem Nobody Solves
@@ -9,7 +9,7 @@ Every assessment platform in the world does the same thing after a student finis
 
 That is useless.
 
-A student staring at 15 weak topics doesn't know where to start. They re-read textbooks they already understand. They practice random questions. They stay stuck — because the real problem is three layers deeper than "Statistics." Maybe their statistics failures are actually caused by a gap in algebraic manipulation that nobody diagnosed. Maybe they understand the concepts perfectly but panic during problem setup and make the same structural mistake across five unrelated topics. Maybe they're overconfident in Matrices — scoring 38% while rating themselves 2.8 out of 3 on confidence — and nobody is telling them their intuition is actively destroying their score.
+A student staring at 15 weak topics doesn't know where to start. They re-read textbooks they already understand. They practice random questions. They stay stuck because the real problem is three layers deeper than "Statistics." Maybe their statistics failures are actually caused by a gap in algebraic manipulation that nobody diagnosed. Maybe they understand the concepts perfectly but panic during problem setup and make the same structural mistake across five unrelated topics. Maybe they're overconfident in Matrices scoring 38% while rating themselves 2.8 out of 3 on confidence and nobody is telling them their intuition is actively destroying their score.
 
 No evaluation system currently tells a student: "Your problem isn't Statistics. Your problem is that every time a question requires recovering hidden values from given aggregates, you set up the equations wrong — and that same setup failure is showing up in Statistics, Sequences, and Probability simultaneously. Fix the setup skill, and three topics improve at once."
 
@@ -21,7 +21,7 @@ That's what a great tutor does intuitively after watching a student work for a m
 
 This project didn't start from market research. It started from a personal frustration.
 
-As a student — not a top-performer, someone who struggled — I experienced the same evaluation loop repeatedly: take a test, receive a score, see a list of weak areas, feel overwhelmed, not know what to do next. This wasn't specific to one exam or one subject. It was the same experience in school exams, competitive exam preparation, and university assessments. The evaluation always told me *what* I scored. It never told me *why* I was failing in a way that would change how I studied. I was willing to put in the hard work, but I couldn't understand my subjects deeply enough on my own — and I couldn't find a single teacher who could diagnose my weaknesses holistically, across the full exam.
+As a student, not a top-performer, someone who struggled...I experienced the same evaluation loop repeatedly: take a test, receive a score, see a list of weak areas, feel overwhelmed, not know what to do next. This wasn't specific to one exam or one subject. It was the same experience in school exams, competitive exam preparation, and university assessments. The evaluation always told me *what* I scored. It never told me *why* I was failing in a way that would change how I studied. I was willing to put in the hard work, but I couldn't understand my subjects deeply enough on my own and I couldn't find a single teacher who could diagnose my weaknesses holistically, across the full exam.
 
 I had a notepad of project ideas I wanted to explore. One line said: "Create an evaluation system that is user-centric and has user empathy." That line turned into a six-month project.
 
@@ -31,7 +31,7 @@ I had a notepad of project ideas I wanted to explore. One line said: "Create an 
 
 ### What I Did
 
-I visited three major coaching institutions in India — Aakash, Allen, and Unacademy — and spoke with the head of faculty for Physics, Chemistry, and Mathematics at each. These are institutions that prepare students for JEE Main (India's largest competitive exam, taken by 1.2 million students annually), and they represent the current state of the art in structured exam preparation.
+I visited three major coaching institutions in India : Aakash, Allen, and Unacademy, and spoke with the head of faculty for Physics, Chemistry, and Mathematics at each. These are institutions that prepare students for JEE Main (India's largest competitive exam, taken by 1.2 million students annually), and they represent the current state of the art in structured exam preparation.
 
 The interviews surfaced how experienced educators intuitively categorize questions and student failures:
 
@@ -41,7 +41,7 @@ The interviews surfaced how experienced educators intuitively categorize questio
 | Chemistry | Physical (formula + critical analysis), Organic (reagent patterns, bond breaking), Inorganic (pure recall from textbook) | Unit conversions, calculation errors, incomplete memorization |
 | Physics | Formula application, unit analysis, diagram-based reasoning | Unit conversions, formula misapplication |
 
-One insight from these discussions reshaped the system's design philosophy. Consider the student who spends 4 minutes on a question, feels confident about it, and still gets it wrong. That pattern — high time investment, high confidence, wrong answer — is the most dangerous quadrant in exam performance. It means the student's mental model is broken in a way they can't detect on their own. Traditional analytics don't surface this. They show you "time taken per question" and "accuracy per topic" as separate metrics. The diagnostic value comes from crossing them: time × confidence × correctness × error type, per node. That cross-analysis became the core of how LECO classifies failure modes.
+One insight from these discussions reshaped the system's design philosophy. Consider the student who spends 4 minutes on a question, feels confident about it, and still gets it wrong. That pattern : high time investment, high confidence, wrong answer is the most dangerous quadrant in exam performance. It means the student's mental model is broken in a way they can't detect on their own. Traditional analytics don't surface this. They show you "time taken per question" and "accuracy per topic" as separate metrics. The diagnostic value comes from crossing them: time × confidence × correctness × error type, per node. That cross-analysis became the core of how LECO classifies failure modes.
 
 ### What I Missed
 
@@ -51,7 +51,7 @@ The faculty I spoke with were skeptical about whether deeper-than-topic-level di
 
 I did not conduct market analysis. I did not study what existing platforms already offer in their analytics. I did not validate whether coaching institutes would pay for this capability.
 
-I built for six months before testing demand. I've since learned that this is the opposite of how products should be built — and that lesson is part of what this project taught me.
+I built for six months before testing demand. I've since learned that this is the opposite of how products should be built and that lesson is part of what this project taught me.
 
 ---
 
@@ -59,7 +59,7 @@ I built for six months before testing demand. I've since learned that this is th
 
 Most assessment platforms treat questions as monolithic objects: a question belongs to a topic, and a student either gets it right or wrong. The analytical resolution stops there.
 
-But questions have an endogenous structure — what this project calls a **question ontology**. Every exam question, when examined closely, is actually a composite of three separable analytical layers:
+But questions have an endogenous structure, what this project calls a **question ontology**. Every exam question, when examined closely, is actually a composite of three separable analytical layers:
 
 ### The Three Layers of Question Ontology
 
@@ -80,16 +80,19 @@ flowchart TD
     ERRORS --> E1["Setup error: Incorrect\nΣx² reconstruction\nfrom given variance"]
     ERRORS --> E2["Procedural error: Sign\nerror when solving\nthe quadratic for x, y"]
 
-    style NODES fill:#dbeafe,stroke:#2563eb
-    style CONCEPTS fill:#e0e7ff,stroke:#4338ca
-    style ERRORS fill:#fecaca,stroke:#dc2626
+    style NODES fill:#6B8EAD,color:#000000
+    style CONCEPTS fill:#DEB841,color:#000000
+    style ERRORS fill:#A3B18A,color:#000000
+
+
+
 ```
 
-**Archetype nodes** describe *what the student's mind must actually do* to solve the question — not what topic it belongs to, but what cognitive operation it demands. A Statistics question might require "Recover-the-Hidden-Values" (solve simultaneous equations from aggregate statistics to find unknown observations) or "Correct-the-Corrupted-Aggregate" (reverse-engineer a sum and sum-of-squares after an incorrect data point is discovered, then recompute). Two questions from the same topic can require completely different cognitive operations. Two questions from different topics can require the same one.
+**Archetype nodes** describe *what the student's mind must actually do* to solve the question, not what topic it belongs to, but what cognitive operation it demands. A Statistics question might require "Recover-the-Hidden-Values" (solve simultaneous equations from aggregate statistics to find unknown observations) or "Correct-the-Corrupted-Aggregate" (reverse-engineer a sum and sum-of-squares after an incorrect data point is discovered, then recompute). Two questions from the same topic can require completely different cognitive operations. Two questions from different topics can require the same one.
 
-**Concept tags** are the specific mathematical ideas a student must actively apply — not merely recognize — to reach the answer. "Mean formula for grouped data" and "variance via the Σx² method" are distinct concepts within the same question. If a student gets this question wrong, their weakness might be in one concept but not the other.
+**Concept tags** are the specific mathematical ideas a student must actively apply not merely recognize, to reach the answer. "Mean formula for grouped data" and "variance via the Σx² method" are distinct concepts within the same question. If a student gets this question wrong, their weakness might be in one concept but not the other.
 
-**Error taxonomy** maps the specific mistakes a student is likely to make, categorized by root cause. A "setup error" means the student knows the theory but fails to model the problem correctly (they need setup practice, not re-reading). A "procedural error" means the setup was right but a calculation went wrong (they need speed drills, not concept revision). A "conceptual error" means the underlying theory is missing (they need to go back to the textbook). Each question has 1–3 anticipated errors — the traps an examiner designed into it.
+**Error taxonomy** maps the specific mistakes a student is likely to make, categorized by root cause. A "setup error" means the student knows the theory but fails to model the problem correctly (they need setup practice, not re-reading). A "procedural error" means the setup was right but a calculation went wrong (they need speed drills, not concept revision). A "conceptual error" means the underlying theory is missing (they need to go back to the textbook). Each question has 1–3 anticipated errors, the traps an examiner designed into it.
 
 ### Why This Decomposition Matters
 
@@ -116,7 +119,7 @@ flowchart TD
     style REC fill:#bbf7d0,stroke:#16a34a
 ```
 
-The student doesn't need "more Statistics." They need to practice one specific cognitive pattern within Statistics — and the system can tell them exactly which one, why it's broken, and what single question to solve next.
+The student doesn't need "more Statistics." They need to practice one specific cognitive pattern within Statistics, and the system can tell them exactly which one, why it's broken, and what single question to solve next.
 
 ---
 
@@ -124,7 +127,7 @@ The student doesn't need "more Statistics." They need to practice one specific c
 
 ### The Labeled Corpus
 
-The foundation of the system is a labeled dataset. For a prototype domain (JEE Main Mathematics, 2015–2026), a corpus of 4,481 exam questions was enriched with the three layers of question ontology — all generated through an LLM-driven pipeline, not manual annotation:
+The foundation of the system is a labeled dataset. For a prototype domain (JEE Main Mathematics, 2015–2026), a corpus of 4,481 exam questions was enriched with the three layers of question ontology all generated through an LLM-driven pipeline, not manual annotation:
 
 | Layer | What It Captures | Scale |
 |-------|-----------------|-------|
@@ -160,7 +163,7 @@ flowchart TD
     STEP2 -->|"Repeat for all\nquestion batches"| MORE["Repeat for errors\nand concepts too"]
 ```
 
-**Step 1 — Ontology Discovery:** For a given topic (say, Statistics with 122 questions spanning 2015–2026), all raw questions are sent to the LLM with a structured prompt. The prompt asks the LLM to identify recurring archetype nodes (cognitive operations), a concept inventory, error patterns, and cognitive demand classifications. The prompt deliberately avoids hard numerical constraints ("find 3–6 archetypes") and instead uses logical instructions ("do not split the same pattern into multiple archetypes") — letting the empirical exam data dictate how many categories naturally exist. For Statistics, this produced 8 archetype nodes, 14 error patterns, and 22 concepts.
+**Step 1 — Ontology Discovery:** For a given topic (say, Statistics with 122 questions spanning 2015–2026), all raw questions are sent to the LLM with a structured prompt. The prompt asks the LLM to identify recurring archetype nodes (cognitive operations), a concept inventory, error patterns, and cognitive demand classifications. The prompt deliberately avoids hard numerical constraints ("find 3–6 archetypes") and instead uses logical instructions ("do not split the same pattern into multiple archetypes") letting the empirical exam data dictate how many categories naturally exist. For Statistics, this produced 8 archetype nodes, 14 error patterns, and 22 concepts.
 
 **Step 2 — Question Labeling:** The discovered ontology then becomes the fixed label set for a second pass. Questions are chunked into batches of 30 and sent to the LLM alongside the full list of discovered categories. The LLM assigns archetype node IDs, concept tags, and error names to each question. The same process repeats for all 27 topics across the syllabus.
 
@@ -170,7 +173,7 @@ This two-step approach (discover the ontology first, then label against it) has 
 
 Two layers of prerequisite structure tell the engine *why* a student is failing, not just *where*:
 
-**Layer 1 — Foundational Skills (42 skills).** These are the underlying mathematical abilities that sit *below* the formal syllabus. They are not topics taught in class 11th or 12th — they are the cognitive building blocks needed *before* a student can learn those topics effectively. Skills like translating a word problem into algebraic equations, or reasoning about proportional relationships, or reading a graph and extracting function behavior from it. These skills are assumed, never explicitly taught, and when they're missing, they cause correlated failures across topics that look completely unrelated.
+**Layer 1 — Foundational Skills (42 skills).** These are the underlying mathematical abilities that sit *below* the formal syllabus. They are not topics taught in class 11th or 12th, they are the cognitive building blocks needed *before* a student can learn those topics effectively. Skills like translating a word problem into algebraic equations, or reasoning about proportional relationships, or reading a graph and extracting function behavior from it. These skills are assumed, never explicitly taught, and when they're missing, they cause correlated failures across topics that look completely unrelated.
 
 ```mermaid
 flowchart TD
@@ -194,7 +197,7 @@ flowchart TD
 
 The diagnostic power: a student who's weak at "translating verbal constraints into equations" will fail in Optimization, Differential Equations, and Linear Programming simultaneously. Traditional analytics would show three separate topic-level weaknesses. Layer 1 detects the shared root cause — one foundational skill, once fixed, repairs multiple downstream topics.
 
-**Layer 2 — Topic Prerequisites (75 edges).** These are the standard curricular dependencies — "learn Differentiation before Application of Derivatives," "learn Functions before Limits." Their value in the engine is quantitative, not advisory: the system doesn't just tell the student "you need Differentiation" — it shows that their accuracy on Differentiation is 43%, and until they reach 60%, further Application of Derivatives practice will keep failing because the foundation isn't there.
+**Layer 2 — Topic Prerequisites (75 edges).** These are the standard curricular dependencies "learn Differentiation before Application of Derivatives," "learn Functions before Limits." Their value in the engine is quantitative, not advisory: the system doesn't just tell the student "you need Differentiation" it shows that their accuracy on Differentiation is 43%, and until they reach 60%, further Application of Derivatives practice will keep failing because the foundation isn't there.
 
 ```mermaid
 flowchart LR
@@ -209,7 +212,7 @@ flowchart LR
 
 ### The 16-Feature Diagnostic Engine
 
-The engine is deterministic Python — no LLM at runtime. It takes a student's test history (which questions they attempted, whether they were correct, how long they spent, and a 1–3 confidence self-rating) and computes 16 diagnostic features across six pipeline stages:
+The engine is deterministic Python, no LLM at runtime. It takes a student's test history (which questions they attempted, whether they were correct, how long they spent, and a 1–3 confidence self-rating) and computes 16 diagnostic features across six pipeline stages:
 
 ```mermaid
 flowchart LR
@@ -248,7 +251,7 @@ The key features and the questions they answer:
 
 | Feature | Question It Answers |
 |---------|---------------------|
-| Node-Level Weakness Map | Which specific archetype nodes are broken — not "Statistics" but *which cognitive pattern* within Statistics? |
+| Node-Level Weakness Map | Which specific archetype nodes are broken not "Statistics" but *which cognitive pattern* within Statistics? |
 | Concept-Level Precision Drill | Within a broken node, which specific concept is the actual leak? |
 | Recurring Error Patterns | Does the student have a behavioral bad habit (e.g., missed constraints in setup) bleeding marks across unrelated topics? |
 | Failure Mode Classification | Is this a concept gap, a setup gap, an execution slip, or rushing? Each implies a completely different fix |
@@ -259,7 +262,7 @@ The key features and the questions they answer:
 
 The architectural decision to make the engine deterministic (no LLM at runtime) was driven by how the system was designed from the start: the entire approach is built around extracting as much structured information as possible from the questions themselves, then storing that as static labeled data. Once the question corpus is labeled, the per-student diagnostic computation runs with zero API calls. For a B2B2C product serving thousands of students through coaching institutes, this makes the marginal cost of each student's diagnosis effectively zero.
 
-The only LLM call in the live product would be optional — generating a human-readable report from the clinical diagnostic output, wrapped in a conversational persona (a motivational coach, a direct friend, a humorous mentor) to make the evaluation feel less like a report card and more like advice from someone who knows you. The hypothesis behind the persona system is that knowledge retention improves when information is delivered with engagement and familiarity — a principle observed repeatedly in classroom settings where the best teachers use humor and personality, not clinical distance.
+The only LLM call in the live product would be optional, generating a human-readable report from the clinical diagnostic output, wrapped in a conversational persona (a motivational coach, a direct friend, a humorous mentor) to make the evaluation feel less like a report card and more like advice from someone who knows you. The hypothesis behind the persona system is that knowledge retention improves when information is delivered with engagement and familiarity...a principle observed repeatedly in classroom settings where the best teachers use humor and personality, not clinical distance.
 
 ---
 
@@ -316,7 +319,7 @@ This project used LLMs extensively, and I want to be transparent about the divis
 | Prerequisite knowledge graph design (both layers) | Collaborative — I defined the concept of foundational skills vs. topic prerequisites, the LLM helped enumerate and describe them |
 | Prompt engineering and iteration across 6 prompt versions | Mine — each prompt went through multiple revisions based on output quality |
 
-I would not have been able to build this system in six months without LLM collaboration. What I consider my core contribution is the problem framing, the strategic decisions, and the analytical architecture — deciding *what* to build, *what to kill*, and *how the pieces fit together*. The implementation velocity was multiplied by working with Claude and Gemini as collaborative tools. I consider the ability to architect complex systems with AI tools to be a core working skill, not a shortcut.
+I would not have been able to build this system in six months without LLM collaboration. What I consider my core contribution is the problem framing, the strategic decisions, and the analytical architecture, deciding *what* to build, *what to kill*, and *how the pieces fit together*. The implementation velocity was multiplied by working with Claude and Gemini as collaborative tools. I consider the ability to architect complex systems with AI tools to be a core working skill, not a shortcut.
 
 ---
 
@@ -324,27 +327,27 @@ I would not have been able to build this system in six months without LLM collab
 
 ### What Works
 
-The analytical framework is sound. The decomposition of questions into archetype nodes, concept tags, and error taxonomy — three separable diagnostic layers — produces genuinely useful signals when aggregated across a student's test history. The overconfidence detection (crossing confidence ratings with accuracy per node) surfaces blind spots that no traditional metric captures. The prerequisite trace (checking upstream topic accuracy before recommending more downstream practice) prevents the most common and most wasteful pattern in self-study: practicing the wrong thing.
+The analytical framework is sound. The decomposition of questions into archetype nodes, concept tags, and error taxonomy three separable diagnostic layers, produces genuinely useful signals when aggregated across a student's test history. The overconfidence detection (crossing confidence ratings with accuracy per node) surfaces blind spots that no traditional metric captures. The prerequisite trace (checking upstream topic accuracy before recommending more downstream practice) prevents the most common and most wasteful pattern in self-study: practicing the wrong thing.
 
-The empirical taxonomy discovery pipeline is a real contribution. Most LLM classification systems start with a predefined label set. This one lets the labels emerge from the exam data. 362 archetype nodes were discovered across 27 topics — not designed by a curriculum expert, but found by asking "what cognitive patterns actually recur in 12 years of exam questions?"
+The empirical taxonomy discovery pipeline is a real contribution. Most LLM classification systems start with a predefined label set. This one lets the labels emerge from the exam data. 362 archetype nodes were discovered across 27 topics, not designed by a curriculum expert, but found by asking "what cognitive patterns actually recur in 12 years of exam questions?"
 
 The deterministic engine architecture means the per-student cost at runtime is zero. Once the question corpus is labeled, diagnostics run on pure Python with no API calls.
 
 ### What Doesn't Work Yet
 
-The raw engine output is not usable by a student. The archetype node names ("Recover-the-Hidden-Values," "Correct-the-Corrupted-Aggregate") are clinically precise but intimidating, and the 16 features produce a wall of diagnostic data. A narrative layer now exists to translate this — four mentor-voice sections ending in the Three Doors choice (see The Boundary, below) — but it has been read by exactly zero real students. The MRI machine now has a doctor's script; whether patients understand the doctor is untested.
+The raw engine output is not usable by a student. The archetype node names ("Recover-the-Hidden-Values," "Correct-the-Corrupted-Aggregate") are clinically precise but intimidating, and the 16 features produce a wall of diagnostic data. A narrative layer now exists to translate this, four mentor-voice sections ending in the Three Doors choice (see The Boundary, below), but it has been read by exactly zero real students. The MRI machine now has a doctor's script; whether patients understand the doctor is untested.
 
 The LLM-generated taxonomy has not been validated. Whether the 362 discovered nodes are the right granularity, whether they're internally coherent, and whether the same pipeline would produce the same taxonomy on a second run — none of this has been tested.
 
-There is no real-student validation. The system has been scored end-to-end against designed ground truth — five synthetic students with deliberately planted patterns, audited plant-by-plant in `docs/VALIDATION.md` (19 of 48 testable expectations cleanly detected, every miss root-caused) — which is validation of the machinery, not of the product. The faculty I interviewed were skeptical about the approach, and that skepticism has not been addressed with evidence from real students.
+There is no real-student validation. The system has been scored end-to-end against designed ground truth, five synthetic students with deliberately planted patterns, audited plant-by-plant in `docs/VALIDATION.md` (19 of 48 testable expectations cleanly detected, every miss root-caused), which is validation of the machinery, not of the product. The faculty I interviewed were skeptical about the approach, and that skepticism has not been addressed with evidence from real students.
 
-The market positioning is undefined. Whether coaching institutes would pay for this capability, how it would integrate with existing test platforms, and whether students would engage with the output — these are open questions that six months of engineering did not answer.
+The market positioning is undefined. Whether coaching institutes would pay for this capability, how it would integrate with existing test platforms, and whether students would engage with the output, these are open questions that six months of engineering did not answer.
 
 ### What I Learned
 
-Building for six months without talking to users taught me the most important product lesson the hard way: the smallest vertical slice — one feature, one user, one test — should be validated before building the full system. If I were starting today, I would build the prerequisite trace alone, run it on one real student's test data, and ask them: "Does this match your experience? Is this useful?" Everything else would follow or not based on that signal.
+Building for six months without talking to users taught me the most important product lesson the hard way: the smallest vertical slice : one feature, one user, one test, should be validated before building the full system. If I were starting today, I would build the prerequisite trace alone, run it on one real student's test data, and ask them: "Does this match your experience? Is this useful?" Everything else would follow or not based on that signal.
 
-I also learned that I gravitate toward strategic problem decomposition and system architecture — taking an ambiguous problem, breaking it into tractable sub-problems, and designing how the pieces fit together. That was the part of this project I found most energizing, and where I moved fastest — including through failures. The strategic pivots (killing the RAG pipeline, scoping from 90K to 4.5K questions, switching subjects when Chemistry data broke) were decisions I made quickly and correctly. The failure was not in strategy but in sequencing: I should have validated demand before investing in depth.
+I also learned that I gravitate toward strategic problem decomposition and system architecture, taking an ambiguous problem, breaking it into tractable sub-problems, and designing how the pieces fit together. That was the part of this project I found most energizing, and where I moved fastest, including through failures. The strategic pivots (killing the RAG pipeline, scoping from 90K to 4.5K questions, switching subjects when Chemistry data broke) were decisions I made quickly and correctly. The failure was not in strategy but in sequencing: I should have validated demand before investing in depth.
 
 ---
 
@@ -358,23 +361,23 @@ The obvious objection to synthetic validation is circular: the engine found patt
 
 ### One student, no cohort
 
-Every baseline in the engine is self-referential — a student compared to their own history. There are no cohort norms. The system cannot say what 60% on Parabola means relative to other aspirants, cannot place a student on a percentile, and cannot distinguish "weak for a top-100 candidate" from "strong for a first-attempt student." The five synthetic students even share the same fifteen test papers by design, a fairness convenience real cohorts won't offer.
+Every baseline in the engine is self-referential, a student compared to their own history. There are no cohort norms. The system cannot say what 60% on Parabola means relative to other aspirants, cannot place a student on a percentile, and cannot distinguish "weak for a top-100 candidate" from "strong for a first-attempt student." The five synthetic students even share the same fifteen test papers by design, a fairness convenience real cohorts won't offer.
 
 ### Thresholds: reasoned, never calibrated
 
-Every constant in the engine — the 0.40 weak line, the 0.65 tipping point, F5's four gates (n ≥ 5, gap > 0.20, accuracy < 0.60, confidence ≥ 2.0), F16's stability requirement, F17's priority weights — was chosen by argument, not by data. The audit turned this from a disclaimer into a list of named suspects. F5's accuracy ceiling excluded a materialized overconfidence gap of +0.36 because attempts fragmented across ten nodes and the biggest nodes drifted above 0.60. F16's stability gate, on five-test windows, denied both designed maintenance topics for one student and granted one where zero were designed. F17's "unlocks weak topics" weight overrode design intent in four of five students, and the specified low-scorer proximity override was never implemented at all. Five students on one random seed can *nominate* these miscalibrations; only real outcomes can set the values.
+Every constant in the engine — the 0.40 weak line, the 0.65 tipping point, F5's four gates (n ≥ 5, gap > 0.20, accuracy < 0.60, confidence ≥ 2.0), F16's stability requirement, F17's priority weights was chosen by argument, not by data. The audit turned this from a disclaimer into a list of named suspects. F5's accuracy ceiling excluded a materialized overconfidence gap of +0.36 because attempts fragmented across ten nodes and the biggest nodes drifted above 0.60. F16's stability gate, on five-test windows, denied both designed maintenance topics for one student and granted one where zero were designed. F17's "unlocks weak topics" weight overrode design intent in four of five students, and the specified low-scorer proximity override was never implemented at all. Five students on one random seed can *nominate* these miscalibrations; only real outcomes can set the values.
 
 ### The confidence assumption
 
-The entire overconfidence/underconfidence axis rests on students self-reporting confidence per question, honestly, indefinitely. A synthetic student's confidence is a parameter; a real student's is a mood, a habit, a thing that decays by question 25. Whether students will supply this signal at all — and whether it means the same thing across students — is untested. Our own generator delivered a cautionary tale here: its skip-by-accuracy rule quietly erased an overconfidence plant, because a student who *feels* strong on a topic attempts it, while our simulated student skipped what she was bad at. If believable confidence behavior is this hard to design when you control everything, treating real confidence data as clean input would be naive.
+The entire overconfidence/underconfidence axis rests on students self-reporting confidence per question, honestly, indefinitely. A synthetic student's confidence is a parameter; a real student's is a mood, a habit, a thing that decays by question 25. Whether students will supply this signal at all and whether it means the same thing across students is untested. Our own generator delivered a cautionary tale here: its skip-by-accuracy rule quietly erased an overconfidence plant, because a student who *feels* strong on a topic attempts it, while our simulated student skipped what she was bad at. If believable confidence behavior is this hard to design when you control everything, treating real confidence data as clean input would be naive.
 
 ### Errors belong to questions, not students
 
-`df_question_errors` tags the mistakes a question *invites*, not the mistake a student *made*. F4's failure modes are therefore inference by proxy — a wrong answer inherits the question's dominant error type, adjusted by time and confidence. The generator couldn't even encode per-student error tendencies (its docstring claims it; the code never references error tags), which is why the audit scored those expectations as untestable rather than missed. The schema hole survives into production: closing it requires capturing *which* wrong option a student picked, or their worked steps — a data-collection decision, not an algorithm.
+`df_question_errors` tags the mistakes a question *invites*, not the mistake a student *made*. F4's failure modes are therefore inference by proxy, a wrong answer inherits the question's dominant error type, adjusted by time and confidence. The generator couldn't even encode per-student error tendencies (its docstring claims it; the code never references error tags), which is why the audit scored those expectations as untestable rather than missed. The schema hole survives into production: closing it requires capturing *which* wrong option a student picked, or their worked steps, a data-collection decision, not an algorithm.
 
 ### The horizon gap — answered in the product, not the data
 
-The system cannot know how far the student's exam is, how many hours they have, or how burnt out they are. The original report ending prescribed anyway — "open this one question, right now" — which was the system pretending to context it was never given. The rebuilt ending (`three_doors_section.py`) is the boundary acknowledged inside the product: three priced paths, drawn from work the engine already does, with the choice returned to the only person who knows the horizon. Diagnosis is what the data supports; prescription was overreach.
+The system cannot know how far the student's exam is, how many hours they have, or how burnt out they are. The original report ending prescribed anyway, "open this one question, right now", which was the system pretending to context it was never given. The rebuilt ending (`three_doors_section.py`) is the boundary acknowledged inside the product: three priced paths, drawn from work the engine already does, with the choice returned to the only person who knows the horizon. Diagnosis is what the data supports; prescription was overreach.
 
 ### Small samples make weather, not climate
 
@@ -382,7 +385,7 @@ At fifteen to twenty attempts per topic, the generator's noise envelope (±10% p
 
 ### What the first real pilot must answer
 
-Fifteen to twenty real students, five or more tests each, wrong-option capture on, confidence-elicitation compliance measured. Secondary goals: recalibrate the named thresholds against pilot outcomes, and measure whether students actually pick different doors. But the pilot has one primary, falsifiable question, and it is the same question the product now asks of itself: **when F10 produces a foundational-skill hypothesis and the student takes Door 1's three-question verification, does the hypothesis survive at a rate meaningfully better than chance?** The audit showed F10 generating 24 hypotheses for the weakest student against zero planted — display gating contains that eagerness, but only real verification can retire it. If the hypotheses survive, LECO's deepest claim — that one hidden skill can hold back three topics — has evidence. If they don't, the honest architecture already knows how to update: retire the hypothesis, adjust the plan.
+Fifteen to twenty real students, five or more tests each, wrong-option capture on, confidence-elicitation compliance measured. Secondary goals: recalibrate the named thresholds against pilot outcomes, and measure whether students actually pick different doors. But the pilot has one primary, falsifiable question, and it is the same question the product now asks of itself: **when F10 produces a foundational-skill hypothesis and the student takes Door 1's three-question verification, does the hypothesis survive at a rate meaningfully better than chance?** The audit showed F10 generating 24 hypotheses for the weakest student against zero planted, display gating contains that eagerness, but only real verification can retire it. If the hypotheses survive, LECO's deepest claim : that one hidden skill can hold back three topics, has evidence. If they don't, the honest architecture already knows how to update: retire the hypothesis, adjust the plan.
 
 The project doesn't trail off here. It arrives at the edge of what one person can verify alone — and says so.
 
@@ -390,12 +393,12 @@ The project doesn't trail off here. It arrives at the edge of what one person ca
 
 ## What This Project Is
 
-LECO is a prototype that demonstrates a specific product thesis: that assessment analytics can go far deeper than topic-level accuracy — identifying the exact cognitive pattern and root cause behind a student's failures, and translating that into a small set of honest, priced choices rather than a wall of numbers or a single command the system isn't entitled to give.
+LECO is a prototype that demonstrates a specific product thesis: that assessment analytics can go far deeper than topic-level accuracy, identifying the exact cognitive pattern and root cause behind a student's failures, and translating that into a small set of honest, priced choices rather than a wall of numbers or a single command the system isn't entitled to give.
 
-It was built solo over four months. It went through six major pivots. It produced a working diagnostic engine, a labeled dataset of 4,481 questions with ~28,000 analytical labels across three ontological layers, a two-layer prerequisite knowledge graph, and a pipeline architecture that scales to any standardized assessment — not just the exam it was prototyped on.
+It was built solo over four months. It went through six major pivots. It produced a working diagnostic engine, a labeled dataset of 4,481 questions with ~28,000 analytical labels across three ontological layers, a two-layer prerequisite knowledge graph, and a pipeline architecture that scales to any standardized assessment, not just the exam it was prototyped on.
 
-It did not produce a finished product. It did not validate market demand. With the narrative layer and the validation audit in place, the largest unsolved problem is no longer translation — it is contact with reality: whether any of this survives its first fifteen real students.
+It did not produce a finished product. It did not validate market demand. With the narrative layer and the validation audit in place, the largest unsolved problem is no longer translation, it is contact with reality: whether any of this survives its first fifteen real students.
 
-The strongest thing this project demonstrates is strategic thinking under ambiguity — taking a vague problem ("evaluations should be more personal"), decomposing it into a tractable analytical architecture, building and testing approaches, killing the ones that don't work, and shipping something that proves the core idea even if the edges are rough.
+The strongest thing this project demonstrates is strategic thinking under ambiguity, taking a vague problem ("evaluations should be more personal"), decomposing it into a tractable analytical architecture, building and testing approaches, killing the ones that don't work, and shipping something that proves the core idea even if the edges are rough.
 
-The underlying conviction — that every student deserves an evaluation built on user empathy, not just numerical metrics — is something I brought to this project from my own experience, and it's what I want to bring to whatever I work on next.
+The underlying conviction, that every student deserves an evaluation built on user empathy, not just numerical metrics, is something I brought to this project from my own experience, and it's what I want to bring to whatever I work on next.
