@@ -1,0 +1,666 @@
+{
+ "rows": [
+  {
+   "id": "P1",
+   "student": "PRIYA",
+   "feature": "F5",
+   "plant": "Overconfident Complex Numbers (spec conf 2.7, acc ~31%)",
+   "materialized": "0 attempts in 15 tests \u2014 plant censored by skip strategy",
+   "detected": "no signal possible",
+   "verdict": "NOT_MATERIALIZED",
+   "note": "skip-by-accuracy removed every observation of this plant"
+  },
+  {
+   "id": "P2",
+   "student": "PRIYA",
+   "feature": "F11",
+   "plant": "cold_streak Vector Algebra (72->48)",
+   "materialized": "77%->60% (-17%)",
+   "detected": "cold_streak",
+   "verdict": "DETECTED",
+   "note": ""
+  },
+  {
+   "id": "P3",
+   "student": "PRIYA",
+   "feature": "F11",
+   "plant": "hot_streak Definite Integration (25->42)",
+   "materialized": "83%->30% (-53%) \u2014 plant inverted/erased by noise+skip-censoring",
+   "detected": "cold_streak",
+   "verdict": "NOT_MATERIALIZED",
+   "note": ""
+  },
+  {
+   "id": "P4",
+   "student": "PRIYA",
+   "feature": "F10",
+   "plant": "F001 translating constraints to equations (strong_hypothesis)",
+   "materialized": "1/5 dependents weak: Straight Lines And Pair Of Straight Lines",
+   "detected": "absent; engine top: F038(str), F002(mod)",
+   "verdict": "NOT_MATERIALIZED",
+   "note": ""
+  },
+  {
+   "id": "P5",
+   "student": "PRIYA",
+   "feature": "F14",
+   "plant": "Phase 1 \u2287 Sequences, Statistics, Sets, Quadratic",
+   "materialized": "\u2014",
+   "detected": "phase_1=['Functions', 'Sequences And Series', 'Statistics', 'Vector Algebra']",
+   "verdict": "PARTIAL",
+   "note": "2/4 present"
+  },
+  {
+   "id": "P6",
+   "student": "PRIYA",
+   "feature": "F16",
+   "plant": "Maintenance: Sequences, Statistics; Sets volatile",
+   "materialized": "\u2014",
+   "detected": "maintenance=[]; Sets status=not_yet_safe",
+   "verdict": "MISSED",
+   "note": ""
+  },
+  {
+   "id": "P7",
+   "student": "PRIYA",
+   "feature": "F17",
+   "plant": "Priority 1: Limits\u2026, P2: Functions",
+   "materialized": "\u2014",
+   "detected": "top2=['Quadratic Equation And Inequalities', 'Straight Lines And Pair Of Straight Lines']",
+   "verdict": "MISSED",
+   "note": ""
+  },
+  {
+   "id": "P8",
+   "student": "PRIYA",
+   "feature": "F18",
+   "plant": "Question from Limits",
+   "materialized": "\u2014",
+   "detected": "topic=Quadratic Equation And Inequalities",
+   "verdict": "MISSED",
+   "note": ""
+  },
+  {
+   "id": "P9a",
+   "student": "PRIYA",
+   "feature": "F9",
+   "plant": "Limits\u2192Definite Int confirmed",
+   "materialized": "\u2014",
+   "detected": "absent",
+   "verdict": "MISSED",
+   "note": ""
+  },
+  {
+   "id": "P9b",
+   "student": "PRIYA",
+   "feature": "F9",
+   "plant": "Limits\u2192Application  confirmed",
+   "materialized": "\u2014",
+   "detected": "absent",
+   "verdict": "MISSED",
+   "note": ""
+  },
+  {
+   "id": "P10",
+   "student": "PRIYA",
+   "feature": "F7",
+   "plant": "Drop-off at Build Then Solve",
+   "materialized": "\u2014",
+   "detected": "None",
+   "verdict": "MISSED",
+   "note": ""
+  },
+  {
+   "id": "P11",
+   "student": "PRIYA",
+   "feature": "F4",
+   "plant": "Dominant: Setup Gap ~35%",
+   "materialized": "error mix not encoded by generator",
+   "detected": "Concept Gap 32.1%",
+   "verdict": "NOT_IMPLEMENTED",
+   "note": "generator draws is_correct from accuracy only; per-student error tendency (Rule 5) never coded \u2014 docstring claims otherwise"
+  },
+  {
+   "id": "P12",
+   "student": "PRIYA",
+   "feature": "F15/F8",
+   "plant": "Scripted latest-test: 3 blanks incl. Sequences tragic; 14min slow+wrong on Complex/Prob",
+   "materialized": "not in generator",
+   "detected": "\u2014",
+   "verdict": "NOT_IMPLEMENTED",
+   "note": "skip selection is strategy-based, no per-test script"
+  },
+  {
+   "id": "A1",
+   "student": "ARJUN",
+   "feature": "F5",
+   "plant": "None expected (calibrated low conf on weak topics)",
+   "materialized": "noise-made gaps exist",
+   "detected": "1 flags: {'Sets And Relations': 1}",
+   "verdict": "EMERGENT",
+   "note": "all flags are data-supported (engine is deterministic); excess vs design intent"
+  },
+  {
+   "id": "A2",
+   "student": "ARJUN",
+   "feature": "F6",
+   "plant": "None expected (high conf matches strong topics)",
+   "materialized": "\u2014",
+   "detected": "0 flags",
+   "verdict": "CLEAN",
+   "note": ""
+  },
+  {
+   "id": "A3",
+   "student": "ARJUN",
+   "feature": "F10",
+   "plant": "Should NOT trigger strongly (weak_hypothesis at most)",
+   "materialized": "breadth gap, prereqs also weak",
+   "detected": "0 hyps; tiers=Counter()",
+   "verdict": "DETECTED",
+   "note": "spec: polarization \u2260 foundational gap"
+  },
+  {
+   "id": "A4",
+   "student": "ARJUN",
+   "feature": "F11",
+   "plant": "No hot/cold streaks expected",
+   "materialized": "noise created real drifts",
+   "detected": "8: Sets And Relations:hot_(+24%); Functions:hot_(+20%); Quadratic Equation And Inequalities:hot_(+20%); 3D Geometry:hot_(+15%); Straight Lines And Pair Of Straight Lines:hot_(+10%); Permutations And Combinations:cold(-20%)",
+   "verdict": "EMERGENT",
+   "note": "small-n noise reads as streaks"
+  },
+  {
+   "id": "A5",
+   "student": "ARJUN",
+   "feature": "F14",
+   "plant": "Phase 1 = his 5 banked topics",
+   "materialized": "\u2014",
+   "detected": "phase_1=['3D Geometry', 'Functions', 'Matrices And Determinants', 'Sequences And Series', 'Statistics', 'Straight Lines And Pair Of Straight Lines', 'Vector Algebra']",
+   "verdict": "DETECTED",
+   "note": "5/5"
+  },
+  {
+   "id": "A6",
+   "student": "ARJUN",
+   "feature": "F16",
+   "plant": "Maintenance: the same 5 topics",
+   "materialized": "\u2014",
+   "detected": "1: ['Functions']",
+   "verdict": "MISSED",
+   "note": "0/5"
+  },
+  {
+   "id": "A7",
+   "student": "ARJUN",
+   "feature": "F17",
+   "plant": "P1 Binomial Theorem, P2 Straight Lines",
+   "materialized": "\u2014",
+   "detected": "top2=['Quadratic Equation And Inequalities', 'Logarithm']",
+   "verdict": "MISSED",
+   "note": ""
+  },
+  {
+   "id": "A8",
+   "student": "ARJUN",
+   "feature": "F18",
+   "plant": "Question from Binomial Theorem",
+   "materialized": "\u2014",
+   "detected": "Quadratic Equation And Inequalities",
+   "verdict": "MISSED",
+   "note": ""
+  },
+  {
+   "id": "A9",
+   "student": "ARJUN",
+   "feature": "F9",
+   "plant": "Traces mostly weak_signal (concept, not prereq)",
+   "materialized": "student-level error behavior not encodable in schema",
+   "detected": "0/8 weak_signal",
+   "verdict": "N/V",
+   "note": "same data-layer root as P11: error types are question tags, not student behavior"
+  },
+  {
+   "id": "A10",
+   "student": "ARJUN",
+   "feature": "F7",
+   "plant": "Steep drop-off at Build Then Solve",
+   "materialized": "\u2014",
+   "detected": "Formula with Judgment",
+   "verdict": "PARTIAL",
+   "note": ""
+  },
+  {
+   "id": "A11",
+   "student": "ARJUN",
+   "feature": "struct",
+   "plant": "Polarization: ~5 topics \u226585%, ~10 topics \u226425% (data-level)",
+   "materialized": "5 topics \u226580% | 2 topics \u226425% (n\u22656)",
+   "detected": "\u2014",
+   "verdict": "DETECTED",
+   "note": "smart-skipping censors weak topics: few reach n\u22656, so the \u226425% tail is under-observed by design"
+  },
+  {
+   "id": "M1",
+   "student": "MEERA",
+   "feature": "F1",
+   "plant": "Weak nodes only in Coord-Geo cluster + Probability",
+   "materialized": "\u2014",
+   "detected": "in-cluster topics hit: ['Circle', 'Ellipse', 'Hyperbola', 'Parabola', 'Probability']; outside: 6 topics",
+   "verdict": "DETECTED",
+   "note": "outside e.g. ['Application Of Derivatives', 'Area Under The Curves', 'Differential Equations']"
+  },
+  {
+   "id": "M2",
+   "student": "MEERA",
+   "feature": "F10",
+   "plant": "F002 locus by parameter elimination (strong_hypothesis)",
+   "materialized": "4/6 dependents weak: Circle, Parabola, Ellipse",
+   "detected": "F002 as moderate_hypothesis (rank 2/5)",
+   "verdict": "PARTIAL",
+   "note": ""
+  },
+  {
+   "id": "M3",
+   "student": "MEERA",
+   "feature": "F5",
+   "plant": "None expected (well calibrated)",
+   "materialized": "noise-made gaps exist",
+   "detected": "2 flags: {'Matrices And Determinants': 1, 'Differential Equations': 1}",
+   "verdict": "EMERGENT",
+   "note": "all flags are data-supported (engine is deterministic); excess vs design intent"
+  },
+  {
+   "id": "M4",
+   "student": "MEERA",
+   "feature": "F6",
+   "plant": "Possibly Area Under Curves (58%, conf 1.8)",
+   "materialized": "acc 60%, conf 1.5, n=15",
+   "detected": "0 flags",
+   "verdict": "CLEAN",
+   "note": "spec marked 'possibly' \u2014 soft expectation"
+  },
+  {
+   "id": "M5",
+   "student": "MEERA",
+   "feature": "F11",
+   "plant": "No hot/cold streaks expected",
+   "materialized": "noise created real drifts",
+   "detected": "11: Permutations And Combinations:hot_(+44%); Vector Algebra:hot_(+31%); Limits Continuity And Differentiability:hot_(+30%); Sets And Relations:hot_(+29%); Binomial Theorem:hot_(+16%); 3D Geometry:cold(-10%)",
+   "verdict": "EMERGENT",
+   "note": "small-n noise reads as streaks"
+  },
+  {
+   "id": "M6",
+   "student": "MEERA",
+   "feature": "F16",
+   "plant": "8\u201310 maintenance topics",
+   "materialized": "\u2014",
+   "detected": "4: ['Permutations And Combinations', 'Sets And Relations', 'Statistics', 'Vector Algebra']\u2026",
+   "verdict": "MISSED",
+   "note": ""
+  },
+  {
+   "id": "M7",
+   "student": "MEERA",
+   "feature": "F14",
+   "plant": "Huge Phase 1 (12+)",
+   "materialized": "\u2014",
+   "detected": "16 topics",
+   "verdict": "DETECTED",
+   "note": ""
+  },
+  {
+   "id": "M8",
+   "student": "MEERA",
+   "feature": "F17",
+   "plant": "P1 Circle (or F002 practice)",
+   "materialized": "\u2014",
+   "detected": "top2=['Quadratic Equation And Inequalities', 'Circle']",
+   "verdict": "PARTIAL",
+   "note": ""
+  },
+  {
+   "id": "M9",
+   "student": "MEERA",
+   "feature": "F18",
+   "plant": "Question from Circle/Parabola (locus)",
+   "materialized": "\u2014",
+   "detected": "Quadratic Equation And Inequalities",
+   "verdict": "MISSED",
+   "note": ""
+  },
+  {
+   "id": "M10",
+   "student": "MEERA",
+   "feature": "F9",
+   "plant": "Circle's prereqs read 'fine' (problem is coord-geo itself)",
+   "materialized": "prereq topics strong in data",
+   "detected": "['fine', 'also_weak', 'also_weak']",
+   "verdict": "PARTIAL",
+   "note": ""
+  },
+  {
+   "id": "R1",
+   "student": "RAHUL",
+   "feature": "F5",
+   "plant": "None expected (confidence already low)",
+   "materialized": "\u2014",
+   "detected": "0 flags",
+   "verdict": "CLEAN",
+   "note": ""
+  },
+  {
+   "id": "R2",
+   "student": "RAHUL",
+   "feature": "F6",
+   "plant": "None expected (nothing secretly strong)",
+   "materialized": "\u2014",
+   "detected": "0 flags",
+   "verdict": "CLEAN",
+   "note": ""
+  },
+  {
+   "id": "R3",
+   "student": "RAHUL",
+   "feature": "F10",
+   "plant": "Global acc <35\u201340% \u2192 display top-1 only",
+   "materialized": "global acc 34.7%",
+   "detected": "display=top_1, 24 hyps generated",
+   "verdict": "DETECTED",
+   "note": "24 hypotheses generated but suppressed to 1 \u2014 over-generation vs display discipline"
+  },
+  {
+   "id": "R4",
+   "student": "RAHUL",
+   "feature": "F11",
+   "plant": "No hot/cold streaks expected",
+   "materialized": "noise created real drifts",
+   "detected": "7: Sets And Relations:hot_(+46%); Statistics:hot_(+43%); Binomial Theorem:hot_(+35%); Functions:hot_(+35%); Area Under The Curves:hot_(+20%); Definite Integration:hot_(+18%)",
+   "verdict": "EMERGENT",
+   "note": "small-n noise reads as streaks"
+  },
+  {
+   "id": "R5",
+   "student": "RAHUL",
+   "feature": "F14",
+   "plant": "Phase 1: Statistics only",
+   "materialized": "\u2014",
+   "detected": "phase_1=['Logarithm', 'Statistics']",
+   "verdict": "PARTIAL",
+   "note": ""
+  },
+  {
+   "id": "R6",
+   "student": "RAHUL",
+   "feature": "F16",
+   "plant": "Zero maintenance topics",
+   "materialized": "\u2014",
+   "detected": "1: ['Statistics']",
+   "verdict": "MISSED",
+   "note": ""
+  },
+  {
+   "id": "R7",
+   "student": "RAHUL",
+   "feature": "F17",
+   "plant": "P1 Statistics (proximity-to-win override)",
+   "materialized": "Statistics best at ~58%",
+   "detected": "top2=['Functions', 'Straight Lines And Pair Of Straight Lines']",
+   "verdict": "MISSED",
+   "note": ""
+  },
+  {
+   "id": "R8",
+   "student": "RAHUL",
+   "feature": "F18",
+   "plant": "Question from Statistics, micro-goal",
+   "materialized": "\u2014",
+   "detected": "Functions | goal: Get 4 right instead of your usual 3 (out",
+   "verdict": "MISSED",
+   "note": ""
+  },
+  {
+   "id": "R9",
+   "student": "RAHUL",
+   "feature": "F7",
+   "plant": "Drop-off everywhere (even Direct App ~45%)",
+   "materialized": "\u2014",
+   "detected": "Direct Application to Formula with Judgment",
+   "verdict": "DETECTED",
+   "note": ""
+  },
+  {
+   "id": "R10",
+   "student": "RAHUL",
+   "feature": "F9",
+   "plant": "Multiple traces, mostly weak_signal",
+   "materialized": "student-level error behavior not encodable in schema",
+   "detected": "4/44 weak_signal",
+   "verdict": "N/V",
+   "note": "same data-layer root as P11"
+  },
+  {
+   "id": "R11",
+   "student": "RAHUL",
+   "feature": "struct",
+   "plant": "Panic tail (Rule 8): fast wrong answers in last 5 slots",
+   "materialized": "question order not stored in CSVs",
+   "detected": "\u2014",
+   "verdict": "N/V",
+   "note": "panic is coded but position is unrecoverable post-hoc"
+  },
+  {
+   "id": "K1",
+   "student": "KAVYA",
+   "feature": "F5",
+   "plant": "Overconfident Matrices And Determinants (spec conf 2.8, acc 38%)",
+   "materialized": "conf 2.7, acc 55%, n=22 (gap +0.35)",
+   "detected": "none",
+   "verdict": "MISSED",
+   "note": ""
+  },
+  {
+   "id": "K2",
+   "student": "KAVYA",
+   "feature": "F5",
+   "plant": "Overconfident Straight Lines And Pair Of Straight Lines (spec conf 2.6, acc 35%)",
+   "materialized": "conf 2.6, acc 15%, n=13 (gap +0.72)",
+   "detected": "1 node(s): Triangle Center Extraction",
+   "verdict": "DETECTED",
+   "note": ""
+  },
+  {
+   "id": "K3",
+   "student": "KAVYA",
+   "feature": "F5",
+   "plant": "Overconfident Binomial Theorem (spec conf 2.5, acc 35%)",
+   "materialized": "conf 2.6, acc 29%, n=14 (gap +0.57)",
+   "detected": "none",
+   "verdict": "MISSED",
+   "note": ""
+  },
+  {
+   "id": "K4",
+   "student": "KAVYA",
+   "feature": "F6",
+   "plant": "Underconfident Vector Algebra (spec conf 1.5, acc 75%)",
+   "materialized": "conf 1.7, acc 71%, n=14 (gap +0.14)",
+   "detected": "none",
+   "verdict": "NOT_MATERIALIZED",
+   "note": ""
+  },
+  {
+   "id": "K5",
+   "student": "KAVYA",
+   "feature": "F6",
+   "plant": "Sequences underconf but suppressed by recency (last-2-test conf 2.5 design)",
+   "materialized": "conf constant 1.5 in code \u2014 suppression signal never generated",
+   "detected": "\u2014",
+   "verdict": "NOT_IMPLEMENTED",
+   "note": "recency-suppression design present in spec, absent in generator"
+  },
+  {
+   "id": "K6",
+   "student": "KAVYA",
+   "feature": "F11",
+   "plant": "hot_streak Definite Integration (20->45)",
+   "materialized": "31%->29% (-2%) \u2014 plant inverted/erased by noise+skip-censoring",
+   "detected": "stagnant",
+   "verdict": "NOT_MATERIALIZED",
+   "note": ""
+  },
+  {
+   "id": "K7",
+   "student": "KAVYA",
+   "feature": "F11",
+   "plant": "cold_streak Limits Continuity And Differentiability (65->40)",
+   "materialized": "83%->38% (-46%)",
+   "detected": "cold_streak",
+   "verdict": "DETECTED",
+   "note": ""
+  },
+  {
+   "id": "K8a",
+   "student": "KAVYA",
+   "feature": "F6-MCQ",
+   "plant": "MCQ-hacker Indefinite Integrals (II 65/8)",
+   "materialized": "MCQ 100% vs Num 0% (n=10)",
+   "detected": "engine has MCQ-reliability guard in F6; no dedicated hacker flag",
+   "verdict": "DETECTED",
+   "note": "materialized in data; engine can only demote F6 flags, cannot surface hacking \u2014 capability gap"
+  },
+  {
+   "id": "K8b",
+   "student": "KAVYA",
+   "feature": "F6-MCQ",
+   "plant": "MCQ-hacker Quadratic Equation A (QE 75/20)",
+   "materialized": "MCQ 67% vs Num 25% (n=14)",
+   "detected": "engine has MCQ-reliability guard in F6; no dedicated hacker flag",
+   "verdict": "DETECTED",
+   "note": "materialized in data; engine can only demote F6 flags, cannot surface hacking \u2014 capability gap"
+  },
+  {
+   "id": "K9",
+   "student": "KAVYA",
+   "feature": "F8",
+   "plant": "1 stretch question on latest test",
+   "materialized": "not scripted (see P12-type gap)",
+   "detected": "0 stretch",
+   "verdict": "NOT_IMPLEMENTED",
+   "note": ""
+  },
+  {
+   "id": "K10",
+   "student": "KAVYA",
+   "feature": "F9",
+   "plant": "Limits as prereq reads 'fine' (baseline was 65%)",
+   "materialized": "\u2014",
+   "detected": "['fine', 'fine']",
+   "verdict": "DETECTED",
+   "note": "engine uses lifetime topic acc; realized LCD lifetime ~48% may read weak \u2014 threshold-sensitivity case"
+  },
+  {
+   "id": "K11",
+   "student": "KAVYA",
+   "feature": "F16",
+   "plant": "Maintenance: Statistics only",
+   "materialized": "\u2014",
+   "detected": "['Sequences And Series', 'Vector Algebra']",
+   "verdict": "MISSED",
+   "note": "engine grant of Seq+VA is data-faithful (last-5 std 0.00); spec's recency-conf design never coded"
+  },
+  {
+   "id": "K12",
+   "student": "KAVYA",
+   "feature": "F17",
+   "plant": "P1 Limits (cold-streak refresh)",
+   "materialized": "\u2014",
+   "detected": "top2=['Functions', 'Quadratic Equation And Inequalities']",
+   "verdict": "MISSED",
+   "note": ""
+  },
+  {
+   "id": "K13",
+   "student": "KAVYA",
+   "feature": "F15",
+   "plant": "Recoverable marks highest of all students",
+   "materialized": "aggressive attempts + panic in data",
+   "detected": "KAVYA:22; MEERA:11; RAHUL:11; PRIYA:9; ARJUN:7",
+   "verdict": "DETECTED",
+   "note": ""
+  },
+  {
+   "id": "K14",
+   "student": "KAVYA",
+   "feature": "F15/F4",
+   "plant": "Scripted time-waste (17min slow+wrong, 2 Seq blanks, 2 rushed Binomial)",
+   "materialized": "not in generator",
+   "detected": "\u2014",
+   "verdict": "NOT_IMPLEMENTED",
+   "note": ""
+  },
+  {
+   "id": "K15",
+   "student": "KAVYA",
+   "feature": "F10",
+   "plant": "Moderate trigger (messier than Priya)",
+   "materialized": "\u2014",
+   "detected": "17 hyps; tiers=Counter({'strong_hypothesis': 9, 'moderate_hypothesis': 6, 'weak_hypothesis': 2})",
+   "verdict": "DETECTED",
+   "note": ""
+  }
+ ],
+ "census": {
+  "PRIYA": {
+   "f5_flags": 3,
+   "f5_outside_plant": 2,
+   "f6_flags": 2,
+   "streak_topics": 9,
+   "streaks_outside_plant": 7,
+   "f10_hyps": 2,
+   "f10_planted": 1,
+   "f10_excess": 1
+  },
+  "ARJUN": {
+   "f5_flags": 1,
+   "f5_outside_plant": 1,
+   "f6_flags": 0,
+   "streak_topics": 8,
+   "streaks_outside_plant": 8,
+   "f10_hyps": 0,
+   "f10_planted": 0,
+   "f10_excess": 0
+  },
+  "MEERA": {
+   "f5_flags": 2,
+   "f5_outside_plant": 2,
+   "f6_flags": 0,
+   "streak_topics": 11,
+   "streaks_outside_plant": 11,
+   "f10_hyps": 5,
+   "f10_planted": 1,
+   "f10_excess": 4
+  },
+  "RAHUL": {
+   "f5_flags": 0,
+   "f5_outside_plant": 0,
+   "f6_flags": 0,
+   "streak_topics": 7,
+   "streaks_outside_plant": 7,
+   "f10_hyps": 24,
+   "f10_planted": 0,
+   "f10_excess": 24
+  },
+  "KAVYA": {
+   "f5_flags": 2,
+   "f5_outside_plant": 1,
+   "f6_flags": 0,
+   "streak_topics": 9,
+   "streaks_outside_plant": 8,
+   "f10_hyps": 17,
+   "f10_planted": 0,
+   "f10_excess": 17
+  }
+ }
+}
