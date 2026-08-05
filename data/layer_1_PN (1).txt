@@ -1,0 +1,76 @@
+source_topic,target_topic
+Vector Algebra,3D Geometry
+Straight Lines And Pair Of Straight Lines,3D Geometry
+Functions,3D Geometry
+Differentiation,Application Of Derivatives
+Functions,Application Of Derivatives
+Limits Continuity And Differentiability,Application Of Derivatives
+Trigonometric Ratio And Identites,Application Of Derivatives
+Definite Integration,Area Under The Curves
+Functions,Area Under The Curves
+Straight Lines And Pair Of Straight Lines,Area Under The Curves
+Permutations And Combinations,Binomial Theorem
+Sequences And Series,Binomial Theorem
+Straight Lines And Pair Of Straight Lines,Circle
+Quadratic Equation And Inequalities,Circle
+Trigonometric Ratio And Identites,Circle
+Trigonometric Ratio And Identites,Complex Numbers
+Quadratic Equation And Inequalities,Complex Numbers
+Vector Algebra,Complex Numbers
+Indefinite Integrals,Definite Integration
+Limits Continuity And Differentiability,Definite Integration
+Functions,Definite Integration
+Differentiation,Differential Equations
+Indefinite Integrals,Differential Equations
+Functions,Differential Equations
+Straight Lines And Pair Of Straight Lines,Differential Equations
+Limits Continuity And Differentiability,Differentiation
+Functions,Differentiation
+Logarithm,Differentiation
+Circle,Ellipse
+Straight Lines And Pair Of Straight Lines,Ellipse
+Quadratic Equation And Inequalities,Ellipse
+Sets And Relations,Functions
+Quadratic Equation And Inequalities,Functions
+Trigonometric Ratio And Identites,Functions
+Ellipse,Hyperbola
+Straight Lines And Pair Of Straight Lines,Hyperbola
+Quadratic Equation And Inequalities,Hyperbola
+Differentiation,Indefinite Integrals
+Trigonometric Ratio And Identites,Indefinite Integrals
+Functions,Indefinite Integrals
+Logarithm,Indefinite Integrals
+Functions,Inverse Trigonometric Functions
+Trigonometric Ratio And Identites,Inverse Trigonometric Functions
+Differentiation,Inverse Trigonometric Functions
+Functions,Limits Continuity And Differentiability
+Trigonometric Ratio And Identites,Limits Continuity And Differentiability
+Logarithm,Limits Continuity And Differentiability
+Quadratic Equation And Inequalities,Limits Continuity And Differentiability
+Quadratic Equation And Inequalities,Logarithm
+Sequences And Series,Logarithm
+Straight Lines And Pair Of Straight Lines,Matrices And Determinants
+Vector Algebra,Matrices And Determinants
+Functions,Matrices And Determinants
+Quadratic Equation And Inequalities,Parabola
+Straight Lines And Pair Of Straight Lines,Parabola
+Circle,Parabola
+Sets And Relations,Permutations And Combinations
+Functions,Permutations And Combinations
+Permutations And Combinations,Probability
+Sets And Relations,Probability
+Binomial Theorem,Probability
+Functions,Probability
+Functions,Quadratic Equation And Inequalities
+Sets And Relations,Quadratic Equation And Inequalities
+Functions,Sequences And Series
+Quadratic Equation And Inequalities,Sequences And Series
+Logarithm,Sequences And Series
+Logarithm,Sets And Relations
+Functions,Sets And Relations
+Quadratic Equation And Inequalities,Statistics
+Sequences And Series,Statistics
+Functions,Statistics
+Functions,Straight Lines And Pair Of Straight Lines
+Trigonometric Ratio And Identites,Straight Lines And Pair Of Straight Lines
+Quadratic Equation And Inequalities,Straight Lines And Pair Of Straigh
