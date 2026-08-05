@@ -2,13 +2,13 @@
 
 A deterministic diagnostic engine that analyzes JEE exam performance at the micro-skill level, traces failure to its root cause through a prerequisite knowledge graph, and turns that into a small set of priced, honest next steps, instead of an overwhelming dashboard of weaknesses.
 
-Built on a labeled corpus of **4,481 JEE Mathematics PYQs** (2015–2026) enriched with reasoning archetypes, error taxonomies, and concept tags, all extracted through a two-pass unsupervised LLM discovery pipeline.
+Built on a labeled corpus of **4,481 JEE Mathematics PYQs** (2015–2026) enriched with reasoning archetypes, error taxonomies, and concept tags all extracted through a two-pass unsupervised LLM discovery pipeline.
 
 ---
 
 ## The Problem
 
-Every test-prep platform tells students the same thing: *"You're weak at Calculus."* That's useless. A student staring at 15 weak topics doesn't know where to start. They re-read textbooks they already understand, practice random questions, and stay stuck because the real problem is three layers deeper than "Calculus."
+Every test-prep platform tells students the same thing: *"You're weak at Calculus."* That's useless. A student staring at 15 weak topics doesn't know where to start. They re-read textbooks they already understand, practice random questions, and stay stuck, because the real problem is three layers deeper than "Calculus."
 
 LECO asks a different question: **Why is this student failing and given that a diagnostic can't know their exam date or hours, what are the honest options in front of them?**
 
@@ -20,7 +20,8 @@ LECO asks a different question: **Why is this student failing and given that a d
 
 **Behavioral diagnosis from metadata.** Without requiring students to log their work, the engine infers failure modes from time-taken, confidence ratings, and error patterns: distinguishing concept gaps from setup gaps from execution slips from rushed guesses.
 
-**A priced choice, not a prescription.** The output isn't a dashboard — and it isn't a single command either. It ends in three doors drawn from the engine's own analysis: *rebuild the foundation* (the slow, high-payoff path), *take the quick win* (the topic nearest to tipping into a strength), or *change nothing but strategy* (marks recoverable without new study). Each door is priced in effort and payoff, and labeled for who it's for, because the one thing the engine cannot know is how far the student's exam is. The student picks.
+**A priced choice, not a prescription.** The output isn't a dashboard — and it isn't a single command either. It ends in three doors drawn from the engine's own analysis: *rebuild the foundation* (the slow, high-payoff path), *take the quick win* (the topic nearest to tipping into a strength), or *change nothing but strategy* (marks recoverable without new study). Each door is priced in effort and payoff, and labeled for who it's for — because the one thing the engine cannot know is how far the student's exam is. The student picks. (An earlier version ended by prescribing one specific question; see [why that changed](CASE_STUDY.md#the-boundary--what-leco-doesnt-know).)
+
 ---
 
 ## Architecture Overview
@@ -107,9 +108,7 @@ flowchart TD
     F17 --> F15["F15<br/>Time ROI"]
     F17 --> F18["F18<br/>Next Action"]
 
- 
-
-%% Dark Muted Cobalt Blue
+    %% Dark Muted Cobalt Blue
     style F1 fill:#6B8EAD,stroke:#415C77,color:#000000
     style F2 fill:#6B8EAD,stroke:#415C77,color:#000000
     style F3 fill:#6B8EAD,stroke:#415C77,color:#000000
@@ -165,10 +164,10 @@ See [`DATA_SCHEMA.md`](DATA_SCHEMA.md) for full column descriptions, value domai
 | `data/df_question_concepts.csv` | 11,784 question→concept mappings |
 | `data/layer_1_PN.txt` | 75 topic-level prerequisite edges |
 | `data/prerequisite_final.json` | 42 foundational skills |
-| `data/synthetic/student_responses.csv` | 1,637 responses, 5 designed students × 15 tests |
+| `data/synthetic/student_responses.csv` | 1,637 responses — 5 designed students × 15 tests |
 | `data/synthetic/test_composition.csv` | The 15 shared test papers (30 questions each) |
 | `data/synthetic/student_response_generator.py` | Seeded generator (byte-reproduces the CSV) |
-| `data/synthetic/student_profile_specs.md` | The planted-pattern design spec, the ground truth |
+| `data/synthetic/student_profile_specs.md` | The planted-pattern design spec — the ground truth |
 | `notebooks/01_data_preparation.ipynb` | PYQ scraping, cleaning, LaTeX standardization |
 | `notebooks/Core_tables_extraction.ipynb` | Two-pass LLM pipeline: nodes, errors, concepts |
 | `notebooks/LECO_engine.ipynb` | 16-feature engine + narrative layer + Three Doors ending |
@@ -254,9 +253,9 @@ This project went through six major design phases over four months (Feb–May 20
 
 ## Scope & Limitations
 
-This is a **prototype** scoped to JEE Main Mathematics only. The architecture generalizes to Physics and Chemistry the labeling pipeline, prerequisite graph, and diagnostic engine are subject-agnostic, but the current data corpus and node vocabulary cover Mathematics.
+This is a **prototype** scoped to JEE Main Mathematics only. The architecture generalizes to Physics and Chemistry — the labeling pipeline, prerequisite graph, and diagnostic engine are subject-agnostic — but the current data corpus and node vocabulary cover Mathematics.
 
-The prototype uses **synthetic student data** to demonstrate the engine end-to-end, but not casually. The five students were designed with deliberately planted patterns, and the engine was then scored against that designed ground truth, plant by plant: 61 expectations audited, 19 of 48 testable ones cleanly detected, every miss root-caused ([`docs/VALIDATION.md`](docs/VALIDATION.md)). The diagnostic logic is deterministic and ready for real student data; what synthetic data cannot do is stand in for it.
+The prototype uses **synthetic student data** to demonstrate the engine end-to-end — but not casually. The five students were designed with deliberately planted patterns, and the engine was then scored against that designed ground truth, plant by plant: 61 expectations audited, 19 of 48 testable ones cleanly detected, every miss root-caused ([`docs/VALIDATION.md`](docs/VALIDATION.md)). The diagnostic logic is deterministic and ready for real student data; what synthetic data cannot do is stand in for it.
 
 The 90K-question Kaggle dataset was cleaned but not labeled for this prototype due to cost and time constraints. It remains a candidate for scaling the corpus in a future iteration.
 
@@ -264,7 +263,7 @@ The 90K-question Kaggle dataset was cleaned but not labeled for this prototype d
 
 ## Where the Project Ends — and Why Here
 
-This project stops at a deliberate boundary: everything that can be built and verified without real students has been built and verified. The corpus is labeled, the engine runs, the narrative layer speaks, and the whole chain has been audited against designed ground truth, including an honest account of the eighteen expectations it missed and the mechanisms behind them. The product's final word was rewritten to respect that same boundary: instead of prescribing one action to a student whose exam date, hours, and energy it cannot know, the report now ends in three priced doors — rebuild the foundation, take the quick win, or change nothing but strategy and hands the choice to the only person with the missing context. What remains is the one thing a solo builder cannot manufacture: contact with reality. The first pilot has a single falsifiable question waiting for it, when the engine hypothesizes a hidden foundational skill and a real student takes the three-question verification built into Door 1, does the hypothesis survive? The full map of what LECO doesn't know is in [`CASE_STUDY.md`](CASE_STUDY.md#the-boundary--what-leco-doesnt-know). The project doesn't trail off; it arrives at the edge of what one person can verify alone, and says so.
+This project stops at a deliberate boundary: everything that can be built and verified without real students has been built and verified. The corpus is labeled, the engine runs, the narrative layer speaks, and the whole chain has been audited against designed ground truth — including an honest account of the eighteen expectations it missed and the mechanisms behind them. The product's final word was rewritten to respect that same boundary: instead of prescribing one action to a student whose exam date, hours, and energy it cannot know, the report now ends in three priced doors — rebuild the foundation, take the quick win, or change nothing but strategy — and hands the choice to the only person with the missing context. What remains is the one thing a solo builder cannot manufacture: contact with reality. The first pilot has a single falsifiable question waiting for it — when the engine hypothesizes a hidden foundational skill and a real student takes the three-question verification built into Door 1, does the hypothesis survive? The full map of what LECO doesn't know is in [`CASE_STUDY.md`](CASE_STUDY.md#the-boundary--what-leco-doesnt-know). The project doesn't trail off; it arrives at the edge of what one person can verify alone, and says so.
 
 ---
 
