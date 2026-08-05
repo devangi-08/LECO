@@ -20,7 +20,7 @@ LECO asks a different question: **Why is this student failing and given that a d
 
 **Behavioral diagnosis from metadata.** Without requiring students to log their work, the engine infers failure modes from time-taken, confidence ratings, and error patterns: distinguishing concept gaps from setup gaps from execution slips from rushed guesses.
 
-**A priced choice, not a prescription.** The output isn't a dashboard — and it isn't a single command either. It ends in three doors drawn from the engine's own analysis: *rebuild the foundation* (the slow, high-payoff path), *take the quick win* (the topic nearest to tipping into a strength), or *change nothing but strategy* (marks recoverable without new study). Each door is priced in effort and payoff, and labeled for who it's for — because the one thing the engine cannot know is how far the student's exam is. The student picks. (An earlier version ended by prescribing one specific question; see [why that changed](CASE_STUDY.md#the-boundary--what-leco-doesnt-know).)
+**A priced choice, not a prescription.** The output isn't a dashboard and it isn't a single command either. It ends in three doors drawn from the engine's own analysis: *rebuild the foundation* (the slow, high-payoff path), *take the quick win* (the topic nearest to tipping into a strength), or *change nothing but strategy* (marks recoverable without new study). Each door is priced in effort and payoff, and labeled for who it's for because the one thing the engine cannot know is how far the student's exam is. The student picks. (An earlier version ended by prescribing one specific question; see [why that changed](CASE_STUDY.md#the-boundary--what-leco-doesnt-know).)
 
 ---
 
