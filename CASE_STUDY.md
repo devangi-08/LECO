@@ -2,7 +2,6 @@
 
 ## Building a Diagnostic Engine That Tells Students Why They Fail, Not Just What They Scored
 
----
 
 ## The Problem Nobody Solves
 
