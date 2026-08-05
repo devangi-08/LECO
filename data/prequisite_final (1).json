@@ -1,0 +1,1314 @@
+[
+  {
+    "skill_id": "F001",
+    "skill_name": "Translating verbal or geometric constraints into equations",
+    "description": "The student can take a condition stated in words or as a geometric relationship and write it as one or more algebraic equations, introducing their own symbols for the unknowns. They can convert 'the sum of two numbers is 20 and their product is maximum' into x + y = 20, maximize xy, or 'the perpendicular distance is 3' into a concrete distance equation.",
+    "why_foundational": "Coaching almost always presents problems with the equations already formalized and drills the technique that follows; the act of formalization itself is silently assumed. Practicing JEE questions does not fix it because worked solutions display the finished equations, never the translation step.",
+    "failure_signature": "The student executes a technique competently once equations are handed to them, but writes nothing or writes incorrect equations when faced with a word or geometry problem. Performance is strong on 'compute this' items and systematically weak on 'a curve such that...' or 'a number such that...' items across unrelated topics.",
+    "dependent_topics": [
+      {
+        "topic": "Application Of Derivatives",
+        "how_it_manifests": "Optimization word problems (fencing, boxes, tanks) cannot even be started because the student cannot turn the scenario into an objective function and constraints."
+      },
+      {
+        "topic": "Straight Lines And Pair Of Straight Lines",
+        "how_it_manifests": "Conditions like 'perimeter of the triangle is 4' or 'P is equidistant from two lines' are never converted into the algebraic relation needed."
+      },
+      {
+        "topic": "Probability",
+        "how_it_manifests": "Verbal event descriptions ('product not less than 3/4 of the greatest product') are not turned into countable favorable conditions."
+      },
+      {
+        "topic": "Differential Equations",
+        "how_it_manifests": "Geometric tangent or area conditions stated in words are not converted into a relation between x, y, and dy/dx."
+      },
+      {
+        "topic": "Sequences And Series",
+        "how_it_manifests": "Statements about sums and products of terms are not encoded into equations in the first term and common difference."
+      }
+    ],
+    "diagnostic_question_idea": "A rectangle has a perimeter of 40 cm. Write an equation linking its length and width, and write an expression for its area using only one of those two variables."
+  },
+  {
+    "skill_id": "F002",
+    "skill_name": "Setting up locus equations by parameter elimination",
+    "description": "Given a point that moves subject to a condition, the student can assign it coordinates (h, k), express the governing condition, and then eliminate any auxiliary parameters to obtain a single relation purely in h and k. They understand that a locus is found by removing the free variable, not by plotting points.",
+    "why_foundational": "The word 'locus' appears in the syllabus, but the mechanical discipline of parameter elimination is assumed. JEE practice shows finished loci, so students never internalize the eliminate-the-parameter habit.",
+    "failure_signature": "The student recognizes the word 'locus' but cannot begin, or produces a relation that still contains the parameter and stops there believing they are done. Errors cluster on every 'locus of the midpoint / foot of perpendicular / point of intersection' question regardless of which conic or line it concerns.",
+    "dependent_topics": [
+      {
+        "topic": "Circle",
+        "how_it_manifests": "Locus of the midpoint of a chord, or of the centre of a variable circle, is left half-finished with the parameter still present."
+      },
+      {
+        "topic": "Parabola",
+        "how_it_manifests": "Locus of the midpoint of a focal-chord-related segment cannot be reduced to an x-y equation."
+      },
+      {
+        "topic": "Straight Lines And Pair Of Straight Lines",
+        "how_it_manifests": "Locus of a centroid when one vertex moves on a line is not obtained because the moving coordinate is not eliminated."
+      },
+      {
+        "topic": "Complex Numbers",
+        "how_it_manifests": "Conditions like Re(z) = |z - 1| are not converted into a Cartesian locus by separating z into x + iy and eliminating."
+      },
+      {
+        "topic": "Ellipse",
+        "how_it_manifests": "Locus of the foot of perpendicular from a focus to a tangent cannot be derived because the tangent's parameter is not eliminated."
+      },
+      {
+        "topic": "Hyperbola",
+        "how_it_manifests": "Locus of foot of perpendicular from focus to tangent, or locus of midpoint of a chord with given property, requires parameter elimination identical to the ellipse case."
+      }
+    ],
+    "diagnostic_question_idea": "A point P is always exactly 3 units away from the fixed point (0, 0). Writing P as (x, y), produce a single equation describing every position P can occupy."
+  },
+  {
+    "skill_id": "F003",
+    "skill_name": "Recognizing composite function structure",
+    "description": "The student can look at an expression and decompose it into an outer and inner function — seeing sin(x^2 + 1) as f(g(x)) with f = sin and g = x^2 + 1 — and can count how many layers of nesting are present. They recognize that this compositional structure dictates which technique applies.",
+    "why_foundational": "The chain rule and substitution are taught explicitly, but the prerequisite act of perceiving the decomposition is assumed. Drilling problems where the inner function is obvious does not build recognition for disguised or multi-layered cases.",
+    "failure_signature": "The student omits the inner derivative in the chain rule, picks the wrong u in substitution, or mishandles the domain of a composition. Mistakes appear specifically wherever functions are nested, while flat single-layer problems are handled correctly.",
+    "dependent_topics": [
+      {
+        "topic": "Differentiation",
+        "how_it_manifests": "Chain rule is misapplied — the inner derivative is forgotten, or a composite is differentiated as if it were elementary."
+      },
+      {
+        "topic": "Indefinite Integrals",
+        "how_it_manifests": "The student cannot identify what to substitute because the inner function inside a composite is not perceived."
+      },
+      {
+        "topic": "Limits Continuity And Differentiability",
+        "how_it_manifests": "Composite piecewise functions are mishandled because the branch-selection structure of the composition is not seen."
+      },
+      {
+        "topic": "Functions",
+        "how_it_manifests": "Computing fog or the domain of a composition fails because the layering of f and g is not analyzed."
+      },
+      {
+        "topic": "Inverse Trigonometric Functions",
+        "how_it_manifests": "Nested expressions like cos(sin^-1(x)) are not unpacked layer by layer."
+      }
+    ],
+    "diagnostic_question_idea": "For the expression sqrt(3x + 5), name the inner function and the outer function. Do the same for e^(cos x), and state how many layers of nesting it has."
+  },
+  {
+    "skill_id": "F004",
+    "skill_name": "Isolating a variable that appears on both sides or in multiple terms",
+    "description": "The student can fluently solve for a target quantity when it appears on both sides of an equation, inside products, or spread across several terms — collecting like terms, factoring the target out, and dividing safely. This is multi-step rearrangement, not single-step transposition.",
+    "why_foundational": "This is class 8-10 algebra that sits below every 'solve for' step in the syllabus and is never retaught. JEE practice assumes it completely, so a shaky student is never diagnosed.",
+    "failure_signature": "The student stalls in the middle of an otherwise-understood solution, makes sign or division errors when collecting terms, or abandons a problem after correctly setting it up. The algebra phase of every topic is slow and error-prone.",
+    "dependent_topics": [
+      {
+        "topic": "Quadratic Equation And Inequalities",
+        "how_it_manifests": "Rearranging a relation into standard ax^2 + bx + c = 0 form produces errors before any root analysis can begin."
+      },
+      {
+        "topic": "Differential Equations",
+        "how_it_manifests": "Separating variables or solving for dy/dx fails when y appears in several terms."
+      },
+      {
+        "topic": "Trigonometric Ratio And Identities",
+        "how_it_manifests": "Rearranging identities to isolate a required ratio breaks down."
+      },
+      {
+        "topic": "Straight Lines And Pair Of Straight Lines",
+        "how_it_manifests": "Solving simultaneous line equations for an intersection point yields arithmetic mistakes."
+      },
+      {
+        "topic": "Logarithm",
+        "how_it_manifests": "Equations where the unknown sits in several log terms cannot be consolidated."
+      },
+      {
+        "topic": "Statistics",
+        "how_it_manifests": "Computing corrected mean or variance after adding/removing a data point requires rearranging sum formulas where the unknown appears on both sides."
+      }
+    ],
+    "diagnostic_question_idea": "Solve for x: 3x + 7 = 5 - 2x + ax, where a is a known constant."
+  },
+  {
+    "skill_id": "F005",
+    "skill_name": "Recognizing a disguised quadratic structure",
+    "description": "The student can see that an equation is quadratic in some quantity other than x — quadratic in cos x, in e^x, in a logarithm, or in x + 1/x — and can introduce a substitution t to expose the standard quadratic form.",
+    "why_foundational": "Substitution is mentioned per-topic, but the cross-topic recognition of the hidden quadratic shape is the invisible competency. It is a perception skill, not a procedure.",
+    "failure_signature": "The student treats trigonometric, exponential, or logarithmic equations as intractable and never thinks to substitute, while solving plain quadratics with ease. Equation-type questions fail across many topics for the same hidden reason.",
+    "dependent_topics": [
+      {
+        "topic": "Trigonometric Ratio And Identities",
+        "how_it_manifests": "Equations reducible to a quadratic in sin x or cos x are not recognized as such."
+      },
+      {
+        "topic": "Logarithm",
+        "how_it_manifests": "Reciprocal-log expressions that become t + 1/t quadratics are not spotted."
+      },
+      {
+        "topic": "Complex Numbers",
+        "how_it_manifests": "Equations that are quadratic in |z| or in z are not reduced to a solvable form."
+      },
+      {
+        "topic": "Quadratic Equation And Inequalities",
+        "how_it_manifests": "Exponential-to-quadratic substitutions like t = e^x are missed."
+      },
+      {
+        "topic": "Limits Continuity And Differentiability",
+        "how_it_manifests": "Expressions that simplify via a quadratic substitution before the limit are handled by brute force instead."
+      }
+    ],
+    "diagnostic_question_idea": "The equation e^(2x) - 5e^x + 6 = 0 looks complicated. What single substitution turns it into an ordinary quadratic, and what is that quadratic?"
+  },
+  {
+    "skill_id": "F006",
+    "skill_name": "Sign analysis of factored expressions over intervals",
+    "description": "The student can determine the sign of a product or quotient of factors on each interval of the real line, build a sign chart by marking the zeros and undefined points, and read off where the expression is positive, negative, or zero.",
+    "why_foundational": "The sign-chart method is named for inequalities, but the underlying habit of tracking sign factor-by-factor underlies monotonicity, region identification, and domains. The habit is assumed everywhere it is reused.",
+    "failure_signature": "The student reports wrong intervals in inequalities, draws the wrong sign for f'(x) and hence wrong increasing/decreasing conclusions, picks the wrong region in an area problem, or accepts an invalid radical domain.",
+    "dependent_topics": [
+      {
+        "topic": "Quadratic Equation And Inequalities",
+        "how_it_manifests": "Polynomial and rational inequalities yield wrong solution sets because the sign chart is built incorrectly."
+      },
+      {
+        "topic": "Application Of Derivatives",
+        "how_it_manifests": "The sign of f'(x) is misjudged, producing wrong intervals of monotonicity and misclassified extrema."
+      },
+      {
+        "topic": "Area Under The Curves",
+        "how_it_manifests": "The wrong side of a curve is taken as the region because the sign of the bounding inequality is not analyzed."
+      },
+      {
+        "topic": "Functions",
+        "how_it_manifests": "Domain conditions involving products under radicals are resolved incorrectly."
+      },
+      {
+        "topic": "Definite Integration",
+        "how_it_manifests": "Intervals where an integrand changes sign are not correctly identified before splitting."
+      }
+    ],
+    "diagnostic_question_idea": "For which values of x is the expression (x - 1)(x + 2) negative? Mark a number line to justify your answer."
+  },
+  {
+    "skill_id": "F007",
+    "skill_name": "Systematic exhaustive case analysis",
+    "description": "The student can break a problem into cases that are mutually exclusive and collectively exhaustive, solve each case separately, and combine the results — without omitting a case or counting one twice. They can generate the case partition themselves rather than being told it.",
+    "why_foundational": "Coaching displays finished case splits; the discipline of constructing a complete partition is assumed. It is a structuring habit, not a formula.",
+    "failure_signature": "The student misses cases (a negative root, a base less than one, a leading-zero possibility), double-counts arrangements, or produces partial answers that are 'almost right'. Counting problems are undercounted and modulus problems lose branches.",
+    "dependent_topics": [
+      {
+        "topic": "Permutations And Combinations",
+        "how_it_manifests": "Arrangements are undercounted because the student fails to split into all required sub-cases."
+      },
+      {
+        "topic": "Quadratic Equation And Inequalities",
+        "how_it_manifests": "Absolute-value or floor-function equations lose solutions because not every sign interval is examined."
+      },
+      {
+        "topic": "Logarithm",
+        "how_it_manifests": "The base greater-than-one versus base-between-zero-and-one cases are not both handled."
+      },
+      {
+        "topic": "Inverse Trigonometric Functions",
+        "how_it_manifests": "Formula application without case analysis on whether a product exceeds 1 gives wrong principal values."
+      },
+      {
+        "topic": "Probability",
+        "how_it_manifests": "Favorable outcomes are miscounted because the event is not decomposed into exhaustive disjoint cases."
+      },
+      {
+        "topic": "Matrices And Determinants",
+        "how_it_manifests": "Analyzing system consistency for different parameter values requires systematic case splitting on determinant zero vs nonzero, and sub-cases for infinite vs no solution."
+      },
+      {
+        "topic": "Sets And Relations",
+        "how_it_manifests": "Verifying reflexive, symmetric, and transitive properties requires checking all relevant pairs — a systematic case-analysis discipline."
+      }
+    ],
+    "diagnostic_question_idea": "Solve |x - 3| = 5. Before solving, write down every case you need to consider and explain why your list is complete."
+  },
+  {
+    "skill_id": "F008",
+    "skill_name": "Handling absolute value as a piecewise object and as distance",
+    "description": "The student can rewrite an absolute value expression as a piecewise function by locating where the inside changes sign, can interpret |a - b| as the distance between a and b, and can unpack nested absolute values methodically.",
+    "why_foundational": "The absolute value is introduced early, but the dual algebraic-geometric handling and the breakpoint-splitting procedure are assumed in every later use. It is rarely revisited explicitly.",
+    "failure_signature": "The student drops the bars incorrectly (always assuming the inside is positive), mishandles the V-shape of |f(x)|, or chooses wrong breakpoints when integrating or finding areas. Errors appear wherever modulus is present.",
+    "dependent_topics": [
+      {
+        "topic": "Functions",
+        "how_it_manifests": "Compositions like f(|x|) and |f(x)| are misanalyzed because the piecewise structure is not made explicit."
+      },
+      {
+        "topic": "Area Under The Curves",
+        "how_it_manifests": "Regions bounded by |ax + b| or nested moduli are set up with wrong sub-intervals."
+      },
+      {
+        "topic": "Definite Integration",
+        "how_it_manifests": "Integrals of |f(x)| are not split at the zeros of f, giving wrong values."
+      },
+      {
+        "topic": "Complex Numbers",
+        "how_it_manifests": "Modulus conditions are not connected to their geometric distance meaning."
+      },
+      {
+        "topic": "Limits Continuity And Differentiability",
+        "how_it_manifests": "Non-differentiability at corners of absolute-value functions is not located."
+      }
+    ],
+    "diagnostic_question_idea": "Rewrite |2x - 6| as a piecewise expression with no absolute-value bars, and state the x-value where the two pieces meet."
+  },
+  {
+    "skill_id": "F009",
+    "skill_name": "Reading an equation as a geometric object and back",
+    "description": "The student can look at an algebraic equation or inequality and identify the geometric shape or region it represents — recognizing x^2 + y^2 + ... = 0 as a circle, |z - a| = r as a circle, ax + by + c = 0 as a line, or a constraint as a conic or half-plane — and conversely write the equation a described shape satisfies.",
+    "why_foundational": "Each topic teaches its own standard forms, but the cross-topic meta-skill of asking 'what shape is this?' is assumed. Students who lack it process coordinate equations purely symbolically.",
+    "failure_signature": "The student manipulates coordinate equations algebraically without ever picturing them, misses geometric shortcuts, and cannot describe what curve or region a given constraint defines.",
+    "dependent_topics": [
+      {
+        "topic": "Circle",
+        "how_it_manifests": "A general second-degree equation is not recognized as a circle, so centre and radius are never extracted."
+      },
+      {
+        "topic": "Complex Numbers",
+        "how_it_manifests": "Conditions such as |z - a| = |z - b| are not seen as a perpendicular bisector or circle."
+      },
+      {
+        "topic": "Straight Lines And Pair Of Straight Lines",
+        "how_it_manifests": "Region descriptions via linear inequalities are not visualized as half-planes."
+      },
+      {
+        "topic": "Sets And Relations",
+        "how_it_manifests": "Sets in R^2 defined by absolute-value or quadratic constraints are not interpreted as recognizable regions."
+      },
+      {
+        "topic": "Parabola",
+        "how_it_manifests": "An equation like Re(z) = |z - 1| or y^2 = 4ax is not connected to a parabolic shape."
+      },
+      {
+        "topic": "Hyperbola",
+        "how_it_manifests": "Recognizing xy = c² as a rectangular hyperbola, or identifying a general second-degree equation as a hyperbola from the sign of the discriminant."
+      }
+    ],
+    "diagnostic_question_idea": "What geometric shape does x^2 + y^2 - 4x = 0 represent? What about the set of points satisfying |z - 1| = |z + 1| in the complex plane?"
+  },
+  {
+    "skill_id": "F010",
+    "skill_name": "Parametrizing a general point on a curve",
+    "description": "The student can represent an arbitrary point on a known curve using a single parameter — (a cos t, b sin t) on an ellipse, (a t^2, 2 a t) on a parabola, point-plus-t-times-direction on a line — and can decide that parametrizing is the right move.",
+    "why_foundational": "Parametric forms are listed per conic, but the strategic decision to parametrize and the comfort of carrying a single parameter through a computation are assumed.",
+    "failure_signature": "The student tries to describe 'a point on the curve' using two coordinates plus a constraint and becomes tangled, unable to set up distance, tangent, or locus problems that involve a moving point on a curve.",
+    "dependent_topics": [
+      {
+        "topic": "Parabola",
+        "how_it_manifests": "Problems about a variable point or chord are not started because the point is not written parametrically."
+      },
+      {
+        "topic": "Ellipse",
+        "how_it_manifests": "Inscribed-triangle and chord-midpoint problems stall without the eccentric-angle parametrization."
+      },
+      {
+        "topic": "3D Geometry",
+        "how_it_manifests": "A general point on a line is not written as point + t·direction, so foot-of-perpendicular and intersection steps fail."
+      },
+      {
+        "topic": "Application Of Derivatives",
+        "how_it_manifests": "Shortest-distance-to-a-curve problems are not set up because the curve point is not parametrized."
+      },
+      {
+        "topic": "Hyperbola",
+        "how_it_manifests": "Tangent and normal problems at a variable point are not handled via the sec t, tan t parametrization."
+      }
+    ],
+    "diagnostic_question_idea": "Write a formula for a general point on the line that passes through (1, 2) in the direction (3, -1), using a single parameter t."
+  },
+  {
+    "skill_id": "F011",
+    "skill_name": "Knowing that extremizing f equals extremizing a monotone transform of f",
+    "description": "The student understands that minimizing or maximizing a quantity is equivalent to minimizing or maximizing any strictly monotonic function of it — so minimizing a distance is the same as minimizing its square — and uses this to avoid awkward radicals or logarithms.",
+    "why_foundational": "This is a reasoning move, never taught as a named skill, yet assumed in many optimization problems. It is a piece of mathematical judgment, not a procedure.",
+    "failure_signature": "The student differentiates ugly radical or product expressions directly, makes errors in the heavy algebra, or gives up. Shortest-distance and optimization problems take far longer than they should.",
+    "dependent_topics": [
+      {
+        "topic": "Application Of Derivatives",
+        "how_it_manifests": "Shortest-distance problems are attacked by differentiating a square root instead of its square."
+      },
+      {
+        "topic": "Parabola",
+        "how_it_manifests": "Minimum distance from a point or line to the parabola is computed with avoidable radical algebra."
+      },
+      {
+        "topic": "3D Geometry",
+        "how_it_manifests": "Distance minimization between lines or to a plane is done without squaring, multiplying the work."
+      },
+      {
+        "topic": "Complex Numbers",
+        "how_it_manifests": "Minimizing |z - w| is not simplified by working with |z - w|^2."
+      },
+      {
+        "topic": "Ellipse",
+        "how_it_manifests": "Extremal focal-distance or tangent-length problems are not simplified by extremizing the squared quantity."
+      },
+      {
+        "topic": "Hyperbola",
+        "how_it_manifests": "Minimum distance from a point to a hyperbola branch uses the same squared-distance simplification as for other conics."
+      }
+    ],
+    "diagnostic_question_idea": "To find where sqrt(x^2 + 4) is smallest, a student says it is enough to find where x^2 + 4 is smallest. Is this valid, and why?"
+  },
+  {
+    "skill_id": "F012",
+    "skill_name": "Coefficient comparison and distinguishing an identity from an equation",
+    "description": "The student can tell whether a statement is an identity (true for every value of the variable) or an equation (true only for special values), and for identities they equate coefficients of like powers or like terms to generate equations for the unknown constants.",
+    "why_foundational": "This logical distinction underlies partial fractions, undetermined coefficients, and functional-equation work, but it is assumed and never taught as a standalone idea.",
+    "failure_signature": "The student tries to 'solve' an identity as if it were an equation, cannot find unknown constants in partial fractions or polynomial-matching tasks, and mishandles any condition phrased 'for all x'.",
+    "dependent_topics": [
+      {
+        "topic": "Indefinite Integrals",
+        "how_it_manifests": "Partial fraction constants cannot be found because like-term coefficients are not equated."
+      },
+      {
+        "topic": "Functions",
+        "how_it_manifests": "Polynomial functions defined by 'for all x' conditions are not solved by coefficient matching."
+      },
+      {
+        "topic": "Differential Equations",
+        "how_it_manifests": "Identifying coefficients when matching a solution form to a given equation fails."
+      },
+      {
+        "topic": "Binomial Theorem",
+        "how_it_manifests": "Equating coefficients of a particular power across two expressions is not performed correctly."
+      },
+      {
+        "topic": "Quadratic Equation And Inequalities",
+        "how_it_manifests": "Building a quadratic from a 'holds for all x' functional condition is mishandled."
+      },
+      {
+        "topic": "Matrices And Determinants",
+        "how_it_manifests": "Matching matrix elements or equating polynomial expressions from Cayley-Hamilton requires coefficient-comparison discipline."
+      }
+    ],
+    "diagnostic_question_idea": "If ax + b = 3x - 5 holds for every value of x, find a and b. Explain how this differs from solving the equation ax + b = 0."
+  },
+  {
+    "skill_id": "F013",
+    "skill_name": "Choosing strategic substitutions into a general relation",
+    "description": "Given a relation asserted to hold for all inputs — a functional equation or an identity — the student can choose specific substitutions (x = 0, y = x, x replaced by 1/x, x replaced by a - x) that expose structure such as f(0), symmetry, or a simpler reduced relation.",
+    "why_foundational": "The creative selection of what to substitute is assumed; worked solutions display the lucky substitution already chosen, never the search for it.",
+    "failure_signature": "The student is stuck at the start of any functional-equation problem, does not know which value to plug in, and cannot extract base values or symmetry from a 'for all x, y' condition.",
+    "dependent_topics": [
+      {
+        "topic": "Functions",
+        "how_it_manifests": "Cauchy-type and substitution-elimination functional equations are not cracked because no productive substitution is tried."
+      },
+      {
+        "topic": "Differentiation",
+        "how_it_manifests": "Functional equations that must be differentiated and evaluated at a point are not set up by first substituting suitable values."
+      },
+      {
+        "topic": "Differential Equations",
+        "how_it_manifests": "A functional equation that should be turned into a differential equation is not seeded with the right substitution."
+      },
+      {
+        "topic": "Limits Continuity And Differentiability",
+        "how_it_manifests": "Continuity or differentiability conditions arising from functional equations are not exploited via substitution."
+      },
+      {
+        "topic": "Definite Integration",
+        "how_it_manifests": "Functional conditions like f(x) + f(a - x) = constant are not used because the relevant substitution is not recognized."
+      }
+    ],
+    "diagnostic_question_idea": "Given that f(x + y) = f(x) + f(y) for all real x and y, determine f(0) by choosing a clever substitution, and explain your choice."
+  },
+  {
+    "skill_id": "F014",
+    "skill_name": "Fluent recall of exact trig values and the unit circle",
+    "description": "The student instantly recalls the sine, cosine, and tangent of standard angles, knows the sign of each function in each quadrant, can locate an angle on the unit circle, and converts between degrees and radians without hesitation.",
+    "why_foundational": "These facts are assumed from class 10-11 and never re-drilled in coaching. Slow or shaky recall silently taxes the time and accuracy of every problem that touches an angle.",
+    "failure_signature": "The student is slow or makes sign errors on anything involving angles, mis-evaluates boundary values, and loses time across many topics that an examiner would expect to be instant.",
+    "dependent_topics": [
+      {
+        "topic": "Trigonometric Ratio And Identities",
+        "how_it_manifests": "Evaluating expressions at standard angles is slow and error-prone, derailing multi-step identity work."
+      },
+      {
+        "topic": "Inverse Trigonometric Functions",
+        "how_it_manifests": "Mapping a value back to its principal angle requires exact-value recall the student lacks."
+      },
+      {
+        "topic": "Complex Numbers",
+        "how_it_manifests": "Polar form and de Moivre computations stall on the trig values of the argument."
+      },
+      {
+        "topic": "Definite Integration",
+        "how_it_manifests": "Evaluating trigonometric antiderivatives at the limits produces sign and value errors."
+      },
+      {
+        "topic": "Vector Algebra",
+        "how_it_manifests": "Angles between vectors at standard values are mis-evaluated."
+      }
+    ],
+    "diagnostic_question_idea": "State, from memory, sin, cos, and tan of 0, pi/6, pi/4, pi/3, and pi/2. In which quadrant is cosine negative while sine is positive?"
+  },
+  {
+    "skill_id": "F015",
+    "skill_name": "Tracking the domain as expressions are built and combined",
+    "description": "The student carries the set of valid inputs through every step of building an expression — keeping a logarithm's argument positive, an even root's argument non-negative, a denominator non-zero, an inverse-trig argument within range — and intersects all these constraints into a final domain.",
+    "why_foundational": "The individual domain rules are known, but the ongoing habit of carrying and intersecting them across a composition is assumed and rarely enforced.",
+    "failure_signature": "The student reports solutions that lie outside the domain, omits domain restrictions entirely, or gives wrong intervals — producing extraneous answers in equation-solving and wrong domains in definition questions.",
+    "dependent_topics": [
+      {
+        "topic": "Functions",
+        "how_it_manifests": "Domain of a composition is not obtained because the constraints from each layer are not intersected."
+      },
+      {
+        "topic": "Logarithm",
+        "how_it_manifests": "Base and argument conditions, especially with a variable base, are not all enforced simultaneously."
+      },
+      {
+        "topic": "Inverse Trigonometric Functions",
+        "how_it_manifests": "The requirement that an inverse-trig argument lies within its range is dropped."
+      },
+      {
+        "topic": "Definite Integration",
+        "how_it_manifests": "Integrands that are undefined on part of the interval are integrated anyway."
+      },
+      {
+        "topic": "Limits Continuity And Differentiability",
+        "how_it_manifests": "One-sided behavior is mis-evaluated because the domain near a point is not considered."
+      },
+      {
+        "topic": "Sets And Relations",
+        "how_it_manifests": "Set-builder notation with compound conditions requires intersecting all domain restrictions simultaneously."
+      }
+    ],
+    "diagnostic_question_idea": "What is the set of all x for which sqrt(x - 2) + 1/(x - 5) is defined?"
+  },
+  {
+    "skill_id": "F016",
+    "skill_name": "Eliminating extraneous solutions by verification",
+    "description": "After performing manipulations that can introduce false solutions — squaring both sides, multiplying by an expression, exponentiating, or cancelling — the student checks each candidate against the original equation and its domain, and discards the ones that do not survive.",
+    "why_foundational": "This is a verification discipline rather than a technique, assumed of every student and routinely skipped under time pressure.",
+    "failure_signature": "The student reports too many solutions, includes invalid ones, and gets the wrong count on 'number of solutions' questions even when the algebra leading up to the candidates is correct.",
+    "dependent_topics": [
+      {
+        "topic": "Logarithm",
+        "how_it_manifests": "Candidate solutions that violate base or argument positivity are not removed."
+      },
+      {
+        "topic": "Quadratic Equation And Inequalities",
+        "how_it_manifests": "Roots introduced by squaring a radical equation are kept incorrectly."
+      },
+      {
+        "topic": "Inverse Trigonometric Functions",
+        "how_it_manifests": "Solutions outside the principal range are reported because they are not checked."
+      },
+      {
+        "topic": "Trigonometric Ratio And Identities",
+        "how_it_manifests": "Counting solutions in an interval gives a wrong total because invalid candidates are not filtered."
+      },
+      {
+        "topic": "Complex Numbers",
+        "how_it_manifests": "Spurious roots from manipulating equations mixing z and its conjugate are not discarded."
+      }
+    ],
+    "diagnostic_question_idea": "Solve sqrt(x + 2) = x. After finding the candidate values, check each one in the original equation and state which actually work."
+  },
+  {
+    "skill_id": "F017",
+    "skill_name": "Translating dynamic 'rate of change' language into derivatives",
+    "description": "The student recognizes phrases like 'the rate at which', 'is increasing', 'per minute', or 'how fast' as derivatives with respect to time, and knows to link related changing quantities by differentiating an equation that relates them.",
+    "why_foundational": "Related rates is a named concept, but the verbal-to-derivative translation and the choice to differentiate a constraint are assumed.",
+    "failure_signature": "The student cannot set up related-rates problems, confuses which quantity is changing, and does not realize a relating equation must be differentiated with respect to time.",
+    "dependent_topics": [
+      {
+        "topic": "Application Of Derivatives",
+        "how_it_manifests": "Water-level, balloon, and sliding-ladder problems are not set up because the words are not converted to derivatives."
+      },
+      {
+        "topic": "Differential Equations",
+        "how_it_manifests": "Physical statements like cooling or growth 'proportional to' a quantity are not turned into a derivative equation."
+      },
+      {
+        "topic": "Differentiation",
+        "how_it_manifests": "The conceptual link between a verbal rate and the formal derivative is not made."
+      },
+      {
+        "topic": "Limits Continuity And Differentiability",
+        "how_it_manifests": "The derivative-as-rate interpretation that motivates the limit definition is missing."
+      }
+    ],
+    "diagnostic_question_idea": "Water is rising in a tank. Express the statement 'the depth is increasing at 2 cm per second' as a derivative, naming the variables you use."
+  },
+  {
+    "skill_id": "F018",
+    "skill_name": "Determining integration limits from curve intersections",
+    "description": "The student can find where two curves meet by solving their equations simultaneously, use those points as the limits of integration, and identify which curve is the upper boundary on each sub-interval of the region.",
+    "why_foundational": "This setup step is assumed before any area technique is applied; coaching solutions present the limits as already known.",
+    "failure_signature": "The student uses wrong limits, takes the wrong function as the top boundary, or fails to split the integral where the boundary changes — producing systematically wrong areas.",
+    "dependent_topics": [
+      {
+        "topic": "Area Under The Curves",
+        "how_it_manifests": "The bounded region is integrated over the wrong interval because intersection points were not computed."
+      },
+      {
+        "topic": "Definite Integration",
+        "how_it_manifests": "Integrals are not split at the points where the integrand or bounding behavior changes."
+      },
+      {
+        "topic": "Application Of Derivatives",
+        "how_it_manifests": "Regions in optimization-of-area problems are bounded incorrectly."
+      },
+      {
+        "topic": "Parabola",
+        "how_it_manifests": "Area between a parabola and a line uses wrong endpoints because the meeting points are not found."
+      },
+      {
+        "topic": "Ellipse",
+        "how_it_manifests": "Area cut from an ellipse by a line uses incorrect limits."
+      }
+    ],
+    "diagnostic_question_idea": "Find all the x-values at which the curves y = x^2 and y = x + 2 intersect."
+  },
+  {
+    "skill_id": "F019",
+    "skill_name": "Manipulating summation notation fluently",
+    "description": "The student can expand and contract a sigma sum, shift the summation index, split a sum into parts, pull constants outside, and recognize the standard sums for the first n integers, their squares, and a geometric series.",
+    "why_foundational": "Sigma notation is used freely by coaching without checking fluency; the mechanical comfort with it sits below the named series concepts.",
+    "failure_signature": "The student misreads a sigma expression, makes off-by-one index errors, and cannot split or re-index a sum — producing errors in series, binomial, probability, and limit-of-a-sum problems.",
+    "dependent_topics": [
+      {
+        "topic": "Sequences And Series",
+        "how_it_manifests": "Splitting a general term into standard power sums fails because the sigma cannot be manipulated."
+      },
+      {
+        "topic": "Binomial Theorem",
+        "how_it_manifests": "Weighted sums of binomial coefficients cannot be re-indexed or recombined."
+      },
+      {
+        "topic": "Definite Integration",
+        "how_it_manifests": "Recognizing a limit of a sum as an integral fails because the sum is not put into standard sigma form."
+      },
+      {
+        "topic": "Probability",
+        "how_it_manifests": "Expected-value sums over a distribution are mishandled."
+      },
+      {
+        "topic": "Statistics",
+        "how_it_manifests": "Working with sum-of-x and sum-of-x-squared expressions produces index and grouping errors."
+      }
+    ],
+    "diagnostic_question_idea": "Write out the sum from k = 1 to 4 of (2k + 1) term by term, then evaluate it."
+  },
+  {
+    "skill_id": "F020",
+    "skill_name": "Recognizing telescoping and cancellation structure",
+    "description": "The student can see when a general term can be written as a difference of consecutive values d(k+1) - d(k) so that a sum collapses, and can correctly identify the few boundary terms that survive the cancellation.",
+    "why_foundational": "Telescoping is a structural pattern; spotting it independently — rather than being told a term decomposes — is the invisible skill below the named telescoping concepts.",
+    "failure_signature": "The student tries to brute-force sums that would telescope, fails to decompose a general term into a difference, or keeps the wrong surviving terms after cancellation.",
+    "dependent_topics": [
+      {
+        "topic": "Sequences And Series",
+        "how_it_manifests": "Rational general terms that should be split into telescoping differences are summed by force."
+      },
+      {
+        "topic": "Inverse Trigonometric Functions",
+        "how_it_manifests": "Series of arctangent or arccotangent terms are not collapsed via subtraction decomposition."
+      },
+      {
+        "topic": "Definite Integration",
+        "how_it_manifests": "Sums or integrals with cancelling structure are not simplified before evaluation."
+      },
+      {
+        "topic": "Trigonometric Ratio And Identities",
+        "how_it_manifests": "Finite trig sums that telescope via a cosecant or cotangent decomposition are not recognized."
+      },
+      {
+        "topic": "Limits Continuity And Differentiability",
+        "how_it_manifests": "Limits of telescoping partial-fraction sums are not evaluated by spotting the cancellation."
+      }
+    ],
+    "diagnostic_question_idea": "Compute the sum from k = 1 to 5 of (1/k - 1/(k+1)). Which terms cancel, and which survive?"
+  },
+  {
+    "skill_id": "F021",
+    "skill_name": "Choosing a coordinate frame or origin strategically",
+    "description": "When a problem is coordinate-free or has symmetry, the student can deliberately place the axes and origin to simplify the algebra — putting a circle's centre at the origin, aligning an axis with a line of symmetry — rather than using arbitrary coordinates.",
+    "why_foundational": "Shifting the origin is mentioned, but choosing the frame in the first place is a judgment skill that is assumed, not taught.",
+    "failure_signature": "The student drowns in unnecessary algebra by using awkward coordinates, and misses simplifications that a well-chosen frame would make obvious.",
+    "dependent_topics": [
+      {
+        "topic": "Straight Lines And Pair Of Straight Lines",
+        "how_it_manifests": "Locus and triangle problems become algebraically heavy because the frame is chosen poorly."
+      },
+      {
+        "topic": "Circle",
+        "how_it_manifests": "Problems are not simplified by centring the circle at the origin."
+      },
+      {
+        "topic": "Parabola",
+        "how_it_manifests": "The standard orientation is not exploited, leaving general-position algebra."
+      },
+      {
+        "topic": "Vector Algebra",
+        "how_it_manifests": "A position-vector problem is not simplified by placing one vertex at the origin."
+      },
+      {
+        "topic": "3D Geometry",
+        "how_it_manifests": "A configuration is analyzed in an awkward frame rather than one aligned to the given planes or lines."
+      }
+    ],
+    "diagnostic_question_idea": "You must prove a general property true for every rectangle. Where would you place the origin and axes to make the algebra as simple as possible, and why?"
+  },
+  {
+    "skill_id": "F022",
+    "skill_name": "Sketching a curve qualitatively from its equation",
+    "description": "The student can produce a quick rough sketch of a curve from its equation — capturing the general shape, intercepts, asymptotes, symmetry, and a few key points — and can conversely read those features off a given sketch.",
+    "why_foundational": "Curve sketching is treated algebraically in coaching; many students never build the visualization habit, which sits below every graph-dependent technique.",
+    "failure_signature": "The student cannot tell which branch or region a problem refers to, picks the wrong sign of a root, or misjudges the number of intersection points because no mental picture is formed.",
+    "dependent_topics": [
+      {
+        "topic": "Area Under The Curves",
+        "how_it_manifests": "The bounded region cannot be identified because the curves are not sketched."
+      },
+      {
+        "topic": "Application Of Derivatives",
+        "how_it_manifests": "Counting roots or extrema by shape analysis fails without a rough graph."
+      },
+      {
+        "topic": "Functions",
+        "how_it_manifests": "Range and monotonicity questions are mishandled because the graph is not visualized."
+      },
+      {
+        "topic": "Quadratic Equation And Inequalities",
+        "how_it_manifests": "Root placement relative to an interval cannot be reasoned about without a parabola sketch."
+      },
+      {
+        "topic": "Limits Continuity And Differentiability",
+        "how_it_manifests": "Behavior near a point or at infinity is misjudged because the curve is not pictured."
+      },
+      {
+        "topic": "Hyperbola",
+        "how_it_manifests": "Students cannot reason about which branch a point lies on or how asymptotes constrain the curve without a rough sketch."
+      }
+    ],
+    "diagnostic_question_idea": "Sketch y = (x - 1)(x - 3). Where does it cross the axes, which way does it open, and roughly where is its lowest point?"
+  },
+  {
+    "skill_id": "F023",
+    "skill_name": "Counting degrees of freedom against available conditions",
+    "description": "The student knows that determining n unknowns requires n independent conditions, and can count how many unknowns define an object versus how many equations the given information provides — recognizing under- and over-determined situations.",
+    "why_foundational": "This structural awareness is never taught explicitly, yet it governs whether a student knows they have enough information to proceed.",
+    "failure_signature": "The student stops with too few equations, does not realize a problem gives exactly enough data, or cannot reconstruct an object (conic, polynomial, matrix) from a list of conditions.",
+    "dependent_topics": [
+      {
+        "topic": "Circle",
+        "how_it_manifests": "A circle through three points is not solved because the student does not see that three points give exactly three equations for three unknowns."
+      },
+      {
+        "topic": "Quadratic Equation And Inequalities",
+        "how_it_manifests": "Reconstructing a quadratic from indirect conditions fails because the count of conditions versus unknowns is not tracked."
+      },
+      {
+        "topic": "Matrices And Determinants",
+        "how_it_manifests": "Whether a linear system has a unique, infinite, or no solution is misjudged without degrees-of-freedom thinking."
+      },
+      {
+        "topic": "Differential Equations",
+        "how_it_manifests": "The number of arbitrary constants needed and the conditions to fix them are miscounted."
+      },
+      {
+        "topic": "Straight Lines And Pair Of Straight Lines",
+        "how_it_manifests": "Reconstructing a line or triangle from partial data stalls because needed versus given conditions are not compared."
+      }
+    ],
+    "diagnostic_question_idea": "A circle is required to pass through three given points. How many independent numbers are needed to fix a circle, and how many equations do three points provide?"
+  },
+  {
+    "skill_id": "F024",
+    "skill_name": "Translating among vector, coordinate, and geometric descriptions",
+    "description": "The student can express the same object in vector form, in Cartesian coordinates, and as a geometric picture, and can pick whichever representation makes the current step easiest.",
+    "why_foundational": "Each representation is taught separately; the fluid translation among them is assumed and rarely practiced as its own skill.",
+    "failure_signature": "The student is locked into one representation, misses easy dot-product or cross-product shortcuts, and cannot move between the vector and Cartesian forms of the same line or plane.",
+    "dependent_topics": [
+      {
+        "topic": "Vector Algebra",
+        "how_it_manifests": "Geometric facts about a triangle are not converted to vector statements, so dot and cross products are not used."
+      },
+      {
+        "topic": "3D Geometry",
+        "how_it_manifests": "A line given in one form cannot be rewritten in the other, blocking distance and intersection work."
+      },
+      {
+        "topic": "Straight Lines And Pair Of Straight Lines",
+        "how_it_manifests": "Direction and slope descriptions are not connected to a vector viewpoint when that would simplify."
+      },
+      {
+        "topic": "Complex Numbers",
+        "how_it_manifests": "A complex number is not treated as a planar point or vector when a geometric step is needed."
+      }
+    ],
+    "diagnostic_question_idea": "A line passes through (1, 0, 2) with direction (2, 1, -1). Write it both in vector form and in symmetric Cartesian form."
+  },
+  {
+    "skill_id": "F025",
+    "skill_name": "Exploiting symmetry to reduce computation",
+    "description": "The student recognizes symmetry of various kinds — even or odd functions, reflection, rotation, symmetry of an expression in its variables — and uses it to halve a computation or to restrict the cases that need checking.",
+    "why_foundational": "Symmetry exploitation is a habit of strong solvers that is never taught as an explicit skill; weaker students simply compute everything.",
+    "failure_signature": "The student computes both halves of a symmetric integral, fails to simplify expressions symmetric in their variables, and overlooks that a region or figure is symmetric.",
+    "dependent_topics": [
+      {
+        "topic": "Definite Integration",
+        "how_it_manifests": "Even/odd symmetry over a symmetric interval is not used, doubling the work or giving wrong results."
+      },
+      {
+        "topic": "Area Under The Curves",
+        "how_it_manifests": "A region symmetric about an axis or line is computed in full instead of computing one part and doubling."
+      },
+      {
+        "topic": "Functions",
+        "how_it_manifests": "Even or odd classification that would shortcut a problem is not noticed."
+      },
+      {
+        "topic": "Trigonometric Ratio And Identities",
+        "how_it_manifests": "Symmetric sums of trig values are not simplified using their structural symmetry."
+      },
+      {
+        "topic": "Probability",
+        "how_it_manifests": "Symmetric outcomes that allow a shortcut count are enumerated in full instead."
+      }
+    ],
+    "diagnostic_question_idea": "Is x^3 an even or an odd function? What does that fact tell you about the value of the integral of x^3 from -2 to 2, without computing it?"
+  },
+  {
+    "skill_id": "F026",
+    "skill_name": "Recognizing standard algebraic identities in context",
+    "description": "The student instantly recognizes the difference of squares, perfect-square expansions, the difference and sum of cubes, and symmetric-function identities, and spots opportunities to apply them or to run them in reverse to factor.",
+    "why_foundational": "These identities are memorized early, but recognizing the moment to deploy them inside a larger problem is the assumed skill that sits below their use.",
+    "failure_signature": "The student expands when factoring would help or factors awkwardly when an identity gives the answer at once, missing simplifications and working slowly through algebra.",
+    "dependent_topics": [
+      {
+        "topic": "Binomial Theorem",
+        "how_it_manifests": "Simplification before expansion using identities is not done, leaving messy expressions."
+      },
+      {
+        "topic": "Quadratic Equation And Inequalities",
+        "how_it_manifests": "Symmetric expressions in the roots are not simplified via standard identities."
+      },
+      {
+        "topic": "Complex Numbers",
+        "how_it_manifests": "Expressions in z and its conjugate are not simplified using identity patterns."
+      },
+      {
+        "topic": "Sequences And Series",
+        "how_it_manifests": "Differences and products of terms are not recombined using algebraic identities."
+      },
+      {
+        "topic": "Trigonometric Ratio And Identities",
+        "how_it_manifests": "Powers like sin^4 + cos^4 are not reduced because the underlying algebraic identity is not invoked."
+      },
+      {
+        "topic": "Permutations And Combinations",
+        "how_it_manifests": "Factorial and binomial coefficient manipulation uses identity-like patterns (Pascal's rule, hockey stick) requiring the same recognition habit."
+      }
+    ],
+    "diagnostic_question_idea": "Factor x^3 - 8, and simplify (x + 1)^2 - (x - 1)^2."
+  },
+  {
+    "skill_id": "F027",
+    "skill_name": "Working backwards from a required answer form",
+    "description": "When a problem specifies the form the answer must take — for example, 'the integral equals A·arcsin(...) + C, find A' — the student can reason backward, differentiating the target form or matching its structure, instead of only solving forward.",
+    "why_foundational": "Reverse reasoning is a strategy, not a procedure, and coaching teaches forward solving almost exclusively.",
+    "failure_signature": "The student solves forward, arrives at a correct but differently-written expression, cannot match it to the requested form, and leaves the answer blank or wrong.",
+    "dependent_topics": [
+      {
+        "topic": "Indefinite Integrals",
+        "how_it_manifests": "Problems asking for constants in a prescribed antiderivative form are not solved by differentiating that form."
+      },
+      {
+        "topic": "Differential Equations",
+        "how_it_manifests": "Identifying which differential equation has a given solution form is not approached by working backward."
+      },
+      {
+        "topic": "Differentiation",
+        "how_it_manifests": "Recovering coefficients of a polynomial from derivative conditions is not done by reverse matching."
+      },
+      {
+        "topic": "Binomial Theorem",
+        "how_it_manifests": "Conditions stated on expansion terms are not back-solved into constraints on n or r."
+      }
+    ],
+    "diagnostic_question_idea": "If d/dx of A·sin(3x) equals 2·cos(3x), find A by differentiating the given form and matching."
+  },
+  {
+    "skill_id": "F028",
+    "skill_name": "Treating an unspecified parameter as a fixed-but-arbitrary number",
+    "description": "The student is comfortable carrying an unspecified constant through an entire solution, treating it as if it were a known number, and only imposing conditions on it at the end.",
+    "why_foundational": "Parametric thinking of this kind is assumed; students who lack it freeze whenever a symbol other than the main variable appears.",
+    "failure_signature": "The student stalls when a letter such as a, k, or lambda appears, substitutes arbitrary numbers to make it 'go away', and cannot handle 'family of' problems or parameter-dependent answers.",
+    "dependent_topics": [
+      {
+        "topic": "Differential Equations",
+        "how_it_manifests": "Arbitrary constants of integration are not carried correctly through to the general solution."
+      },
+      {
+        "topic": "Straight Lines And Pair Of Straight Lines",
+        "how_it_manifests": "Family-of-lines problems are not handled because the parameter is not treated as a free constant."
+      },
+      {
+        "topic": "Circle",
+        "how_it_manifests": "The family-of-circles parameter is mishandled rather than carried symbolically."
+      },
+      {
+        "topic": "Quadratic Equation And Inequalities",
+        "how_it_manifests": "Problems with a parameter in the coefficients are not solved generally."
+      },
+      {
+        "topic": "Functions",
+        "how_it_manifests": "Functions defined with a parameter cannot be analyzed because the parameter paralyzes the student."
+      },
+      {
+        "topic": "Matrices And Determinants",
+        "how_it_manifests": "Problems with parameter k in matrix coefficients require carrying k symbolically through determinant and rank computations."
+      }
+    ],
+    "diagnostic_question_idea": "Solve 2x + a = 7 for x, treating a as a fixed unknown number rather than something to eliminate."
+  },
+  {
+    "skill_id": "F029",
+    "skill_name": "Decomposing the real line at all its breakpoints",
+    "description": "The student can identify every point at which a function's definition or behavior changes — the integer points for the greatest-integer function, the zeros for an absolute value, the junctions of a piecewise definition — and then analyze each resulting interval separately.",
+    "why_foundational": "Piecewise functions are in the syllabus, but the discipline of locating all breakpoints and partitioning the line completely is assumed in every later use.",
+    "failure_signature": "The student misses a breakpoint, treats a piecewise or floor-based function as a single formula, and reaches wrong conclusions about continuity, differentiability, integrals, or areas.",
+    "dependent_topics": [
+      {
+        "topic": "Limits Continuity And Differentiability",
+        "how_it_manifests": "Continuity and differentiability are checked at some junction points but not all."
+      },
+      {
+        "topic": "Definite Integration",
+        "how_it_manifests": "Integrals of floor-function or sign-changing integrands are not split at every breakpoint."
+      },
+      {
+        "topic": "Functions",
+        "how_it_manifests": "Range and behavior of greatest-integer-based functions are analyzed without partitioning the line."
+      },
+      {
+        "topic": "Area Under The Curves",
+        "how_it_manifests": "Regions bounded by floor functions or moduli are computed over the wrong sub-intervals."
+      },
+      {
+        "topic": "Application Of Derivatives",
+        "how_it_manifests": "Monotonicity of a piecewise function across its breakpoints is not checked piece by piece."
+      }
+    ],
+    "diagnostic_question_idea": "At which x-values does the behavior of f(x) = [x] + |x - 2| change? List every such point."
+  },
+  {
+    "skill_id": "F030",
+    "skill_name": "Estimating and sanity-checking results",
+    "description": "The student can judge whether an answer is plausible — checking that it has the right sign, a sensible order of magnitude, and respects obvious bounds such as a probability lying in [0, 1] or an area being positive.",
+    "why_foundational": "This metacognitive habit is never taught, yet it is what catches slips before an answer is submitted.",
+    "failure_signature": "The student submits impossible answers — a negative area, a probability above one, an eccentricity below one for an ellipse — and does not notice arithmetic mistakes that an estimate would have flagged.",
+    "dependent_topics": [
+      {
+        "topic": "Probability",
+        "how_it_manifests": "Answers outside [0, 1] are reported without recognizing they cannot be probabilities."
+      },
+      {
+        "topic": "Statistics",
+        "how_it_manifests": "A negative variance or an implausible mean is accepted instead of triggering a recheck."
+      },
+      {
+        "topic": "Area Under The Curves",
+        "how_it_manifests": "A negative or absurdly large area is submitted without question."
+      },
+      {
+        "topic": "Application Of Derivatives",
+        "how_it_manifests": "An optimization answer that is obviously out of range is not flagged."
+      },
+      {
+        "topic": "Definite Integration",
+        "how_it_manifests": "A result whose sign contradicts the integrand's behavior is not caught."
+      }
+    ],
+    "diagnostic_question_idea": "A student computes the probability of an event as 1.4. Without redoing the problem, what does this immediately tell you?"
+  },
+  {
+    "skill_id": "F031",
+    "skill_name": "Simplifying nested fractions and radical expressions",
+    "description": "The student can simplify compound fractions with fractions inside them, rationalize denominators including those with surds or complex numbers, and combine radical expressions without error.",
+    "why_foundational": "This is class 9-10 algebra below the entire syllabus; it is assumed, never retaught, and silently slows a student down.",
+    "failure_signature": "The student makes arithmetic errors when simplifying stacked fractions, cannot cleanly reduce a complex-number quotient, and is slow and inaccurate wherever fractions or radicals pile up.",
+    "dependent_topics": [
+      {
+        "topic": "Complex Numbers",
+        "how_it_manifests": "Rationalizing a complex denominator produces errors that propagate through the problem."
+      },
+      {
+        "topic": "Inverse Trigonometric Functions",
+        "how_it_manifests": "Simplifying the rational arguments inside inverse-trig expressions goes wrong."
+      },
+      {
+        "topic": "Limits Continuity And Differentiability",
+        "how_it_manifests": "Rationalizing conjugates to resolve a limit is done with arithmetic slips."
+      },
+      {
+        "topic": "Differentiation",
+        "how_it_manifests": "Simplifying the result of the quotient rule into a clean form fails."
+      },
+      {
+        "topic": "Indefinite Integrals",
+        "how_it_manifests": "Rewriting an integrand by clearing nested fractions before integrating is error-prone."
+      }
+    ],
+    "diagnostic_question_idea": "Simplify the expression (1/x - 1/2) divided by (x - 2)."
+  },
+  {
+    "skill_id": "F032",
+    "skill_name": "Inferring a generating rule from a sequence of objects",
+    "description": "The student can read a list of indexed objects — terms of a sequence, repeated function compositions, successive powers of a matrix — perceive the rule producing them, predict the next one, and write a general expression or detect periodicity.",
+    "why_foundational": "Coaching usually supplies the general term; the act of seeing the pattern behind listed objects is assumed and is where weak students stall at step one.",
+    "failure_signature": "The student cannot write the nth term from a list, misreads index-based conditions, fails to detect that an iteration repeats, and is stuck at the very start of pattern-based problems.",
+    "dependent_topics": [
+      {
+        "topic": "Sequences And Series",
+        "how_it_manifests": "The general term cannot be written from listed terms, blocking every subsequent step."
+      },
+      {
+        "topic": "Matrices And Determinants",
+        "how_it_manifests": "Patterns or periodicity in successive matrix powers are not discovered."
+      },
+      {
+        "topic": "Functions",
+        "how_it_manifests": "Iterated compositions f_n(x) and their periodicity are not detected."
+      },
+      {
+        "topic": "Complex Numbers",
+        "how_it_manifests": "Periodic behavior of powers of i or of a cube root of unity is not recognized."
+      },
+      {
+        "topic": "Binomial Theorem",
+        "how_it_manifests": "The structure of an indexed sum of coefficients is not perceived from its terms."
+      }
+    ],
+    "diagnostic_question_idea": "Given the sequence 3, 7, 11, 15, ..., write a formula for the nth term. Then, for f(x) = 1/(1 - x), compute f(f(x)) and f(f(f(x))) and describe the pattern."
+  },
+  {
+    "skill_id": "F033",
+    "skill_name": "Connecting solution count to geometric intersection count",
+    "description": "The student understands that the number of common points of two curves equals the number of real solutions of their combined equation, and that a point of tangency corresponds to a repeated root — so geometric incidence and algebraic root-counting are two views of one thing.",
+    "why_foundational": "This bridge between algebra and geometry is assumed; coaching applies the discriminant-for-tangency test mechanically without securing the underlying idea.",
+    "failure_signature": "The student treats 'how many intersection points' and 'how many solutions' as unrelated questions, cannot reason about intersection counts, and applies the discriminant test without understanding what it means.",
+    "dependent_topics": [
+      {
+        "topic": "Circle",
+        "how_it_manifests": "Whether a line cuts, touches, or misses a circle is not connected to the root count of the combined equation."
+      },
+      {
+        "topic": "Parabola",
+        "how_it_manifests": "The tangency condition is applied as a formula without seeing it as a repeated root."
+      },
+      {
+        "topic": "Quadratic Equation And Inequalities",
+        "how_it_manifests": "The link between the discriminant's sign and the number of intersection points is not made."
+      },
+      {
+        "topic": "Straight Lines And Pair Of Straight Lines",
+        "how_it_manifests": "Counting intersections of curves and lines is not reduced to counting equation solutions."
+      },
+      {
+        "topic": "Ellipse",
+        "how_it_manifests": "Tangency and chord-length problems are not connected to repeated or distinct roots."
+      },
+      {
+        "topic": "Hyperbola",
+        "how_it_manifests": "Tangency of a line to a hyperbola uses the same discriminant-equals-zero condition as for other conics."
+      }
+    ],
+    "diagnostic_question_idea": "A line meets a parabola at exactly the points where a certain quadratic has a double root. How many points do the line and parabola share, and what is that situation called?"
+  },
+  {
+    "skill_id": "F034",
+    "skill_name": "Treating logarithm and exponential as inverse operations",
+    "description": "The student fluently converts between logarithmic and exponential form, understands the log laws as direct consequences of the exponent laws, and can move quantities into and out of exponents at will.",
+    "why_foundational": "This fluency sits below the Logarithm topic itself and is assumed by many other topics; shaky log handling silently breaks problems far from the logarithm chapter.",
+    "failure_signature": "The student cannot take logs to solve an exponential equation, misapplies the log laws, and stalls on logarithmic differentiation or integration that depends on confident log-exponent moves.",
+    "dependent_topics": [
+      {
+        "topic": "Logarithm",
+        "how_it_manifests": "Equations and inequalities are not solved because exponential and log forms are not interconverted."
+      },
+      {
+        "topic": "Differentiation",
+        "how_it_manifests": "Logarithmic differentiation of variable-exponent functions cannot be carried out."
+      },
+      {
+        "topic": "Indefinite Integrals",
+        "how_it_manifests": "Integrals requiring an exponential substitution or a log identity are not rewritten correctly."
+      },
+      {
+        "topic": "Limits Continuity And Differentiability",
+        "how_it_manifests": "Limits of the 1-to-the-infinity form are not resolved because taking logs is not a comfortable move."
+      },
+      {
+        "topic": "Sequences And Series",
+        "how_it_manifests": "Translating between a logarithmic arithmetic progression and a geometric relationship among arguments fails."
+      }
+    ],
+    "diagnostic_question_idea": "Rewrite 2^3 = 8 in logarithmic form, and solve 5^x = 20 using logarithms."
+  },
+  {
+    "skill_id": "F035",
+    "skill_name": "Tracking signs through multi-step computation",
+    "description": "The student maintains correct signs through long chains of operations — distributing a negative sign across a bracket, getting the sign of products and quotients right, and handling sign changes from subtracting whole expressions or from even powers.",
+    "why_foundational": "Sign hygiene sits below every topic and is the single most common silent error source; it is assumed and never explicitly trained.",
+    "failure_signature": "The student makes frequent sign errors that flip the final answer, especially with negatives inside brackets, subtraction of multi-term expressions, and roots.",
+    "dependent_topics": [
+      {
+        "topic": "Differentiation",
+        "how_it_manifests": "Sign errors in the product and quotient rules invert the derivative."
+      },
+      {
+        "topic": "Vector Algebra",
+        "how_it_manifests": "Sign mistakes in dot and cross product components corrupt the result."
+      },
+      {
+        "topic": "Matrices And Determinants",
+        "how_it_manifests": "Cofactor sign patterns and expansion signs are mishandled."
+      },
+      {
+        "topic": "Complex Numbers",
+        "how_it_manifests": "Signs of real and imaginary parts are lost during manipulation."
+      },
+      {
+        "topic": "Quadratic Equation And Inequalities",
+        "how_it_manifests": "Sign slips when rearranging terms produce wrong coefficients and roots."
+      }
+    ],
+    "diagnostic_question_idea": "Simplify -(3 - 2x) - (-x + 4), writing down each sign as you carry it through."
+  },
+  {
+    "skill_id": "F036",
+    "skill_name": "Distinguishing 'for all' from 'there exists'",
+    "description": "The student distinguishes a condition that must hold for every value of a variable from one that need only hold for some value, and translates each correctly — for example, 'always positive' yields a discriminant condition while 'has a solution' is an existence requirement.",
+    "why_foundational": "This is a logical distinction that is assumed of every student and almost never made explicit, yet it determines which condition gets set up.",
+    "failure_signature": "The student confuses 'always positive' with 'sometimes positive', sets up the wrong condition, and mishandles 'number of solutions' and inequality-validity questions.",
+    "dependent_topics": [
+      {
+        "topic": "Quadratic Equation And Inequalities",
+        "how_it_manifests": "Definite-sign conditions ('positive for all x') are confused with solvability conditions."
+      },
+      {
+        "topic": "Functions",
+        "how_it_manifests": "Conditions for a property to hold throughout a domain are mixed up with conditions for it to hold somewhere."
+      },
+      {
+        "topic": "Application Of Derivatives",
+        "how_it_manifests": "Guaranteed monotonicity on an interval (a 'for all' condition) is confused with monotonicity at a point."
+      },
+      {
+        "topic": "Sets And Relations",
+        "how_it_manifests": "Verifying a relation property for all pairs versus finding one counterexample is conflated."
+      },
+      {
+        "topic": "Trigonometric Ratio And Identities",
+        "how_it_manifests": "The condition for an equation to be solvable for some angle is confused with an identity holding for all angles."
+      },
+      {
+        "topic": "Permutations And Combinations",
+        "how_it_manifests": "'At least one' vs 'exactly k' vs 'all' conditions require the for-all/there-exists distinction to choose the counting technique."
+      }
+    ],
+    "diagnostic_question_idea": "Explain the difference between 'x^2 + bx + 1 > 0 for all x' and 'x^2 + bx + 1 > 0 for some x'. Which one leads to a discriminant condition?"
+  },
+  {
+    "skill_id": "F037",
+    "skill_name": "Decoding a multi-clause problem statement",
+    "description": "The student can parse a long, multi-clause problem to identify precisely the quantity being asked for, every constraint that is given, and which pieces of information are relevant — separating the question from the noise.",
+    "why_foundational": "This is mathematical reading comprehension; it is assumed, and long JEE statements overwhelm students who lack it even when each individual technique is known.",
+    "failure_signature": "The student solves for the wrong quantity, overlooks a stated condition, or gets lost partway through long problems despite knowing every technique involved.",
+    "dependent_topics": [
+      {
+        "topic": "Probability",
+        "how_it_manifests": "A multi-stage word problem is misread, so the wrong event or conditioning is computed."
+      },
+      {
+        "topic": "Application Of Derivatives",
+        "how_it_manifests": "An optimization problem's actual objective or constraint is missed in a dense statement."
+      },
+      {
+        "topic": "Sequences And Series",
+        "how_it_manifests": "Several term-and-sum conditions are not all extracted from a wordy statement."
+      },
+      {
+        "topic": "3D Geometry",
+        "how_it_manifests": "A chain of conditions defining a plane or line is not fully parsed."
+      },
+      {
+        "topic": "Permutations And Combinations",
+        "how_it_manifests": "A constraint buried in the wording is overlooked, giving a wrong count."
+      }
+    ],
+    "diagnostic_question_idea": "In a four-sentence word problem, underline the single quantity that is being asked for and circle each separate condition you are given."
+  },
+  {
+    "skill_id": "F038",
+    "skill_name": "Setting up ratio and proportion statements",
+    "description": "The student moves fluently between a ratio a:b, the statement 'a is k times b', a fraction, and a proportionality relation, and can build correct equations from any of these — including the section-formula sense of dividing a segment in a given ratio.",
+    "why_foundational": "Ratio reasoning is class 7-8 material below the syllabus; mis-setup of a ratio is silent and never diagnosed.",
+    "failure_signature": "The student sets up ratio equations incorrectly, mishandles 'divides in the ratio m:n', and makes proportional-reasoning errors in section-formula and probability work.",
+    "dependent_topics": [
+      {
+        "topic": "Straight Lines And Pair Of Straight Lines",
+        "how_it_manifests": "The section formula is applied with the ratio reversed or mis-set-up."
+      },
+      {
+        "topic": "Vector Algebra",
+        "how_it_manifests": "Dividing a segment between position vectors in a given ratio is done incorrectly."
+      },
+      {
+        "topic": "Probability",
+        "how_it_manifests": "Odds and ratio-based probability statements are not converted into correct fractions."
+      },
+      {
+        "topic": "Parabola",
+        "how_it_manifests": "A point dividing a focal chord in a given ratio is placed wrongly."
+      },
+      {
+        "topic": "Statistics",
+        "how_it_manifests": "Combining groups whose sizes are given as a ratio is set up incorrectly."
+      },
+      {
+        "topic": "Permutations And Combinations",
+        "how_it_manifests": "Distribution problems stated as ratios or proportional shares require correct ratio-to-equation translation before counting."
+      }
+    ],
+    "diagnostic_question_idea": "Point P divides segment AB in the ratio 2:3. If A is at 0 and B is at 10 on a number line, where is P?"
+  },
+  {
+    "skill_id": "F039",
+    "skill_name": "Manipulating inequalities and using interval notation",
+    "description": "The student can manipulate inequalities correctly — flipping the direction when multiplying or dividing by a negative, chaining and combining them — and can express the resulting solution sets accurately in interval notation, including taking unions and intersections of intervals.",
+    "why_foundational": "Inequality manipulation sits below the syllabus and is assumed; the flip-on-negative rule and the combination of intervals are persistent error sources.",
+    "failure_signature": "The student forgets to flip the inequality, mishandles the intersection or union of solution intervals, and writes solution sets with wrong open or closed endpoints.",
+    "dependent_topics": [
+      {
+        "topic": "Quadratic Equation And Inequalities",
+        "how_it_manifests": "The final solution set of an inequality has wrong direction or wrong endpoints."
+      },
+      {
+        "topic": "Functions",
+        "how_it_manifests": "Domain and range intervals are combined incorrectly across components."
+      },
+      {
+        "topic": "Sets And Relations",
+        "how_it_manifests": "Sets defined by inequalities are intersected or unioned with errors."
+      },
+      {
+        "topic": "Application Of Derivatives",
+        "how_it_manifests": "Intervals of monotonicity are reported with wrong endpoint inclusion or direction."
+      },
+      {
+        "topic": "Complex Numbers",
+        "how_it_manifests": "Modulus inequalities defining annular or half-plane regions are combined incorrectly."
+      }
+    ],
+    "diagnostic_question_idea": "Solve the inequality -2x + 1 > 7 and write the answer in interval notation."
+  },
+  {
+    "skill_id": "F040",
+    "skill_name": "Reducing an expression to a single chosen variable",
+    "description": "Given several related quantities tied together by constraints, the student can use the constraints to eliminate variables one by one until the target quantity is expressed as a function of a single variable, ready for calculus or analysis.",
+    "why_foundational": "The 'reduce to one variable' move is assumed in every optimization; coaching presents the single-variable function already formed, hiding the elimination step.",
+    "failure_signature": "The student is left with a multi-variable expression and cannot proceed, fails to use a constraint to eliminate, or differentiates with respect to the wrong variable.",
+    "dependent_topics": [
+      {
+        "topic": "Application Of Derivatives",
+        "how_it_manifests": "Optimization problems stall because the objective is never reduced to one variable using the constraint."
+      },
+      {
+        "topic": "Area Under The Curves",
+        "how_it_manifests": "An area expressed in terms of a parameter is not collapsed to a single-variable function for optimization."
+      },
+      {
+        "topic": "Sequences And Series",
+        "how_it_manifests": "Optimization of a sum or product of terms is not reduced using the relations among the terms."
+      },
+      {
+        "topic": "Quadratic Equation And Inequalities",
+        "how_it_manifests": "Maximizing or minimizing an expression in the roots is not reduced using sum and product relations."
+      },
+      {
+        "topic": "Trigonometric Ratio And Identities",
+        "how_it_manifests": "Maximizing a trig expression is not reduced to a single trig variable before bounding."
+      },
+      {
+        "topic": "Statistics",
+        "how_it_manifests": "Combined mean/variance problems require eliminating one group's statistics using the combined formula."
+      }
+    ],
+    "diagnostic_question_idea": "A rectangle has a perimeter of 20. Express its area as a function of the width w alone."
+  },
+  {
+    "skill_id": "F041",
+    "skill_name": "Drawing and using a labelled geometric figure",
+    "description": "The student can draw a reasonably accurate, labelled figure from a geometric problem statement, mark the given quantities on it, and use the figure to spot relationships such as right angles, similar triangles, or equal lengths.",
+    "why_foundational": "Drawing the figure is assumed of every student; those who skip it miss relationships that the figure would make obvious. It is a habit, not a theorem.",
+    "failure_signature": "The student works without a figure, overlooks obvious geometric relations, and makes errors on geometry-heavy problems that a clear diagram would prevent.",
+    "dependent_topics": [
+      {
+        "topic": "Straight Lines And Pair Of Straight Lines",
+        "how_it_manifests": "Triangle and reflection problems are mishandled because no figure is drawn to reveal the configuration."
+      },
+      {
+        "topic": "Circle",
+        "how_it_manifests": "Relationships among tangents, chords, and centres are missed without a diagram."
+      },
+      {
+        "topic": "Application Of Derivatives",
+        "how_it_manifests": "Geometry-based optimization (ladders, inscribed shapes, tanks) is not set up because the situation is not drawn."
+      },
+      {
+        "topic": "3D Geometry",
+        "how_it_manifests": "Spatial relationships among points, lines, and planes are misjudged without a sketch."
+      },
+      {
+        "topic": "Parabola",
+        "how_it_manifests": "Focal chord and tangent configurations are misread without a labelled figure."
+      }
+    ],
+    "diagnostic_question_idea": "Draw a labelled figure for this situation: a ladder leans against a vertical wall, its foot 3 m from the wall and its top 4 m above the ground."
+  },
+  {
+    "skill_id": "F042",
+    "skill_name": "Completing the square in one or two variables",
+    "description": "The student can rewrite ax² + bx + c as a(x - h)² + k by completing the square, and can extend this to two-variable expressions to reveal the standard forms of circles, ellipses, and hyperbolas. They see this as a general algebraic rearrangement, not as a topic-specific trick.",
+    "why_foundational": "Completing the square is taught in class 10 and never retaught, yet it is silently required whenever a general second-degree expression must be converted to a standard form — across coordinate geometry, integration, and quadratic analysis.",
+    "failure_signature": "The student cannot convert a general circle equation to centre-radius form, struggles with integrals having quadratic expressions under radicals, and cannot find the vertex of a quadratic without memorizing a formula. The same algebraic gap causes failures across unrelated topics.",
+    "dependent_topics": [
+      {
+        "topic": "Circle",
+        "how_it_manifests": "The general equation x² + y² + Dx + Ey + F = 0 is not converted to (x-h)² + (y-k)² = r² because the student cannot complete the square in two variables."
+      },
+      {
+        "topic": "Ellipse",
+        "how_it_manifests": "Shifted ellipse equations with linear terms are not brought to standard form to identify centre and axes."
+      },
+      {
+        "topic": "Hyperbola",
+        "how_it_manifests": "Shifted hyperbola equations cannot be reduced to identify centre, transverse axis, and asymptotes."
+      },
+      {
+        "topic": "Quadratic Equation And Inequalities",
+        "how_it_manifests": "The vertex form and geometric meaning of the discriminant are inaccessible without completing the square."
+      },
+      {
+        "topic": "Indefinite Integrals",
+        "how_it_manifests": "Standard integrals of the form ∫dx/√(ax²+bx+c) require completing the square in the denominator before any technique applies."
+      },
+      {
+        "topic": "Definite Integration",
+        "how_it_manifests": "Definite integrals with quadratic expressions are not reduced to standard evaluable forms."
+      }
+    ],
+    "diagnostic_question_idea": "Rewrite x² + 6x + 2 in the form (x + a)² + b. Then rewrite x² + y² - 4x + 6y + 9 = 0 in centre-radius form and identify the shape."
+  }
+]
